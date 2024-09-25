@@ -4,8 +4,6 @@ package com.xworkz.metro.service;
 import com.xworkz.metro.dto.LoginDto;
 import com.xworkz.metro.dto.RegisterDto;
 
-import javax.validation.Valid;
-
 public interface MetroService {
 
     String registerInService(RegisterDto registerDto);

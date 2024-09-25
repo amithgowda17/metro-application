@@ -11,9 +11,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.validation.Valid;
+
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 import java.time.LocalTime;
 
 @Slf4j
@@ -95,7 +95,7 @@ public class MetroServiceImpl implements MetroService {
 
             registerEntity.setPassword(decrypt);
 
-            System.out.println("decrypt in service login======" + decrypt);
+           log.info("decrypt in service login======" ,decrypt);
 
             if ((registerEntity.getEmail()).equals(loginDto.getEmail()) && (registerEntity.getPassword()).equals(loginDto.getPassword())) {
 

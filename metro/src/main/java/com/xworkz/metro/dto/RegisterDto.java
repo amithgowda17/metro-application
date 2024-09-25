@@ -29,7 +29,6 @@ public class RegisterDto {
     @NotBlank
     private String email;
 
-
     @Size(min = 10,max = 10)
     private String phNo;
 

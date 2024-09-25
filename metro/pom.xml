@@ -79,7 +79,6 @@
       <version>1.7.12</version>
     </dependency>
 
-
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

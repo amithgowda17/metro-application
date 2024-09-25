@@ -3,7 +3,6 @@ package com.xworkz.metro.controller;
 
 import com.xworkz.metro.dto.LoginDto;
 import com.xworkz.metro.dto.RegisterDto;
-import com.xworkz.metro.dto.RegisterDto;
 import com.xworkz.metro.service.MetroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
-import java.lang.reflect.Array;
+
 import java.util.List;
-import java.util.function.BiConsumer;
+
 
 @Controller
 @RequestMapping("/")
@@ -55,13 +54,13 @@ public class MetroController {
         if (bindingResult.hasErrors()) {
 
             List<ObjectError> bindingResults = bindingResult.getAllErrors();
-           System.out.println(bindingResults);
+            //System.out.println(bindingResults);
             System.out.println(registerDto);
-            model.addAttribute("message", "Invalid Data Cannot Register");
+            //model.addAttribute("message", "Invalid Data Cannot Register");
             return "register";
         }
         String successMsg = metroService.registerInService(registerDto);
-        model.addAttribute("msg", successMsg);
+      //  model.addAttribute("msg", successMsg);
         return "register";
 
 
