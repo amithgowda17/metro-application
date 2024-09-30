@@ -1,8 +1,9 @@
 package com.xworkz.metro.configuration;
 
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class WebInit extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class WebInit extends AbstractAnnotationConfigDispatcherServletInitializer  {
 
 
     @Override
@@ -19,4 +20,6 @@ public class WebInit extends AbstractAnnotationConfigDispatcherServletInitialize
     protected String[] getServletMappings() {
         return new String[]{"/"};
     }
+
+
 }

@@ -12,50 +12,62 @@
         <div class="container-fluid bg-secondary-subtle">
           <div class="row align-items-center">
             <div class="col-auto">
-              <img src="https://www.x-workz.in/Logo.png" alt="Logo" height="40px">
+              <img src="https://www.x-workz.in/Logo.png" alt="Logo" height="50px">
             </div>
             <div class="col text-center d-flex justify-content-center">
-              <h1 class="my-0">X-Workz</h1>
+
             </div>
             <div class="col-auto d-flex ">
               <button type="button" class="btn btn-primary me-2">
                 <a href="indexPage" style="text-decoration: none; color: white;">Home</a>
               </button>
-              <button type="button" class="btn btn-primary">
+              <button type="button" class="btn btn-primary me-2">
                 <a href="registerPage" style="text-decoration: none; color: white;">Register</a>
               </button>
+              <button type="button" class="btn btn-primary">
+              <a href="loginPage"  style="text-decoration: none; color: white;">Login</a>
+               </button>
             </div>
           </div>
         </div>
       </header>
 
-    <h1 style="color: red;">${loginerrmsg}</h1>
-    <div class="position-absolute top-50 start-50 translate-middle">
+      <div class="position-absolute top-50 start-50 translate-middle">
 
         <div class="card mb-3" style="width: 20rem;" >
             <div class="p-3 bg-light.bg-gradient">
             <div class="card-body ">
 
-<form action="login" method="post">
-
+<form action="otp" method="get">
+<form>
     <div class="mb-3">
-        <label for="formGroupExampleInput2" class="form-label">Email</label>
+        <label for="formGroupExampleInput2" class="form-label">Enter Email</label>
         <input type="email" class="form-control" placeholder="Enter your email" name="email">
+        <div class="text-center">
+          <div class="col-12">
+            <button type="submit" class="btn btn-secondary">
+              Send Otp
+            </button>
+        </div>
       </div>
+      </div>
+    </form>
       <div class="mb-3">
-        <label for="inputPassword5" class="form-label">Password</label>
-        <input type="password" class="form-control" placeholder="Enter your password" name="password" >
+        <label for="inputPassword5" class="form-label">Enter Otp</label>
+        <input type="password" class="form-control" placeholder="Enter your otp" name="otp" >
       </div>
       <div class="text-center">
       <div class="col-12">
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn btn-success">Verify Otp</button>
     </div>
-    <a href="forgotPassword" style="text-decoration: none;">Forgotten Password?</a>
   </div>
 </form>
 </div>
 </div>
 </div>
 </div>
-</body>
-</html>
+
+
+    
+      </body>
+      </html>

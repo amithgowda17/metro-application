@@ -1,9 +1,10 @@
 package com.xworkz.metro.controller;
 
-
 import com.xworkz.metro.dto.LoginDto;
 import com.xworkz.metro.dto.RegisterDto;
+import com.xworkz.metro.service.EmailSent;
 import com.xworkz.metro.service.MetroService;
+import jdk.nashorn.internal.objects.annotations.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,11 @@ import java.util.List;
 @RequestMapping("/")
 public class MetroController {
 
+    @Autowired
+    EmailSent emailSent;
+
+
+
     public MetroController() {
         System.out.println("MetroController object created");
     }
@@ -33,18 +39,18 @@ public class MetroController {
 
 
     @GetMapping("indexPage")
-    public String homePage(){
+    public String homePage() {
         return "index";
     }
 
 
     @GetMapping("registerPage")
-    public String registerPage(){
+    public String registerPage() {
         return "register";
     }
 
     @GetMapping("loginPage")
-    public String loginPage(){
+    public String loginPage() {
         return "login";
     }
 
@@ -60,30 +66,30 @@ public class MetroController {
             return "register";
         }
         String successMsg = metroService.registerInService(registerDto);
-      //  model.addAttribute("msg", successMsg);
+        //  model.addAttribute("msg", successMsg);
         return "register";
 
 
     }
 
     @GetMapping("isEmailExists")
-    public ResponseEntity<String> emailExists(@RequestParam String email){
+    public ResponseEntity<String> emailExists(@RequestParam String email) {
 
-        if (email!=null){
-            boolean byEmailInService=metroService.findByEmailInService(email);
+        if (email != null) {
+            boolean byEmailInService = metroService.findByEmailInService(email);
             if (byEmailInService) {
                 return ResponseEntity.ok("email already exists");
             }
         }
 
-        return ResponseEntity.ok("email not exists");
+        return ResponseEntity.ok("email_accepted");
     }
 
     @GetMapping("isPhnoExists")
-    public ResponseEntity<String> phoneExists(@RequestParam String phNo){
+    public ResponseEntity<String> phoneExists(@RequestParam String phNo) {
 
-        if (phNo!=null){
-            boolean byPhInService=metroService.findByPhInService(phNo);
+        if (phNo != null) {
+            boolean byPhInService = metroService.findByPhInService(phNo);
             if (byPhInService) {
                 return ResponseEntity.ok("phone number already exists");
             }
@@ -93,15 +99,38 @@ public class MetroController {
 
 
     @PostMapping("login")
-    public String login(@Valid LoginDto loginDto, BindingResult bindingResult,Model model) {
+    public String login(@Valid LoginDto loginDto, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("loginerrmsg", "Please enter valid data");
             return "login";
         }
         String saved = metroService.loginDetails(loginDto);
-        model.addAttribute("loginerrmsg",saved);
+        model.addAttribute("loginerrmsg", saved);
         return "login";
+    }
+
+
+    @GetMapping("forgotPassword")
+
+    public String forgotPassword(){
+
+        return "emailotp";
+    }
+
+
+    @GetMapping("otp")
+    public String generateOtp(@RequestParam String email) {
+        if (email != null) {
+            boolean isEmailPresent=metroService.generateOtpInService(email);
+            if(isEmailPresent==true){
+                System.out.println("otp sent");
+            }
+            return "emailotp";
+        }
+
+        return "emailotp";
+
     }
 
 }

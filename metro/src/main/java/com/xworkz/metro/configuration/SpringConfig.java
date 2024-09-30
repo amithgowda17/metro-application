@@ -19,15 +19,12 @@ public class SpringConfig {
     }
 
     @Bean
-    public ViewResolver resolver(){
-
-        InternalResourceViewResolver internalResourceViewResolver=new InternalResourceViewResolver("/",".jsp");
-        return internalResourceViewResolver;
+    public ViewResolver resolver() {
+        return new InternalResourceViewResolver("/", ".jsp");
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean managerFactoryBean(){
-
+    public LocalContainerEntityManagerFactoryBean managerFactoryBean() {
         return new LocalContainerEntityManagerFactoryBean();
     }
 }

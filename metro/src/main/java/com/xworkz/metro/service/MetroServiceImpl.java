@@ -20,6 +20,8 @@ import java.time.LocalTime;
 @Service
 public class MetroServiceImpl implements MetroService {
 
+    @Autowired
+    EmailSent emailSent;
 
     @Autowired
     MetroRepo metroRepo;
@@ -95,7 +97,7 @@ public class MetroServiceImpl implements MetroService {
 
             registerEntity.setPassword(decrypt);
 
-           log.info("decrypt in service login======" ,decrypt);
+           log.info("decrypt in service login======" +decrypt);
 
             if ((registerEntity.getEmail()).equals(loginDto.getEmail()) && (registerEntity.getPassword()).equals(loginDto.getPassword())) {
 
@@ -117,6 +119,16 @@ public class MetroServiceImpl implements MetroService {
         } else {
             return "user doesn't exists";
         }
+    }
+
+    @Override
+    public boolean generateOtpInService(String email) {
+        RegisterEntity registerEntity=metroRepo.findByEmail(email);
+        if(registerEntity!=null){
+            emailSent.emailSend(email);
+            return true;
+        }
+        return false;
     }
 
 

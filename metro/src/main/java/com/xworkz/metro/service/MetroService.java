@@ -14,4 +14,6 @@ public interface MetroService {
 
     String loginDetails(LoginDto loginDto);
 
+    boolean generateOtpInService(String email);
+
 }
