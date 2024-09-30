@@ -9,6 +9,7 @@ import com.xworkz.metro.util.EncryptionDecryption;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 
@@ -61,14 +62,14 @@ public class MetroServiceImpl implements MetroService {
     }
 
     @Override
-    public boolean findByEmailInService(String email) {
+    public RegisterDto findByEmailInService(String email) {
         RegisterEntity registerEntity = metroRepo.findByEmail(email);
         if (registerEntity != null) {
             RegisterDto registerDto = new RegisterDto();
             BeanUtils.copyProperties(registerEntity, registerDto);
-            return true;
+            return registerDto;
         }
-        return false;
+        return null;
     }
 
     @Override
@@ -122,11 +123,43 @@ public class MetroServiceImpl implements MetroService {
     }
 
     @Override
-    public boolean generateOtpInService(String email) {
+    public boolean generateOtpInService(String email,String otp) {
         RegisterEntity registerEntity=metroRepo.findByEmail(email);
         if(registerEntity!=null){
-            emailSent.emailSend(email);
+            String otpSave=emailSent.emailSend(email);
+           String encryptOtp = encryptionDecryption.encrypt(otpSave);
+            metroRepo.saveOtpInRepo(email,encryptOtp);
             return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean verifyOtp(String email, String otpEntered) {
+       RegisterEntity registerEntity = metroRepo.findByEmail(email);
+        if (registerEntity!=null ) {
+            String decryptOtp = encryptionDecryption.decrypt(registerEntity.getOtp());
+            registerEntity.setOtp(decryptOtp);
+            RegisterDto registerDto = new RegisterDto();
+            BeanUtils.copyProperties(registerEntity, registerDto);
+            if (otpEntered.equals(registerDto.getOtp())) {
+                return true;
+            }
+            return false;
+        }
+        return false;
+        }
+
+    @Override
+    public boolean updatePasswordInService(String email, String password, String confirmpassword) {
+        RegisterDto registerDto=findByEmailInService(email);
+        if(registerDto!=null) {
+            if (password.equals(confirmpassword)){
+                String encryptPassword=encryptionDecryption.encrypt(password);
+                metroRepo.updatePasswordInRepo(email,encryptPassword);
+                return true;
+            }
+           return false;
         }
         return false;
     }

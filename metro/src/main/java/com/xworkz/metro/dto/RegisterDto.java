@@ -60,4 +60,6 @@ public class RegisterDto {
     @NotEmpty
     @NotBlank
     private String confirmpassword;
+
+    private String otp;
 }

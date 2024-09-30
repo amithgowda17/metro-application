@@ -4,7 +4,6 @@ import com.xworkz.metro.dto.LoginDto;
 import com.xworkz.metro.dto.RegisterDto;
 import com.xworkz.metro.service.EmailSent;
 import com.xworkz.metro.service.MetroService;
-import jdk.nashorn.internal.objects.annotations.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -76,8 +75,8 @@ public class MetroController {
     public ResponseEntity<String> emailExists(@RequestParam String email) {
 
         if (email != null) {
-            boolean byEmailInService = metroService.findByEmailInService(email);
-            if (byEmailInService) {
+            RegisterDto registerDto= metroService.findByEmailInService(email);
+            if (registerDto!=null) {
                 return ResponseEntity.ok("email already exists");
             }
         }
@@ -120,17 +119,44 @@ public class MetroController {
 
 
     @GetMapping("otp")
-    public String generateOtp(@RequestParam String email) {
+    public String generateOtp(@RequestParam String email,String otp, Model model) {
         if (email != null) {
-            boolean isEmailPresent=metroService.generateOtpInService(email);
-            if(isEmailPresent==true){
-                System.out.println("otp sent");
+            RegisterDto registerDto=metroService.findByEmailInService(email);
+            boolean isSaved=metroService.generateOtpInService(email,otp);
+            if(isSaved==true){
+                System.out.println("otp saved");
+                model.addAttribute("emaildto",registerDto);
             }
             return "emailotp";
         }
 
         return "emailotp";
 
+    }
+
+    @PostMapping("verifyOtp")
+    public String verifyOtp(@RequestParam String email, @RequestParam String optEntered, Model model){
+        if (email !=null || optEntered!=null){
+            RegisterDto registerDto=metroService.findByEmailInService(email);
+            if (registerDto!=null){
+               boolean isOtpVerified= metroService.verifyOtp(email,optEntered);
+               if(isOtpVerified) {
+                   model.addAttribute("dto", registerDto);
+                   return "updatePassword";
+               }return "emailotp";
+            }
+
+        }
+        return "emailotp";
+    }
+
+    @PostMapping("updatePassword")
+    public String updatePassed(@RequestParam String email,String password,String confirmpassword){
+        if(email!=null && password!=null && confirmpassword!=null) {
+            metroService.updatePasswordInService(email, password, confirmpassword);
+            return "login";
+        }
+        return "login";
     }
 
 }

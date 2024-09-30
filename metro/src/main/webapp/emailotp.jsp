@@ -39,10 +39,10 @@
             <div class="card-body ">
 
 <form action="otp" method="get">
-<form>
     <div class="mb-3">
+      
         <label for="formGroupExampleInput2" class="form-label">Enter Email</label>
-        <input type="email" class="form-control" placeholder="Enter your email" name="email">
+        <input type="email" class="form-control" placeholder="Enter your email" name="email" value="${emaildto.email}">
         <div class="text-center">
           <div class="col-12">
             <button type="submit" class="btn btn-secondary">
@@ -52,9 +52,14 @@
       </div>
       </div>
     </form>
+    
+   
+      <form action="verifyOtp" method="post">
       <div class="mb-3">
+       
+        <input type="email" class="form-control" placeholder="Enter your email" name="email" value="${emaildto.email}" hidden>
         <label for="inputPassword5" class="form-label">Enter Otp</label>
-        <input type="password" class="form-control" placeholder="Enter your otp" name="otp" >
+        <input type="password" class="form-control" placeholder="Enter your otp" name="optEntered" >
       </div>
       <div class="text-center">
       <div class="col-12">
@@ -62,6 +67,7 @@
     </div>
   </div>
 </form>
+
 </div>
 </div>
 </div>

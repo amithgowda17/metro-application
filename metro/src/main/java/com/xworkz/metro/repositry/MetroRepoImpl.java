@@ -97,4 +97,45 @@ public class MetroRepoImpl implements MetroRepo {
         }
     }
 
+    @Override
+    public boolean saveOtpInRepo(String email,String otp) {
+
+        EntityManager entityManager= entityManagerFactory.createEntityManager();
+        try {
+            EntityTransaction entityTransaction=entityManager.getTransaction();
+            entityTransaction.begin();
+            Query query=entityManager.createNamedQuery("updateOtp");
+            query.setParameter("otp",otp);
+            query.setParameter("email",email);
+            query.executeUpdate();
+            entityTransaction.commit();
+            return true;
+        }catch (Exception e) {
+            return false;
+        }finally {
+            entityManager.close();
+        }
+
+
+    }
+
+    @Override
+    public boolean updatePasswordInRepo(String email, String password) {
+        EntityManager entityManager=entityManagerFactory.createEntityManager();
+        try{
+            EntityTransaction entityTransaction=entityManager.getTransaction();
+            entityTransaction.begin();
+            Query query = entityManager.createNamedQuery("updatePassword");
+            query.setParameter("password",password);
+            query.setParameter("email",email);
+            query.executeUpdate();
+            entityTransaction.commit();
+            return true;
+        }catch (Exception e) {
+            return false;
+        }finally {
+            entityManager.close();
+        }
+    }
+
 }

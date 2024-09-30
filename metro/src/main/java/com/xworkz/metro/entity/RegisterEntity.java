@@ -14,6 +14,9 @@ import javax.persistence.*;
 @Table(name = "register_details")
 @NamedQuery(name = "findByEmailInRegister", query = "select entity from RegisterEntity entity where entity.email=:value")
 @NamedQuery(name = "findByPhNoInRegister", query = "select entity from RegisterEntity entity where entity.phNo=:valu")
+@NamedQuery(name = "updateOtp", query = "update RegisterEntity entit set entit.otp = :otp where entit.email = :email")
+@NamedQuery(name = "updatePassword", query = "update RegisterEntity entit set entit.password = :password where entit.email = :email")
+
 public class RegisterEntity {
 
     @Id
@@ -47,7 +50,8 @@ public class RegisterEntity {
     @Column(name = "password")
     private String password;
 
-
+    @Column(name = "otp")
+    private String otp;
 
 
 }

@@ -26,7 +26,7 @@ public class EmailSent {
         return String.format("%06d", number);
     }
 
-    public boolean emailSend(String email){
+    public String emailSend(String email){
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("amith.s.xworkz@gmail.com");
@@ -35,7 +35,7 @@ public class EmailSent {
         String generatedOtp=otpGeneretor();
         message.setText(generatedOtp);
         emailSender.send(message);
-        return true;
+        return generatedOtp;
     }
 
 

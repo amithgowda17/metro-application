@@ -14,5 +14,9 @@ public interface MetroRepo {
 
     boolean login(LoginEntity loginEntity);
 
+    boolean saveOtpInRepo(String email,String otp);
+
+    boolean updatePasswordInRepo(String email,String password);
+
 
 }

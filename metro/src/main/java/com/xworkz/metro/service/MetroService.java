@@ -8,12 +8,18 @@ public interface MetroService {
 
     String registerInService(RegisterDto registerDto);
 
-    boolean findByEmailInService(String email);
+    RegisterDto findByEmailInService(String email);
 
     boolean findByPhInService(String phNo);
 
     String loginDetails(LoginDto loginDto);
 
-    boolean generateOtpInService(String email);
+    boolean generateOtpInService(String email,String otp);
+
+    boolean verifyOtp(String email,String otpEntered);
+
+    boolean updatePasswordInService(String email,String password,String confirmpassword);
+
+
 
 }
