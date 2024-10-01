@@ -9,7 +9,6 @@ import com.xworkz.metro.util.EncryptionDecryption;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 
@@ -40,7 +39,7 @@ public class MetroServiceImpl implements MetroService {
 
         if (registerEntity1 != null || registerEntity2 != null) {
 
-            return "Email or phone number already exists";
+            return null;
 
         } else if (registerDto.getPassword().equals(registerDto.getConfirmpassword())) {
 
@@ -52,12 +51,12 @@ public class MetroServiceImpl implements MetroService {
             System.out.println("=====" + registerEntity);
             boolean isSaved = metroRepo.register(registerEntity);
             if (isSaved == true) {
-                return "Data Saved Successfully";
+                return "Registration Successfull";
             }
-            return "Data Not Saved";
+            return null;
 
         } else {
-            return "Invalid data";
+            return null;
         }
     }
 
@@ -112,13 +111,13 @@ public class MetroServiceImpl implements MetroService {
 
                 BeanUtils.copyProperties(loginDto, loginEntity);
                 metroRepo.login(loginEntity);
-                return "login successfull";
+                return null;
 
             } else {
-                return "invalid username or password";
+                return "invalid password";
             }
         } else {
-            return "user doesn't exists";
+            return null;
         }
     }
 

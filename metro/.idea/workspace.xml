@@ -7,14 +7,10 @@
     <list default="true" id="0602b53b-9c99-4c49-979b-8a628a656a51" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/MetroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/MetroController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/dto/RegisterDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/dto/RegisterDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/entity/RegisterEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/entity/RegisterEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/MetroRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/MetroRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/MetroRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/MetroRepoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/EmailSent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/EmailSent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/MetroService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/MetroService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/MetroServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/MetroServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/emailotp.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/emailotp.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +112,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/MetroServiceImpl.java</url>
-          <line>128</line>
+          <line>127</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

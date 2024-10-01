@@ -50,17 +50,19 @@
                 <div class="mb-3">
 
                   <label for="inputPassword5" class="form-label">Enter new password</label>
-                  <input type="password" class="form-control" placeholder="Enter new password" name="password">
+                  <input type="password" class="form-control" placeholder="Enter new password" name="password" id="password" onblur="passwordEntry()">
+                  <span id="pass"></span>
                 </div>
                 <div class="mb-3">
 
                   <label for="inputPassword5" class="form-label">Confirm your password</label>
-                  <input type="password" class="form-control" placeholder="confirm your password" name="confirmpassword">
+                  <input type="password" class="form-control" placeholder="confirm your password" name="confirmpassword" id="confirmPassword" onblur="confirm()">
+               <span id="confirmpass"></span>
                 </div>
 
-                <div class="text-center">
+                <div class="text-center"> 
                   <div class="col-12">
-                    <button type="submit" class="btn btn-success">Reset</button>
+                    <button type="submit" class="btn btn-success" id="button">Submit</button>
                   </div>
                 </div>
               </form>
@@ -70,6 +72,41 @@
         </div>
       </div>
 
+      <script>
+
+function passwordEntry() {
+
+var names = document.getElementById("password").value;
+console.log(names)
+var button = document.getElementById("button");
+
+if (names.trim() !== '' && names.length >= 8 && names.length <= 20) {
+  document.getElementById("pass").innerHTML = "";
+  button.removeAttribute("Disabled");
+} else {
+  document.getElementById("pass").innerHTML = "<span style='color:red;'>Password must be 8 characters long</span>";
+  button.setAttribute("Disabled", "");
+  return;
+}
+
+}
+
+function confirm() {
+          let password = document.getElementById("password").value;
+          let checkPassword = document.getElementById("confirmPassword").value;
+          console.log(password, checkPassword);
+          var button = document.getElementById("button");
+
+          if (password === checkPassword) {
+            document.getElementById("confirmpass").innerHTML = "";
+            button.removeAttribute("disabled");
+          } else {
+            document.getElementById("confirmpass").innerHTML = "<span style='color:red;'>Password doesn't match</span>";
+            button.setAttribute("disabled", "");
+          }
+        }
+
+      </script>
 
 
     </body>

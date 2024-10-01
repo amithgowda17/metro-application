@@ -59,13 +59,10 @@ public class MetroController {
         if (bindingResult.hasErrors()) {
 
             List<ObjectError> bindingResults = bindingResult.getAllErrors();
-            //System.out.println(bindingResults);
-            System.out.println(registerDto);
-            //model.addAttribute("message", "Invalid Data Cannot Register");
             return "register";
         }
         String successMsg = metroService.registerInService(registerDto);
-        //  model.addAttribute("msg", successMsg);
+        model.addAttribute("msg",successMsg);
         return "register";
 
 
@@ -104,8 +101,8 @@ public class MetroController {
             model.addAttribute("loginerrmsg", "Please enter valid data");
             return "login";
         }
-        String saved = metroService.loginDetails(loginDto);
-        model.addAttribute("loginerrmsg", saved);
+        String message = metroService.loginDetails(loginDto);
+        model.addAttribute("loginerrmsg", message);
         return "login";
     }
 
@@ -129,6 +126,7 @@ public class MetroController {
             }
             return "emailotp";
         }
+
 
         return "emailotp";
 

@@ -13,8 +13,7 @@
     <body>
 
 
-      <h1 style="color: red;">${message}</h1>
-      <h1 style="color: green;">${msg}</h1>
+    
 
       <header class="header ">
         <div class="container-fluid bg-secondary-subtle">
@@ -42,6 +41,7 @@
       <div class="container my-4" style="width: 35%;">
         <div class="card form-card mb-3">
           <div class="p-3 bg-secondary-subtle text-secondary-emphasis">
+            <h6 style="color: green;text-align: center;">${msg}</h6>
 
             <form action="register" method="post" onclick="form()">
 
@@ -310,7 +310,7 @@
           if (fnames.trim() !== '' && fnames.length > 4 && fnames.length <= 25 &&
             lname.trim() !== '' && lname.length > 4 && lname.length <= 25 &&
             city.trim() !== '' && city.length > 4 && city.length <= 25) {
-
+ document.getElementById("formessage").innerHTML ="<span style='color:Green;text-align-items-center'>Registration Succesfull</span>"
             button.removeAttribute("Disabled");
 
           } else {
