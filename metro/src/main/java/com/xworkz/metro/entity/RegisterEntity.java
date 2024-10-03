@@ -12,10 +12,13 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "register_details")
+
 @NamedQuery(name = "findByEmailInRegister", query = "select entity from RegisterEntity entity where entity.email=:value")
 @NamedQuery(name = "findByPhNoInRegister", query = "select entity from RegisterEntity entity where entity.phNo=:valu")
 @NamedQuery(name = "updateOtp", query = "update RegisterEntity entit set entit.otp = :otp where entit.email = :email")
 @NamedQuery(name = "updatePassword", query = "update RegisterEntity entit set entit.password = :password where entit.email = :email")
+@NamedQuery(name = "passwordWrongAttempt" , query = "update RegisterEntity reg set reg.noOfAttempts =:noOfAttempts , reg.isAccountLocked =:isAccountLocked where reg.email = :email")
+
 
 public class RegisterEntity {
 
@@ -53,5 +56,10 @@ public class RegisterEntity {
     @Column(name = "otp")
     private String otp;
 
+    @Column(name = "noOfAttempts")
+    private int noOfAttempts;
+
+    @Column(name = "isAccountLocked")
+    private boolean isAccountLocked;
 
 }

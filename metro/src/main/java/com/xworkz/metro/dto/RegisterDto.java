@@ -62,4 +62,8 @@ public class RegisterDto {
     private String confirmpassword;
 
     private String otp;
+
+    private int noOfAttempts;
+
+    private boolean isAccountLocked;
 }

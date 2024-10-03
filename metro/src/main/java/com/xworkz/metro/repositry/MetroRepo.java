@@ -18,5 +18,7 @@ public interface MetroRepo {
 
     boolean updatePasswordInRepo(String email,String password);
 
+    void userLocked(String email,int noOfAttempts,boolean isAccountLocked);
+
 
 }

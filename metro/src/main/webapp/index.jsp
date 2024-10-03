@@ -15,26 +15,26 @@
       <h1 style="color: red;">${message}</h1>
       <h1 style="color: green;">${msg}</h1>
 
-      <header class="header">
-        <div class="container-fluid bg-secondary-subtle">
-          <div class="row align-items-center">
-            <div class="col-auto">
-              <img src="https://www.x-workz.in/Logo.png" alt="Logo" height="40px">
-            </div>
-            <div class="col text-center d-flex justify-content-center">
-              <h1 class="my-0">X-Workz</h1>
-            </div>
-            <div class="col-auto d-flex align-items-center">
-              <button type="button" class="btn btn-primary me-2">
-                <a href="registerPage" style="text-decoration: none; color: white;">Register</a>
-              </button>
-              <button type="button" class="btn btn-primary">
-                <a href="loginPage"  style="text-decoration: none; color: white;">Login</a>
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
+        <header class="header">
+              <div class="container-fluid bg-secondary-subtle">
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                    <img src="https://www.x-workz.in/Logo.png" alt="Logo" height="50px">
+                  </div>
+                  <div class="col text-center d-flex justify-content-center">
+                    <h1 class="my-0">X-Workz</h1>
+                  </div>
+                  <div class="col-auto d-flex ">
+                    <button type="button" class="btn btn-primary me-2">
+                                         <a href="registerPage" style="text-decoration: none; color: white;">Register</a>
+                                       </button>
+                     <button type="button" class="btn btn-primary">
+                                         <a href="loginPage" style="text-decoration: none; color: white;">Login</a>
+                                       </button>
+                  </div>
+                </div>
+              </div>
+            </header>
       
       <footer class="fixed-bottom">
         <div  class="footer  bg-dark py-3 mt-auto">

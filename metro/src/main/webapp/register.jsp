@@ -12,29 +12,27 @@
 
     <body>
 
+          <header class="header">
+             <div class="container-fluid bg-secondary-subtle">
+               <div class="row align-items-center">
+                 <div class="col-auto">
+                   <img src="https://www.x-workz.in/Logo.png" alt="Logo" height="50px">
+                 </div>
+                 <div class="col text-center d-flex justify-content-center">
+                   <h1 class="my-0">X-Workz</h1>
+                 </div>
+                 <div class="col-auto d-flex align-items-center">
 
-    
-
-      <header class="header ">
-        <div class="container-fluid bg-secondary-subtle">
-          <div class="row align-items-center">
-            <div class="col-auto">
-              <img src="https://www.x-workz.in/Logo.png" alt="Logo" height="50px">
-            </div>
-            <div class="col text-center d-flex justify-content-center">
-
-            </div>
-            <div class="col-auto d-flex ">
-              <button type="button" class="btn btn-primary me-2">
-                <a href="indexPage" style="text-decoration: none; color: white;">Home</a>
-              </button>
-              <button type="button" class="btn btn-primary">
-                <a href="loginPage" style="text-decoration: none; color: white;">Login</a>
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
+                   <button type="button" class="btn btn-primary me-2">
+                                         <a href="indexPage" style="text-decoration: none; color: white;">Home</a>
+                                       </button>
+                   <button type="button" class="btn btn-primary">
+                     <a href="loginPage" style="text-decoration: none; color: white;">Login</a>
+                   </button>
+                 </div>
+               </div>
+             </div>
+           </header>
 
 
 
@@ -52,7 +50,9 @@
 
               <div style="margin-top: 8%;">
                 <div class="row">
+
                   <span id="formessage"></span>
+
                   <div class="col-md-6 mb-3">
                     <label class="form-label">First name</label>
                     <input type="text" class="form-control" id="fname" placeholder="Enter your first name"
@@ -82,7 +82,7 @@
                     <label class="form-label ">Contact Number</label>
                     <input type="number" class="form-control" id="phno" placeholder="Enter your contact number"
                       name="phNo" onblur="phone()" required>
-                      <span id="ph"></span>
+                    <span id="ph"></span>
                   </div>
 
                 </div>
@@ -276,7 +276,7 @@
 
         }
 
-       
+
         const phone = async () => {
 
           let phoneNumber = document.getElementById("phno").value
@@ -300,27 +300,37 @@
         }
 
 
-        function form() {
-          var fnames = document.getElementById("fname").value;
+        function form(event) {
+
+          var fname = document.getElementById("fname").value;
           var lname = document.getElementById("lname").value;
           var city = document.getElementById("city").value;
+          var email = document.getElementById("email").value;
+          var phno = document.getElementById("phno").value;
+          var password = document.getElementById("password").value;
+          var confirmPassword = document.getElementById("confirmPassword").value;
 
           var button = document.getElementById("button");
 
-          if (fnames.trim() !== '' && fnames.length > 4 && fnames.length <= 25 &&
-            lname.trim() !== '' && lname.length > 4 && lname.length <= 25 &&
-            city.trim() !== '' && city.length > 4 && city.length <= 25) {
- document.getElementById("formessage").innerHTML ="<span style='color:Green;text-align-items-center'>Registration Succesfull</span>"
-            button.removeAttribute("Disabled");
 
+          if (
+            fname.trim() !== "" && fname.length > 4 && fname.length <= 25 &&
+            lname.trim() !== "" &&lname.length > 0 &&
+            lname.length <= 25 &&city.trim() !== "" &&
+            city.length > 4 &&city.length <= 25 &&
+            email.trim() !== "" &&phno.trim() !== "" &&
+            phno.length == 10 &&password.trim() !== "" &&
+            password.length >= 8 && password === confirmPassword
+          ) {
+            document.getElementById("formessage").innerHTML ="";
+            button.removeAttribute("disabled");
           } else {
-
-            document.getElementById("formessage").innerHTML = " <span style='color:red;'>Please fill the form</span>"
-            button.setAttribute("Disbaled", "");
-            return;
+            document.getElementById("formessage").innerHTML ="<span style='color:red;'>Please fill the form correctly</span>";
+            button.setAttribute("disabled", "");
           }
-
         }
+
+
 
       </script>
 

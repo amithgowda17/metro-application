@@ -19,6 +19,7 @@ public class MetroRepoImpl implements MetroRepo {
 
     @Override
     public boolean register(RegisterEntity registerEntity) {
+
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
 
@@ -48,6 +49,7 @@ public class MetroRepoImpl implements MetroRepo {
             Query query = entityManager.createNamedQuery("findByEmailInRegister");
             query.setParameter("value",email);
             RegisterEntity registerEntity = (RegisterEntity) query.getSingleResult();
+
             entityTransaction.commit();
             return registerEntity;
         } catch (Exception e) {
@@ -81,8 +83,6 @@ public class MetroRepoImpl implements MetroRepo {
     @Override
     public boolean login(LoginEntity loginEntity) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-
-
         try {
             System.out.println("login entity in repo ======"+loginEntity);
             EntityTransaction entityTransaction = entityManager.getTransaction();
@@ -137,5 +137,31 @@ public class MetroRepoImpl implements MetroRepo {
             entityManager.close();
         }
     }
+
+    @Override
+    public void userLocked(String email, int noOfAttempts, boolean isAccountLocked) {
+        EntityManager entityManager=entityManagerFactory.createEntityManager();
+
+        try{
+            EntityTransaction entityTransaction = entityManager.getTransaction();
+            entityTransaction.begin();
+            Query query = entityManager.createNamedQuery("passwordWrongAttempt");
+            query.setParameter("email",email);
+            query.setParameter("noOfAttempts",noOfAttempts);
+            query.setParameter("isAccountLocked",isAccountLocked);
+            System.out.println(isAccountLocked+"==isAccountLocked=");
+            System.out.println(noOfAttempts+"========");
+            System.out.println("email===="+email);
+            query.executeUpdate();
+            entityTransaction.commit();
+        }catch (Exception e){
+
+        }finally {
+            entityManager.close();
+        }
+    }
+
+
+
 
 }

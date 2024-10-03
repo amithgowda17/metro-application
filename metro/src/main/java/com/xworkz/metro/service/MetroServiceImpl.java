@@ -63,6 +63,7 @@ public class MetroServiceImpl implements MetroService {
     @Override
     public RegisterDto findByEmailInService(String email) {
         RegisterEntity registerEntity = metroRepo.findByEmail(email);
+
         if (registerEntity != null) {
             RegisterDto registerDto = new RegisterDto();
             BeanUtils.copyProperties(registerEntity, registerDto);
@@ -86,20 +87,21 @@ public class MetroServiceImpl implements MetroService {
     @Override
     public String loginDetails(LoginDto loginDto) {
 
-        RegisterEntity registerEntity = metroRepo.findByEmail(loginDto.getEmail());
+        RegisterDto registerDto=findByEmailInService(loginDto.getEmail());
 
+        RegisterEntity registerEntity=new RegisterEntity();
 
-        if (registerEntity != null) {
+        if (registerDto != null) {
 
-            System.out.println("==encrypted password from repo==" + registerEntity.getPassword());
+            System.out.println("==encrypted password from repo==" + registerDto.getPassword());
 
-            String decrypt = encryptionDecryption.decrypt(registerEntity.getPassword());
+            String decrypt = encryptionDecryption.decrypt(registerDto.getPassword());
 
-            registerEntity.setPassword(decrypt);
+            registerDto.setPassword(decrypt);
 
            log.info("decrypt in service login======" +decrypt);
 
-            if ((registerEntity.getEmail()).equals(loginDto.getEmail()) && (registerEntity.getPassword()).equals(loginDto.getPassword())) {
+            if ((registerDto.getEmail()).equals(loginDto.getEmail()) && (registerDto.getPassword()).equals(loginDto.getPassword())) {
 
                 loginDto.setLoginDate(LocalDate.now().toString());
                 loginDto.setLoginTime(LocalTime.now().toString());
@@ -110,10 +112,33 @@ public class MetroServiceImpl implements MetroService {
                 LoginEntity loginEntity = new LoginEntity();
 
                 BeanUtils.copyProperties(loginDto, loginEntity);
+
                 metroRepo.login(loginEntity);
+
+                registerDto.setNoOfAttempts(0);
+                registerDto.setAccountLocked(false);
+
+                BeanUtils.copyProperties(registerDto,registerEntity);
+
+                metroRepo.userLocked(loginEntity.getEmail(),registerEntity.getNoOfAttempts(),registerEntity.isAccountLocked());
+
                 return null;
 
             } else {
+                registerDto.setNoOfAttempts(registerDto.getNoOfAttempts()+1);
+
+                BeanUtils.copyProperties(registerDto,registerEntity);
+
+                metroRepo.userLocked(loginDto.getEmail(),registerEntity.getNoOfAttempts(),registerEntity.isAccountLocked());
+
+                if (registerDto.getNoOfAttempts()>=3){
+
+                    registerDto.setAccountLocked(true);
+                    BeanUtils.copyProperties(registerDto,registerEntity);
+
+                    metroRepo.userLocked(loginDto.getEmail(),registerEntity.getNoOfAttempts(),registerEntity.isAccountLocked());
+                    return null;
+                }
                 return "invalid password";
             }
         } else {
@@ -154,6 +179,12 @@ public class MetroServiceImpl implements MetroService {
         RegisterDto registerDto=findByEmailInService(email);
         if(registerDto!=null) {
             if (password.equals(confirmpassword)){
+
+                registerDto.setNoOfAttempts(0);
+                registerDto.setAccountLocked(false);
+                RegisterEntity registerEntity=new RegisterEntity();
+                BeanUtils.copyProperties(registerDto,registerEntity);
+                metroRepo.userLocked(email,registerEntity.getNoOfAttempts(),registerEntity.isAccountLocked());
                 String encryptPassword=encryptionDecryption.encrypt(password);
                 metroRepo.updatePasswordInRepo(email,encryptPassword);
                 return true;

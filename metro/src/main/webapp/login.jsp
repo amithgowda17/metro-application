@@ -13,7 +13,7 @@
         <div class="container-fluid bg-secondary-subtle">
           <div class="row align-items-center">
             <div class="col-auto">
-              <img src="https://www.x-workz.in/Logo.png" alt="Logo" height="40px">
+              <img src="https://www.x-workz.in/Logo.png" alt="Logo" height="50px">
             </div>
             <div class="col text-center d-flex justify-content-center">
               <h1 class="my-0">X-Workz</h1>

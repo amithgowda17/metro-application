@@ -29,6 +29,7 @@ public class MetroController {
 
 
 
+
     public MetroController() {
         System.out.println("MetroController object created");
     }
@@ -73,6 +74,7 @@ public class MetroController {
 
         if (email != null) {
             RegisterDto registerDto= metroService.findByEmailInService(email);
+
             if (registerDto!=null) {
                 return ResponseEntity.ok("email already exists");
             }
@@ -97,13 +99,19 @@ public class MetroController {
     @PostMapping("login")
     public String login(@Valid LoginDto loginDto, BindingResult bindingResult, Model model) {
 
+        RegisterDto registerDto=metroService.findByEmailInService(loginDto.getEmail());
         if (bindingResult.hasErrors()) {
             model.addAttribute("loginerrmsg", "Please enter valid data");
             return "login";
+        }else if (registerDto.isAccountLocked()) {
+            model.addAttribute("blockedmessage", "Account blocked can't login reset your password");
+            return "emailotp";
+        }else{
+            String message = metroService.loginDetails(loginDto);
+            model.addAttribute("loginerrmsg", message);
+            return "login";
+
         }
-        String message = metroService.loginDetails(loginDto);
-        model.addAttribute("loginerrmsg", message);
-        return "login";
     }
 
 

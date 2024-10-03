@@ -41,7 +41,7 @@
 
 <form action="otp" method="get">
     <div class="mb-3">
-      
+      <h6 style="color: red;text-align: center;">${blockedmessage}</h6>
         <label for="formGroupExampleInput2" class="form-label">Enter Email</label>
         <input type="email" class="form-control" placeholder="Enter your email" name="email" id="email" value="${emaildto.email}" onblur="checkEmail()">
           <span id="emailexists"></span>
@@ -59,7 +59,7 @@
    
       <form action="verifyOtp" method="post">
       <div class="mb-3">
-       
+
         <input type="email" class="form-control" placeholder="Enter your email" name="email" value="${emaildto.email}" hidden>
         <label for="inputPassword5" class="form-label">Enter Otp</label>
         <input type="password" class="form-control" placeholder="Enter your otp" name="optEntered" >
