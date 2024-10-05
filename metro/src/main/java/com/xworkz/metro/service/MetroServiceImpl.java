@@ -84,7 +84,6 @@ public class MetroServiceImpl implements MetroService {
         return false;
     }
 
-
     @Override
     public String loginDetails(LoginDto loginDto) {
 
@@ -94,12 +93,33 @@ public class MetroServiceImpl implements MetroService {
 
         if (registerDto.getEmail() != null) {
 
+            log.info("ecrypt password in service login======" +registerDto.getPassword());
+
             registerDto.setPassword(encryptionDecryption.decrypt(registerDto.getPassword()));
 
             log.info("decrypt password in service login======" +registerDto.getPassword());
 
-            if ( registerDto.getPassword().equals(loginDto.getPassword())){
+            if ( !(registerDto.getPassword().equals(loginDto.getPassword()))){
 
+                RegisterDto registerDto1 = findByEmailInService(loginDto.getEmail());
+                registerDto1.setNoOfAttempts(registerDto1.getNoOfAttempts()+1);
+
+                BeanUtils.copyProperties(registerDto1,registerEntity);
+
+                metroRepo.userLocked(loginDto.getEmail(),registerEntity.getNoOfAttempts(),registerEntity.isAccountLocked());
+
+                if (registerDto1.getNoOfAttempts()>=3){
+
+                    registerDto1.setAccountLocked(true);
+                    BeanUtils.copyProperties(registerDto1,registerEntity);
+
+                    metroRepo.userLocked(loginDto.getEmail(),registerEntity.getNoOfAttempts(),registerEntity.isAccountLocked());
+
+                }
+                return "invalid password";
+            } else {
+
+                log.info("logging in===========");
                 loginDto.setLoginDate(LocalDate.now().toString());
                 loginDto.setLoginTime(LocalTime.now().toString());
                 loginDto.setLogoutTime(null);
@@ -121,24 +141,6 @@ public class MetroServiceImpl implements MetroService {
 
                 return "login successfull";
 
-            } else {
-
-              RegisterDto registerDto1 = findByEmailInService(loginDto.getEmail());
-                registerDto1.setNoOfAttempts(registerDto1.getNoOfAttempts()+1);
-
-                BeanUtils.copyProperties(registerDto1,registerEntity);
-
-                metroRepo.userLocked(loginDto.getEmail(),registerEntity.getNoOfAttempts(),registerEntity.isAccountLocked());
-
-                if (registerDto1.getNoOfAttempts()>=3){
-
-                    registerDto1.setAccountLocked(true);
-                    BeanUtils.copyProperties(registerDto1,registerEntity);
-
-                    metroRepo.userLocked(loginDto.getEmail(),registerEntity.getNoOfAttempts(),registerEntity.isAccountLocked());
-
-                }
-                return "invalid password";
             }
         } else {
             return null;
