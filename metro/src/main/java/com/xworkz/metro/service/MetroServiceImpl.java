@@ -68,7 +68,6 @@ public class MetroServiceImpl implements MetroService {
         if (registerEntity != null) {
             RegisterDto registerDto = new RegisterDto();
             BeanUtils.copyProperties(registerEntity, registerDto);
-            registerDto.setPassword(encryptionDecryption.decrypt(registerDto.getPassword()));
             return registerDto;
         }
         return null;
@@ -94,6 +93,8 @@ public class MetroServiceImpl implements MetroService {
         RegisterEntity registerEntity=new RegisterEntity();
 
         if (registerDto.getEmail() != null) {
+
+            registerDto.setPassword(encryptionDecryption.decrypt(registerDto.getPassword()));
 
             log.info("decrypt password in service login======" +registerDto.getPassword());
 
@@ -125,14 +126,13 @@ public class MetroServiceImpl implements MetroService {
               RegisterDto registerDto1 = findByEmailInService(loginDto.getEmail());
                 registerDto1.setNoOfAttempts(registerDto1.getNoOfAttempts()+1);
 
-
                 BeanUtils.copyProperties(registerDto1,registerEntity);
 
                 metroRepo.userLocked(loginDto.getEmail(),registerEntity.getNoOfAttempts(),registerEntity.isAccountLocked());
 
                 if (registerDto1.getNoOfAttempts()>=3){
 
-                    registerDto.setAccountLocked(true);
+                    registerDto1.setAccountLocked(true);
                     BeanUtils.copyProperties(registerDto1,registerEntity);
 
                     metroRepo.userLocked(loginDto.getEmail(),registerEntity.getNoOfAttempts(),registerEntity.isAccountLocked());
@@ -182,6 +182,7 @@ public class MetroServiceImpl implements MetroService {
 
                 registerDto.setNoOfAttempts(0);
                 registerDto.setAccountLocked(false);
+
                 RegisterEntity registerEntity=new RegisterEntity();
                 BeanUtils.copyProperties(registerDto,registerEntity);
                 metroRepo.userLocked(email,registerEntity.getNoOfAttempts(),registerEntity.isAccountLocked());
