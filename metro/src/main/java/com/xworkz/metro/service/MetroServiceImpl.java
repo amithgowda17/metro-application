@@ -118,7 +118,7 @@ public class MetroServiceImpl implements MetroService {
                 }
                 return "invalid password";
             } else {
-
+                log.info("decrypt password in service login======" +registerDto.getPassword());
                 log.info("logging in===========");
                 loginDto.setLoginDate(LocalDate.now().toString());
                 loginDto.setLoginTime(LocalTime.now().toString());
