@@ -57,7 +57,7 @@ public class RegisterEntity {
     private String otp;
 
     @Column(name = "noOfAttempts")
-    private int noOfAttempts;
+    private Integer noOfAttempts;
 
     @Column(name = "isAccountLocked")
     private boolean isAccountLocked;

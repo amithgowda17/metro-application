@@ -149,11 +149,12 @@ public class MetroRepoImpl implements MetroRepo {
             query.setParameter("email",email);
             query.setParameter("noOfAttempts",noOfAttempts);
             query.setParameter("isAccountLocked",isAccountLocked);
+
+            query.executeUpdate();
+            entityTransaction.commit();
             System.out.println(isAccountLocked+"==isAccountLocked=");
             System.out.println(noOfAttempts+"========");
             System.out.println("email===="+email);
-            query.executeUpdate();
-            entityTransaction.commit();
         }catch (Exception e){
 
         }finally {
@@ -161,6 +162,23 @@ public class MetroRepoImpl implements MetroRepo {
         }
     }
 
+    @Override
+    public boolean editProfileSave(RegisterEntity registerEntity) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        try {
+
+            EntityTransaction entityTransaction = entityManager.getTransaction();
+            entityTransaction.begin();
+            entityManager.merge(registerEntity);
+            entityTransaction.commit();
+            return true;
+        } catch (Exception e) {
+            return false;
+        } finally {
+            entityManager.close();
+        }
+
+    }
 
 
 

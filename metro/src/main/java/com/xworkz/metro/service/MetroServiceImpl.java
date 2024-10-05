@@ -5,6 +5,7 @@ import com.xworkz.metro.dto.RegisterDto;
 import com.xworkz.metro.entity.LoginEntity;
 import com.xworkz.metro.entity.RegisterEntity;
 import com.xworkz.metro.repositry.MetroRepo;
+import com.xworkz.metro.util.EmailSent;
 import com.xworkz.metro.util.EncryptionDecryption;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -67,6 +68,7 @@ public class MetroServiceImpl implements MetroService {
         if (registerEntity != null) {
             RegisterDto registerDto = new RegisterDto();
             BeanUtils.copyProperties(registerEntity, registerDto);
+            registerDto.setPassword(encryptionDecryption.decrypt(registerDto.getPassword()));
             return registerDto;
         }
         return null;
@@ -91,17 +93,11 @@ public class MetroServiceImpl implements MetroService {
 
         RegisterEntity registerEntity=new RegisterEntity();
 
-        if (registerDto != null) {
+        if (registerDto.getEmail() != null) {
 
-            System.out.println("==encrypted password from repo==" + registerDto.getPassword());
+            log.info("decrypt password in service login======" +registerDto.getPassword());
 
-            String decrypt = encryptionDecryption.decrypt(registerDto.getPassword());
-
-            registerDto.setPassword(decrypt);
-
-           log.info("decrypt in service login======" +decrypt);
-
-            if ((registerDto.getEmail()).equals(loginDto.getEmail()) && (registerDto.getPassword()).equals(loginDto.getPassword())) {
+            if ( registerDto.getPassword().equals(loginDto.getPassword())){
 
                 loginDto.setLoginDate(LocalDate.now().toString());
                 loginDto.setLoginTime(LocalTime.now().toString());
@@ -122,22 +118,25 @@ public class MetroServiceImpl implements MetroService {
 
                 metroRepo.userLocked(loginEntity.getEmail(),registerEntity.getNoOfAttempts(),registerEntity.isAccountLocked());
 
-                return null;
+                return "login successfull";
 
             } else {
-                registerDto.setNoOfAttempts(registerDto.getNoOfAttempts()+1);
 
-                BeanUtils.copyProperties(registerDto,registerEntity);
+              RegisterDto registerDto1 = findByEmailInService(loginDto.getEmail());
+                registerDto1.setNoOfAttempts(registerDto1.getNoOfAttempts()+1);
+
+
+                BeanUtils.copyProperties(registerDto1,registerEntity);
 
                 metroRepo.userLocked(loginDto.getEmail(),registerEntity.getNoOfAttempts(),registerEntity.isAccountLocked());
 
-                if (registerDto.getNoOfAttempts()>=3){
+                if (registerDto1.getNoOfAttempts()>=3){
 
                     registerDto.setAccountLocked(true);
-                    BeanUtils.copyProperties(registerDto,registerEntity);
+                    BeanUtils.copyProperties(registerDto1,registerEntity);
 
                     metroRepo.userLocked(loginDto.getEmail(),registerEntity.getNoOfAttempts(),registerEntity.isAccountLocked());
-                    return null;
+
                 }
                 return "invalid password";
             }
@@ -146,12 +145,13 @@ public class MetroServiceImpl implements MetroService {
         }
     }
 
+
     @Override
     public boolean generateOtpInService(String email,String otp) {
         RegisterEntity registerEntity=metroRepo.findByEmail(email);
         if(registerEntity!=null){
             String otpSave=emailSent.emailSend(email);
-           String encryptOtp = encryptionDecryption.encrypt(otpSave);
+            String encryptOtp = encryptionDecryption.encrypt(otpSave);
             metroRepo.saveOtpInRepo(email,encryptOtp);
             return true;
         }
@@ -160,7 +160,7 @@ public class MetroServiceImpl implements MetroService {
 
     @Override
     public boolean verifyOtp(String email, String otpEntered) {
-       RegisterEntity registerEntity = metroRepo.findByEmail(email);
+        RegisterEntity registerEntity = metroRepo.findByEmail(email);
         if (registerEntity!=null ) {
             String decryptOtp = encryptionDecryption.decrypt(registerEntity.getOtp());
             registerEntity.setOtp(decryptOtp);
@@ -172,7 +172,7 @@ public class MetroServiceImpl implements MetroService {
             return false;
         }
         return false;
-        }
+    }
 
     @Override
     public boolean updatePasswordInService(String email, String password, String confirmpassword) {
@@ -185,14 +185,30 @@ public class MetroServiceImpl implements MetroService {
                 RegisterEntity registerEntity=new RegisterEntity();
                 BeanUtils.copyProperties(registerDto,registerEntity);
                 metroRepo.userLocked(email,registerEntity.getNoOfAttempts(),registerEntity.isAccountLocked());
+
                 String encryptPassword=encryptionDecryption.encrypt(password);
                 metroRepo.updatePasswordInRepo(email,encryptPassword);
+
                 return true;
             }
-           return false;
+            return false;
         }
         return false;
     }
 
+
+
+    @Override
+    public boolean saveEditedProfile(RegisterDto registerDto) {
+
+        RegisterEntity registerEntity=new RegisterEntity();
+        BeanUtils.copyProperties(registerDto,registerEntity);
+        boolean isUpdated = metroRepo.editProfileSave(registerEntity);
+        if (isUpdated){
+            return true;
+        }
+        return false;
+
+    }
 
 }

@@ -2,7 +2,6 @@ package com.xworkz.metro.controller;
 
 import com.xworkz.metro.dto.LoginDto;
 import com.xworkz.metro.dto.RegisterDto;
-import com.xworkz.metro.service.EmailSent;
 import com.xworkz.metro.service.MetroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,10 +22,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/")
 public class MetroController {
-
-    @Autowired
-    EmailSent emailSent;
-
 
 
 
@@ -100,6 +95,7 @@ public class MetroController {
     public String login(@Valid LoginDto loginDto, BindingResult bindingResult, Model model) {
 
         RegisterDto registerDto=metroService.findByEmailInService(loginDto.getEmail());
+
         if (bindingResult.hasErrors()) {
             model.addAttribute("loginerrmsg", "Please enter valid data");
             return "login";
@@ -108,9 +104,14 @@ public class MetroController {
             return "emailotp";
         }else{
             String message = metroService.loginDetails(loginDto);
-            model.addAttribute("loginerrmsg", message);
-            return "login";
-
+            if (message.equals("invalid password")) {
+                model.addAttribute("loginerrmsg", message);
+                return "login";
+            }else{
+                model.addAttribute("successmsg",message);
+                model.addAttribute("details",registerDto);
+                return "userpage";
+            }
         }
     }
 
@@ -145,11 +146,11 @@ public class MetroController {
         if (email !=null || optEntered!=null){
             RegisterDto registerDto=metroService.findByEmailInService(email);
             if (registerDto!=null){
-               boolean isOtpVerified= metroService.verifyOtp(email,optEntered);
-               if(isOtpVerified) {
-                   model.addAttribute("dto", registerDto);
-                   return "updatePassword";
-               }return "emailotp";
+                boolean isOtpVerified= metroService.verifyOtp(email,optEntered);
+                if(isOtpVerified) {
+                    model.addAttribute("dto", registerDto);
+                    return "updatePassword";
+                }return "emailotp";
             }
 
         }
@@ -164,5 +165,27 @@ public class MetroController {
         }
         return "login";
     }
+
+    @GetMapping("profileUpdate")
+    public String getProfileUpdatePage(@RequestParam String email,Model model){
+        RegisterDto registerDto = metroService.findByEmailInService(email);
+        model.addAttribute("dto",registerDto);
+        return "profileupdate";
+    }
+
+    @PostMapping("updateDetails")
+    public String editRegisterDetails(RegisterDto registerDto,Model model){
+        RegisterDto registerDto1=metroService.findByEmailInService(registerDto.getEmail());
+        model.addAttribute("details",registerDto1);
+        boolean updateMessage = metroService.saveEditedProfile(registerDto);
+        if (updateMessage) {
+            model.addAttribute("msg", "data updated successfully");
+            return "userpage";
+        }else{
+            model.addAttribute("errmsg","data not updated");
+            return "userpage";
+        }
+    }
+
 
 }

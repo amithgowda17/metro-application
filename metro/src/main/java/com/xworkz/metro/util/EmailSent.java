@@ -1,6 +1,6 @@
-package com.xworkz.metro.service;
+package com.xworkz.metro.util;
 
-import com.xworkz.metro.util.EncryptionDecryption;
+import com.xworkz.metro.service.MetroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -12,10 +12,10 @@ import java.util.Random;
 public class EmailSent {
 
     @Autowired
-    private   JavaMailSender emailSender;
+    private  JavaMailSender emailSender;
 
     @Autowired
-    MetroService metroService;
+    private MetroService metroService;
 
     @Autowired
     private EncryptionDecryption encryptionDecryption;

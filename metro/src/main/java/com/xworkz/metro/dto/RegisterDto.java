@@ -13,6 +13,7 @@ import javax.validation.constraints.*;
 @NoArgsConstructor
 public class RegisterDto {
 
+    private Integer id;
 
     @NotEmpty
     @NotEmpty
@@ -63,7 +64,7 @@ public class RegisterDto {
 
     private String otp;
 
-    private int noOfAttempts;
+    private Integer noOfAttempts;
 
     private boolean isAccountLocked;
 }

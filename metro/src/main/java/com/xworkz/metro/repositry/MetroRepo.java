@@ -20,5 +20,7 @@ public interface MetroRepo {
 
     void userLocked(String email,int noOfAttempts,boolean isAccountLocked);
 
+    public boolean editProfileSave(RegisterEntity registerEntity);
+
 
 }

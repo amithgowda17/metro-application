@@ -11,12 +11,10 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/entity/RegisterEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/entity/RegisterEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/MetroRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/MetroRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/MetroRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/MetroRepoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/EmailSent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/util/EmailSent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/MetroService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/MetroService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/MetroServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/MetroServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/emailotp.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/emailotp.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/updatePassword.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/updatePassword.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,9 +114,13 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/MetroServiceImpl.java</url>
-          <line>152</line>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/MetroRepo.java</url>
+          <line>16</line>
+          <properties class="com.xworkz.metro.repositry.MetroRepo" method="saveOtpInRepo">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
