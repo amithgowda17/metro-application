@@ -102,6 +102,9 @@ public class MetroServiceImpl implements MetroService {
             if ( !(registerDto.getPassword().equals(loginDto.getPassword()))){
 
 
+                if(registerDto.getNoOfAttempts()==null){
+                    registerDto.setNoOfAttempts(0);
+                }
                 registerDto.setNoOfAttempts(registerDto.getNoOfAttempts()+1);
 
                 BeanUtils.copyProperties(registerDto,registerEntity);
