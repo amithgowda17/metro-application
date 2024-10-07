@@ -19,12 +19,8 @@ public class MetroRepoImpl implements MetroRepo {
 
     @Override
     public boolean register(RegisterEntity registerEntity) {
-
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-
-
         try {
-
             System.out.println("register entity in repo ======"+registerEntity);
             EntityTransaction entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
@@ -40,16 +36,13 @@ public class MetroRepoImpl implements MetroRepo {
 
     @Override
     public RegisterEntity findByEmail(String email) {
-
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-
         try {
             EntityTransaction entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
             Query query = entityManager.createNamedQuery("findByEmailInRegister");
             query.setParameter("value",email);
             RegisterEntity registerEntity = (RegisterEntity) query.getSingleResult();
-
             entityTransaction.commit();
             return registerEntity;
         } catch (Exception e) {
@@ -57,13 +50,11 @@ public class MetroRepoImpl implements MetroRepo {
         } finally {
             entityManager.close();
         }
-
     }
 
     @Override
     public RegisterEntity findByPhNo(String phNo) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-
         try {
             EntityTransaction entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
@@ -77,7 +68,6 @@ public class MetroRepoImpl implements MetroRepo {
         } finally {
             entityManager.close();
         }
-
     }
 
     @Override
@@ -99,7 +89,6 @@ public class MetroRepoImpl implements MetroRepo {
 
     @Override
     public boolean saveOtpInRepo(String email,String otp) {
-
         EntityManager entityManager= entityManagerFactory.createEntityManager();
         try {
             EntityTransaction entityTransaction=entityManager.getTransaction();
@@ -115,8 +104,6 @@ public class MetroRepoImpl implements MetroRepo {
         }finally {
             entityManager.close();
         }
-
-
     }
 
     @Override
@@ -141,7 +128,6 @@ public class MetroRepoImpl implements MetroRepo {
     @Override
     public void userLocked(String email, int noOfAttempts, boolean isAccountLocked) {
         EntityManager entityManager=entityManagerFactory.createEntityManager();
-
         try{
             EntityTransaction entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
@@ -149,7 +135,6 @@ public class MetroRepoImpl implements MetroRepo {
             query.setParameter("email",email);
             query.setParameter("noOfAttempts",noOfAttempts);
             query.setParameter("isAccountLocked",isAccountLocked);
-
             query.executeUpdate();
             entityTransaction.commit();
             System.out.println(isAccountLocked+"==isAccountLocked=");
@@ -166,7 +151,6 @@ public class MetroRepoImpl implements MetroRepo {
     public boolean editProfileSave(RegisterEntity registerEntity) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
-
             EntityTransaction entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
             entityManager.merge(registerEntity);
@@ -177,7 +161,6 @@ public class MetroRepoImpl implements MetroRepo {
         } finally {
             entityManager.close();
         }
-
     }
 
 

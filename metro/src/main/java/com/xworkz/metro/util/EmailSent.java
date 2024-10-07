@@ -31,9 +31,9 @@ public class EmailSent {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("amith.s.xworkz@gmail.com");
         message.setTo(email);
-        message.setSubject("Reset Password Otp");
+        message.setSubject("Password Reset");
         String generatedOtp=otpGeneretor();
-        message.setText(generatedOtp);
+        message.setText("Your one time password(OTP) to reset password is : "+ generatedOtp);
         emailSender.send(message);
         return generatedOtp;
     }

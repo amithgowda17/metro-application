@@ -101,17 +101,17 @@ public class MetroServiceImpl implements MetroService {
 
             if ( !(registerDto.getPassword().equals(loginDto.getPassword()))){
 
-                RegisterDto registerDto1 = findByEmailInService(loginDto.getEmail());
-                registerDto1.setNoOfAttempts(registerDto1.getNoOfAttempts()+1);
 
-                BeanUtils.copyProperties(registerDto1,registerEntity);
+                registerDto.setNoOfAttempts(registerDto.getNoOfAttempts()+1);
+
+                BeanUtils.copyProperties(registerDto,registerEntity);
 
                 metroRepo.userLocked(loginDto.getEmail(),registerEntity.getNoOfAttempts(),registerEntity.isAccountLocked());
 
-                if (registerDto1.getNoOfAttempts()>=3){
+                if (registerDto.getNoOfAttempts()>=3){
 
-                    registerDto1.setAccountLocked(true);
-                    BeanUtils.copyProperties(registerDto1,registerEntity);
+                    registerDto.setAccountLocked(true);
+                    BeanUtils.copyProperties(registerDto,registerEntity);
 
                     metroRepo.userLocked(loginDto.getEmail(),registerEntity.getNoOfAttempts(),registerEntity.isAccountLocked());
 
