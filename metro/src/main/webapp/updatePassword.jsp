@@ -72,6 +72,20 @@
         </div>
       </div>
 
+      <footer class="fixed-bottom">
+              <div  class="footer  bg-dark py-3 mt-auto">
+              <div class="container-fluid">
+                <div class="row justify-content-center">
+                  <div class="col-md-6 text-center">
+                    <p class="text-white mb-0">Copyright &copy; 2024, All Rights Reserved</p>
+                  </div>
+                </div>
+
+              </div>
+              </div>
+            </footer>
+
+
       <script>
 
 function passwordEntry() {

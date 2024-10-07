@@ -85,16 +85,16 @@
 
 
 
-                  <div class="col-md-6 mb-3">
-                    <label class="form-label">Gender</label>
-                    <div>
-                      <input type="radio" id="male" name="gender"  value="${dto.gender}">
-                      <label for="male">Male</label>
-                      <input type="radio" id="female" name="gender" value="${dto.gender}">
-                      <label for="female">Female</label>
-                    </div>
-                  </div>
-                </div>
+<div class="col-md-6 mb-3">
+    <label class="form-label">Gender</label>
+    <div>
+        <input type="radio" id="male" name="gender" value="male" ${dto.gender == 'male' ? 'checked' : ''}>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female" ${dto.gender == 'female' ? 'checked' : ''}>
+        <label for="female">Female</label>
+    </div>
+</div>
+
 
                 <div class="row">
                   <div class="col-md-6 mb-3">
@@ -143,6 +143,23 @@
         </div>
       </div>
       </div>
+
+
+<footer class="fixed-bottom">
+        <div  class="footer  bg-dark py-3 mt-auto">
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+              <p class="text-white mb-0">Copyright &copy; 2024, All Rights Reserved</p>
+            </div>
+          </div>
+
+        </div>
+        </div>
+      </footer>
+
+
+
 
       <script>
 
@@ -194,6 +211,12 @@
 
         }
 
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const gender = "${dto.gender}";
+        document.getElementById(gender).checked = true;
+    });
 
 
 

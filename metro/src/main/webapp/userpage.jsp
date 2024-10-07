@@ -39,6 +39,22 @@
 <h6  style="color: green;">${msg}</h6>
 <h6 style="color: red;">${errmsg}</h6>
 <h6  style="color: green;">${successmsg}</h6>
+
+<footer class="fixed-bottom">
+        <div  class="footer  bg-dark py-3 mt-auto">
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+              <p class="text-white mb-0">Copyright &copy; 2024, All Rights Reserved</p>
+            </div>
+          </div>
+
+        </div>
+        </div>
+      </footer>
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 
