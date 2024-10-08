@@ -67,12 +67,12 @@
                     <span id="emailexists"></span>
                   </div>
 
-                  <div class="col-md-6 mb-3">
-                    <label class="form-label ">Contact Number</label>
-                    <input type="number" class="form-control" id="phno" placeholder="Enter your contact number"
-                      name="phNo" required value="${dto.phNo}" >
-                    <span id="ph"></span>
-                  </div>
+                    <div class="col-md-6 mb-3">
+                                     <label class="form-label ">Contact Number</label>
+                                     <input type="number" class="form-control" id="phno" placeholder="Enter your contact number"
+                                       name="phNo" onchange="phone()" value="${dto.phNo}" required>
+                                     <span id="ph"></span>
+                                   </div>
 
                 </div>
 
@@ -160,30 +160,6 @@
 
       <script>
 
-        
-
-        
-        const checkEmail = async () => {
-
-          let emailId = document.getElementById("email").value
-          var button = document.getElementById("button");
-          const response = await axios("http://localhost:8080/metro/isEmailExists?email=" + emailId)
-
-          if (emailId.length < 5) {
-            document.getElementById("emailexists").innerHTML = "<span style='color:red;'>invalid email</span>";
-            button.setAttribute("disabled", "");
-          } else if (response.data == "email already exists") {
-            document.getElementById("emailexists").innerHTML = "<span style='color:red;'>email already exists</span>";
-            button.setAttribute("disabled", "");
-          } else {
-            document.getElementById("emailexists").innerHTML = "<span style='color:green;'>email_accepted</span>";
-            button.removeAttribute("disabled");
-          }
-
-          console.log(response.data)
-
-
-        }
 
 
         const phone = async () => {
@@ -195,17 +171,15 @@
           if (phoneNumber.length < 10 || phoneNumber.length > 10) {
             document.getElementById("ph").innerHTML = "<span style='color:red;'>invalid phone number</span>";
             button.setAttribute("disabled", "");
-          } else if (response.data == "phone number already exists") {
-            document.getElementById("ph").innerHTML = "<span style='color:red;'>phone number already exists</span>";
-            button.setAttribute("disabled", "");
-          } else {
+          } else if(response.data == "phone number not exists" || phoneNumber =="${dto.phNo}") {
+            console.log(phoneNumber)
             document.getElementById("ph").innerHTML = "<span style='color:green;'>valid</span>";
             button.removeAttribute("disabled");
+          }else{
+            document.getElementById("ph").innerHTML = "<span style='color:red;'>phone number already exists</span>";
+            button.setAttribute("disabled", "");
           }
-
           console.log(response.data)
-
-
         }
 
 
@@ -214,7 +188,6 @@
         const gender = "${dto.gender}";
         document.getElementById(gender).checked = true;
     });
-
 
 
       </script>

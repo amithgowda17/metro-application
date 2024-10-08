@@ -107,7 +107,7 @@ public class MetroRepoImpl implements MetroRepo {
     }
 
     @Override
-    public boolean updatePasswordInRepo(String email, String password) {
+    public void updatePasswordInRepo(String email, String password) {
         EntityManager entityManager=entityManagerFactory.createEntityManager();
         try{
             EntityTransaction entityTransaction=entityManager.getTransaction();
@@ -117,9 +117,7 @@ public class MetroRepoImpl implements MetroRepo {
             query.setParameter("email",email);
             query.executeUpdate();
             entityTransaction.commit();
-            return true;
         }catch (Exception e) {
-            return false;
         }finally {
             entityManager.close();
         }

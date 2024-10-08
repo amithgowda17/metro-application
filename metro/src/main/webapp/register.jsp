@@ -180,7 +180,7 @@
           console.log(names)
           var button = document.getElementById("button");
 
-          if (names.trim() !== '' && names.length > 4 && names.length <= 25) {
+          if (names.trim() !== '' && names.length >3&& names.length <= 25) {
             document.getElementById("firstname").innerHTML = "";
             button.removeAttribute("Disabled");
           } else {
@@ -331,7 +331,7 @@
 
 
           if (
-            fname.trim() !== "" && fname.length > 4 && fname.length <= 25 &&
+            fname.trim() !== "" && fname.length >3&& fname.length <= 25 &&
             lname.trim() !== "" &&lname.length > 0 &&
             lname.length <= 25 &&city.trim() !== "" &&
             city.length > 4 &&city.length <= 25 &&

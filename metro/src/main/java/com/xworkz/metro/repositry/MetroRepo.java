@@ -16,7 +16,7 @@ public interface MetroRepo {
 
     boolean saveOtpInRepo(String email,String otp);
 
-    boolean updatePasswordInRepo(String email,String password);
+    void updatePasswordInRepo(String email,String password);
 
     void userLocked(String email,int noOfAttempts,boolean isAccountLocked);
 

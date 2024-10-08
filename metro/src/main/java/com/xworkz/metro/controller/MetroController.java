@@ -132,8 +132,8 @@ public class MetroController {
             RegisterDto registerDto=metroService.findByEmailInService(email);
             boolean isSaved=metroService.generateOtpInService(email,otp);
             if(isSaved==true){
-                System.out.println("otp saved");
                 model.addAttribute("emaildto",registerDto);
+                return "emailotp";
             }
             return "emailotp";
         }
@@ -162,8 +162,10 @@ public class MetroController {
     @PostMapping("updatePassword")
     public String updatePassed(@RequestParam String email,String password,String confirmpassword){
         if(email!=null && password!=null && confirmpassword!=null) {
-            metroService.updatePasswordInService(email, password, confirmpassword);
-            return "login";
+            boolean isPasswordUpdated = metroService.updatePasswordInService(email, password, confirmpassword);
+            if (isPasswordUpdated) {
+                return "login";
+            }
         }
         return "login";
     }
@@ -177,8 +179,6 @@ public class MetroController {
 
     @PostMapping("updateDetails")
     public String editRegisterDetails(RegisterDto registerDto,Model model){
-        RegisterDto registerDto1=metroService.findByEmailInService(registerDto.getEmail());
-        model.addAttribute("details",registerDto1);
         boolean updateMessage = metroService.saveEditedProfile(registerDto);
         if (updateMessage) {
             model.addAttribute("msg", "data updated successfully");

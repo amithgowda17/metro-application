@@ -206,12 +206,14 @@ public class MetroServiceImpl implements MetroService {
 
     @Override
     public boolean saveEditedProfile(RegisterDto registerDto) {
-
-        RegisterEntity registerEntity=new RegisterEntity();
-        BeanUtils.copyProperties(registerDto,registerEntity);
-        boolean isUpdated = metroRepo.editProfileSave(registerEntity);
-        if (isUpdated){
-            return true;
+        RegisterDto registerDto1=findByEmailInService(registerDto.getEmail());
+        if (registerDto!=null  && registerDto1!=null) {
+            RegisterEntity registerEntity = new RegisterEntity();
+            BeanUtils.copyProperties(registerDto, registerEntity);
+            boolean isUpdated = metroRepo.editProfileSave(registerEntity);
+            if (isUpdated) {
+                return true;
+            }
         }
         return false;
 
