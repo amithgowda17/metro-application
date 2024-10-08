@@ -56,7 +56,6 @@ public class MetroController {
         return "userpage";
     }
 
-
     @PostMapping("register")
     public String register(@Valid RegisterDto registerDto, BindingResult bindingResult, Model model) {
 

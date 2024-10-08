@@ -26,7 +26,6 @@
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="profileUpdate?email=${details.email}">Profile</li>
                 <li><a class="dropdown-item"  href="loginPage">Logout</a></li>
-
               </ul>
             </div>
          </div>
