@@ -49,6 +49,12 @@ public class MetroController {
         return "login";
     }
 
+    @GetMapping("getUserPage")
+    public String getUserPage(String email,Model model){
+        RegisterDto registerDto=metroService.findByEmailInService(email);
+        model.addAttribute("details",registerDto);
+        return "userpage";
+    }
 
 
     @PostMapping("register")
@@ -154,7 +160,6 @@ public class MetroController {
                     return "updatePassword";
                 }return "emailotp";
             }
-
         }
         return "emailotp";
     }
@@ -178,10 +183,12 @@ public class MetroController {
     }
 
     @PostMapping("updateDetails")
-    public String editRegisterDetails(RegisterDto registerDto,Model model){
-        boolean updateMessage = metroService.saveEditedProfile(registerDto);
+    public String editRegisterDetails(RegisterDto registerDto1,Model model){
+        boolean updateMessage = metroService.saveEditedProfile(registerDto1);
         if (updateMessage) {
+            RegisterDto registerDto = metroService.findByEmailInService(registerDto1.getEmail());
             model.addAttribute("msg", "data updated successfully");
+            model.addAttribute("details",registerDto);
             return "userpage";
         }else{
             model.addAttribute("errmsg","data not updated");

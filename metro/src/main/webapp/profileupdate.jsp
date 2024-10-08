@@ -135,7 +135,9 @@
                 <div class="row">
                   <div class="text-center">
                     <button id="button" type="submit" class="btn btn-primary">Edit</button>
-                
+                 <button type="button" class="btn btn-primary">
+                              <a href="getUserPage?email=${dto.email}"  style="text-decoration: none; color: white;">Back</a>
+                               </button>
                   </div>
                 </div>
             </form>
@@ -159,8 +161,6 @@
       </footer>
 
       <script>
-
-
 
         const phone = async () => {
 
