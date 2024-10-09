@@ -1,27 +1,28 @@
 package com.xworkz.metro.dto;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterDto {
+public class RegisterationDto {
 
     private Integer id;
 
     @NotEmpty
-    @NotEmpty
+    @NotNull
     @NotBlank
     private String fname;
 
     @NotEmpty
-    @NotEmpty
+    @NotNull
     @NotBlank
     private String lname;
 
@@ -50,7 +51,7 @@ public class RegisterDto {
     private String city;
 
     @NotNull
-    private Integer pincode;
+    private Integer pinCode;
 
     @NotEmpty
     @NotEmpty
@@ -60,11 +61,12 @@ public class RegisterDto {
     @NotEmpty
     @NotEmpty
     @NotBlank
-    private String confirmpassword;
+    private String confirmPassword;
 
     private String otp;
 
     private Integer noOfAttempts;
 
     private boolean isAccountLocked;
+
 }

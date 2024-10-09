@@ -41,11 +41,12 @@
 
 <form action="otp" method="get">
     <div class="mb-3">
-      <h6 style="color: red;text-align: center;">${blockedmessage}</h6>
+      <h6 style="color: red;text-align: center;">${blockedMessage}</h6>
         <label for="formGroupExampleInput2" class="form-label">Enter Email</label>
-        <input type="email" class="form-control" placeholder="Enter your email" name="email" id="email" value="${emaildto.email}" onblur="checkEmail()">
-          <span id="emailexists"></span>
-        <br>
+        <input type="email" class="form-control" placeholder="Enter your email" name="email" id="email" value="${emailDto.email}" onblur="checkEmail()">
+          <span id="emailExists"></span>
+          <h6 style="color: green;text-align: center;">${sentMessage}</h6>
+
         <div class="text-center">
           <div class="col-12">
             <button type="submit" class="btn btn-secondary" id="sendOtp">
@@ -57,12 +58,13 @@
     </form>
     
    
-      <form action="verifyOtp" method="post">
+      <form action="verifyOtp" method="get">
       <div class="mb-3">
 
-        <input type="email" class="form-control" placeholder="Enter your email" name="email" value="${emaildto.email}" hidden>
+        <input type="email" class="form-control" placeholder="Enter your email" name="email" value="${emailDto.email}" hidden>
         <label for="inputPassword5" class="form-label">Enter Otp</label>
         <input type="password" class="form-control" placeholder="Enter your otp" name="optEntered" >
+         <h6 style="color: red;text-align: center;">${optVerification}</h6>
       </div>
       <div class="text-center">
       <div class="col-12">
@@ -97,22 +99,22 @@ const checkEmail = async () => {
 
 let emailId = document.getElementById("email").value
 var button = document.getElementById("sendOtp");
-var verifybutton=document.getElementById("verifyOtp");
+var button=document.getElementById("verifyOtp");
 const response = await axios("http://localhost:8080/metro/isEmailExists?email=" + emailId)
 
 if (emailId.length < 5) {
-  document.getElementById("emailexists").innerHTML = "<span style='color:red;'>invalid email</span>";
+  document.getElementById("emailExists").innerHTML = "<span style='color:red;'>invalid email</span>";
   button.setAttribute("disabled", "");
-  verifybutton.setAttribute("disabled","");
+  button.setAttribute("disabled","");
 } else if (response.data == "email already exists") {
-  document.getElementById("emailexists").innerHTML = "<span style='color:green;'>email_accepted</span>";
+  document.getElementById("emailExists").innerHTML = "<span style='color:green;'>email_accepted</span>";
   button.removeAttribute("disabled");
-  verifybutton.removeAttribute("disabled");
+ button.removeAttribute("disabled");
   
 } else {
-  document.getElementById("emailexists").innerHTML = "<span style='color:red;'>email not exists</span>";
+  document.getElementById("emailExists").innerHTML = "<span style='color:red;'>email not exists</span>";
   button.setAttribute("disabled", "");
-  verifybutton.setAttribute("disabled","");
+ button.setAttribute("disabled","");
 }
 
 console.log(response.data)

@@ -51,7 +51,7 @@
               <div style="margin-top: 8%;">
                 <div class="row">
 
-                  <span id="formessage"></span>
+                  <span id="formMessage"></span>
 
                   <input type="text" class="form-control" id="id" placeholder="Enter your id"
                                          name="id" hidden>
@@ -59,16 +59,16 @@
 
                   <div class="col-md-6 mb-3">
                     <label class="form-label">First name</label>
-                    <input type="text" class="form-control" id="fname" placeholder="Enter your first name"
-                      onchange="fnamevalidation()" name="fname" required>
-                    <span id="firstname"></span>
+                    <input type="text" class="form-control" id="fName" placeholder="Enter your first name"
+                      onchange="fNameValidation()" name="fname" required>
+                    <span id="firstName"></span>
                   </div>
 
                   <div class="col-md-6 mb-3">
                     <label class="form-label">Last name</label>
-                    <input type="text" class="form-control" id="lname" placeholder="Enter your last name"
-                      onchange="lnamevalidation()" name="lname" required>
-                    <span id="lastname"></span>
+                    <input type="text" class="form-control" id="lName" placeholder="Enter your last name"
+                      onchange="lNameValidation()" name="lname" required>
+                    <span id="lastName"></span>
                   </div>
                 </div>
 
@@ -79,12 +79,12 @@
                     <label class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" onblur="checkEmail()"
                       placeholder="Enter your email" name="email" required>
-                    <span id="emailexists"></span>
+                    <span id="emailExists"></span>
                   </div>
 
                   <div class="col-md-6 mb-3">
                     <label class="form-label ">Contact Number</label>
-                    <input type="number" class="form-control" id="phno" placeholder="Enter your contact number"
+                    <input type="number" class="form-control" id="phNo" placeholder="Enter your contact number"
                       name="phNo" onblur="phone()" required>
                     <span id="ph"></span>
                   </div>
@@ -115,17 +115,18 @@
                   <div class="col-md-6 mb-3">
                     <label class="form-label">City</label>
                     <input type="text" class="form-control" id="city" required placeholder="Enter your city"
-                      onchange="cityname()" name="city">
-                    <span id="cityname"></span>
+                      onchange="cityName()" name="city">
+                    <span id="cityName"></span>
                   </div>
 
 
-                  <div class="col-md-6 mb-3">
-                    <label class="form-label">Pincode</label>
-                    <input type="number" class="form-control" id="pincode" required placeholder="Enter your pincode"
-                      name="pincode" onchange="pincod()">
-                    <span id="pin"></span>
-                  </div>
+                 <div class="col-md-6 mb-3">
+                                   <label class="form-label">Pincode</label>
+                                   <input type="number" class="form-control" id="pinCode" required placeholder="Enter your pincode"
+                                     name="pinCode" onchange="pinCodeValid()">
+                                   <span id="pin"></span>
+                                 </div>
+                               </div>
                 </div>
 
                 <div class="row">
@@ -140,8 +141,8 @@
                   <div class="col-md-6 mb-3">
                     <label class="form-label">Confirm Password</label>
                     <input type="password" class="form-control" id="confirmPassword" required
-                      placeholder="Confirm your password" onblur="confirm()" name="confirmpassword">
-                    <span id="confirmpass"></span>
+                      placeholder="Confirm your password" onblur="confirm()" name="confirmPassword">
+                    <span id="confirmPass"></span>
                   </div>
                 </div>
 
@@ -175,68 +176,69 @@
 
       <script>
 
-        function fnamevalidation() {
-          var names = document.getElementById("fname").value;
+        function fNameValidation() {
+          var names = document.getElementById("fName").value;
           console.log(names)
           var button = document.getElementById("button");
 
           if (names.trim() !== '' && names.length >3&& names.length <= 25) {
-            document.getElementById("firstname").innerHTML = "";
+            document.getElementById("firstName").innerHTML = "";
             button.removeAttribute("Disabled");
           } else {
-            document.getElementById("firstname").innerHTML = "<span style='color:red;'>must be 4 & 25</span>";
+            document.getElementById("firstName").innerHTML = "<span style='color:red;'>must be 4 & 25</span>";
             button.setAttribute("Disabled", "");
             return;
           }
 
         }
 
-        function lnamevalidation() {
-          var names = document.getElementById("lname").value;
+        function lNameValidation() {
+          var names = document.getElementById("lName").value;
           console.log(names)
           var button = document.getElementById("button");
           if (names.trim() !== '' && names.length > 0 && names.length <= 25) {
-            document.getElementById("lastname").innerHTML = "";
+            document.getElementById("lastName").innerHTML = "";
             button.removeAttribute("Disabled");
           } else {
-            document.getElementById("lastname").innerHTML = "<span style='color:red;'>must be 1 & 25</span>";
+            document.getElementById("lastName").innerHTML = "<span style='color:red;'>must be 1 & 25</span>";
             button.setAttribute("Disabled", "");
             return;
           }
 
         }
 
-        function cityname() {
+        function cityName() {
           var names = document.getElementById("city").value;
           console.log(names)
           var button = document.getElementById("button");
 
           if (names.trim() !== '' && names.length > 4 && names.length <= 25) {
-            document.getElementById("cityname").innerHTML = "";
+            document.getElementById("cityName").innerHTML = "";
             button.removeAttribute("Disabled");
           } else {
-            document.getElementById("cityname").innerHTML = "<span style='color:red;'>must be 4 & 25</span>";
+            document.getElementById("cityName").innerHTML = "<span style='color:red;'>must be 4 & 25</span>";
             button.setAttribute("Disabled", "");
             return;
           }
 
         }
 
-        function pincod() {
-          var names = document.getElementById("pincode").value;
-          console.log(names.length)
-          var button = document.getElementById("button");
+        function pinCodeValid() {
+                 var names = document.getElementById("pinCode").value;
+                 console.log(names.length)
+                 var button = document.getElementById("button");
 
-          if (names.trim() !== '' && names.length == 6) {
-            document.getElementById("pin").innerHTML = "";
-            button.removeAttribute("Disabled");
-          } else {
-            document.getElementById("pin").innerHTML = "<span style='color:red;'>Invalid Pincode</span>";
-            button.setAttribute("Disabled", "");
-            return;
-          }
+                 if (names.trim() !== '' && names.length == 6) {
+                   document.getElementById("pin").innerHTML = "";
+                   button.removeAttribute("Disabled");
+                 } else {
+                   document.getElementById("pin").innerHTML = "<span style='color:red;'>Invalid Pincode</span>";
+                   button.setAttribute("Disabled", "");
+                   console.log("invalid")
+                   return;
+                 }
 
-        }
+               }
 
         function passwordEntry() {
 
@@ -263,10 +265,10 @@
           var button = document.getElementById("button");
 
           if (password === checkPassword) {
-            document.getElementById("confirmpass").innerHTML = "";
+            document.getElementById("confirmPass").innerHTML = "";
             button.removeAttribute("disabled");
           } else {
-            document.getElementById("confirmpass").innerHTML = "<span style='color:red;'>Password doesn't match</span>";
+            document.getElementById("confirmPass").innerHTML = "<span style='color:red;'>Password doesn't match</span>";
             button.setAttribute("disabled", "");
           }
         }
@@ -278,13 +280,13 @@
           const response = await axios("http://localhost:8080/metro/isEmailExists?email=" + emailId)
 
           if (emailId.length < 5) {
-            document.getElementById("emailexists").innerHTML = "<span style='color:red;'>invalid email</span>";
+            document.getElementById("emailExists").innerHTML = "<span style='color:red;'>invalid email</span>";
             button.setAttribute("disabled", "");
           } else if (response.data == "email already exists") {
-            document.getElementById("emailexists").innerHTML = "<span style='color:red;'>email already exists</span>";
+            document.getElementById("emailExists").innerHTML = "<span style='color:red;'>email already exists</span>";
             button.setAttribute("disabled", "");
           } else {
-            document.getElementById("emailexists").innerHTML = "<span style='color:green;'>email_accepted</span>";
+            document.getElementById("emailExists").innerHTML = "<span style='color:green;'>email_accepted</span>";
             button.removeAttribute("disabled");
           }
 
@@ -296,9 +298,9 @@
 
         const phone = async () => {
 
-          let phoneNumber = document.getElementById("phno").value
+          let phoneNumber = document.getElementById("phNo").value
           var button = document.getElementById("button");
-          const response = await axios("http://localhost:8080/metro/isPhnoExists?phNo=" + phoneNumber)
+          const response = await axios("http://localhost:8080/metro/isPhNoExists?phNo=" + phoneNumber)
 
           if (phoneNumber.length < 10 || phoneNumber.length > 10) {
             document.getElementById("ph").innerHTML = "<span style='color:red;'>invalid phone number</span>";
@@ -319,11 +321,11 @@
 
         function form(event) {
 
-          var fname = document.getElementById("fname").value;
-          var lname = document.getElementById("lname").value;
+          var fName = document.getElementById("fName").value;
+          var lName = document.getElementById("lName").value;
           var city = document.getElementById("city").value;
           var email = document.getElementById("email").value;
-          var phno = document.getElementById("phno").value;
+          var phNo = document.getElementById("phNo").value;
           var password = document.getElementById("password").value;
           var confirmPassword = document.getElementById("confirmPassword").value;
 
@@ -331,18 +333,18 @@
 
 
           if (
-            fname.trim() !== "" && fname.length >3&& fname.length <= 25 &&
-            lname.trim() !== "" &&lname.length > 0 &&
-            lname.length <= 25 &&city.trim() !== "" &&
+            fName.trim() !== "" && fName.length >3&& fName.length <= 25 &&
+            lName.trim() !== "" && lName.length > 0 &&
+            lName.length <= 25 &&city.trim() !== "" &&
             city.length > 4 &&city.length <= 25 &&
-            email.trim() !== "" &&phno.trim() !== "" &&
-            phno.length == 10 &&password.trim() !== "" &&
+            email.trim() !== "" &&phNo.trim() !== "" &&
+            phNo.length == 10 &&password.trim() !== "" &&
             password.length >= 8 && password === confirmPassword
           ) {
-            document.getElementById("formessage").innerHTML ="";
+            document.getElementById("formMessage").innerHTML ="";
             button.removeAttribute("disabled");
           } else {
-            document.getElementById("formessage").innerHTML ="<span style='color:red;'>Please fill the form correctly</span>";
+            document.getElementById("formMessage").innerHTML ="<span style='color:red;'>Please fill the form correctly</span>";
             button.setAttribute("disabled", "");
           }
         }

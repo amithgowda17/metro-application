@@ -1,8 +1,9 @@
 package com.xworkz.metro.controller;
 
 import com.xworkz.metro.dto.LoginDto;
-import com.xworkz.metro.dto.RegisterDto;
+import com.xworkz.metro.dto.RegisterationDto;
 import com.xworkz.metro.service.MetroService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ import javax.validation.Valid;
 
 import java.util.List;
 
-
+@Slf4j
 @Controller
 @RequestMapping("/")
 public class MetroController {
@@ -51,20 +52,20 @@ public class MetroController {
 
     @GetMapping("getUserPage")
     public String getUserPage(String email,Model model){
-        RegisterDto registerDto=metroService.findByEmailInService(email);
-        model.addAttribute("details",registerDto);
-        return "userpage";
+        RegisterationDto registerationDto=metroService.findByEmailInService(email);
+        model.addAttribute("details",registerationDto);
+        return "userPage";
     }
 
     @PostMapping("register")
-    public String register(@Valid RegisterDto registerDto, BindingResult bindingResult, Model model) {
+    public String register(@Valid RegisterationDto registerationDto, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
 
             List<ObjectError> bindingResults = bindingResult.getAllErrors();
             return "register";
         }
-        String successMsg = metroService.registerInService(registerDto);
+        String successMsg = metroService.registerInService(registerationDto);
         model.addAttribute("msg",successMsg);
         return "register";
 
@@ -75,9 +76,9 @@ public class MetroController {
     public ResponseEntity<String> emailExists(@RequestParam String email) {
 
         if (email != null) {
-            RegisterDto registerDto= metroService.findByEmailInService(email);
+            RegisterationDto registerationDto= metroService.findByEmailInService(email);
 
-            if (registerDto!=null) {
+            if (registerationDto!=null) {
                 return ResponseEntity.ok("email already exists");
             }
         }
@@ -85,7 +86,7 @@ public class MetroController {
         return ResponseEntity.ok("email_accepted");
     }
 
-    @GetMapping("isPhnoExists")
+    @GetMapping("isPhNoExists")
     public ResponseEntity<String> phoneExists(@RequestParam String phNo) {
 
         if (phNo != null) {
@@ -101,23 +102,25 @@ public class MetroController {
     @PostMapping("login")
     public String login(@Valid LoginDto loginDto, BindingResult bindingResult, Model model) {
 
-        RegisterDto registerDto=metroService.findByEmailInService(loginDto.getEmail());
+        RegisterationDto registerationDto=metroService.findByEmailInService(loginDto.getEmail());
 
         if (bindingResult.hasErrors()) {
-            model.addAttribute("loginerrmsg", "Please enter valid data");
+            model.addAttribute("loginErrMsg", "Please enter valid data");
             return "login";
-        }else if (registerDto.isAccountLocked()) {
-            model.addAttribute("blockedmessage", "Account blocked can't login reset your password");
-            return "emailotp";
+        }else if (registerationDto.isAccountLocked()) {
+            model.addAttribute("blockedMessage", "Account blocked can't login reset your password");
+            return "emailOtp";
         }else{
             String message = metroService.loginDetails(loginDto);
             if (message.equals("invalid password")) {
-                model.addAttribute("loginerrmsg", message);
+                model.addAttribute("enteredEmail",loginDto.getEmail());
+                model.addAttribute("loginErrMsg", message);
                 return "login";
             }else{
-                model.addAttribute("successmsg",message);
-                model.addAttribute("details",registerDto);
-                return "userpage";
+                model.addAttribute("details",registerationDto);
+                model.addAttribute("successMsg",message);
+                log.info("registerDto===="+registerationDto);
+                return "userPage";
             }
         }
     }
@@ -127,46 +130,50 @@ public class MetroController {
 
     public String forgotPassword(){
 
-        return "emailotp";
+        return "emailOtp";
     }
 
 
     @GetMapping("otp")
     public String generateOtp(@RequestParam String email,String otp, Model model) {
         if (email != null) {
-            RegisterDto registerDto=metroService.findByEmailInService(email);
+            RegisterationDto registerationDto=metroService.findByEmailInService(email);
             boolean isSaved=metroService.generateOtpInService(email,otp);
-            if(isSaved==true){
-                model.addAttribute("emaildto",registerDto);
-                return "emailotp";
+            if(isSaved){
+                model.addAttribute("emailDto",registerationDto);
+                model.addAttribute("sentMessage","opt have been sent");
+                return "emailOtp";
             }
-            return "emailotp";
+            return "emailOtp";
         }
 
 
-        return "emailotp";
+        return "emailOtp";
 
     }
 
-    @PostMapping("verifyOtp")
+    @GetMapping("verifyOtp")
     public String verifyOtp(@RequestParam String email, @RequestParam String optEntered, Model model){
         if (email !=null || optEntered!=null){
-            RegisterDto registerDto=metroService.findByEmailInService(email);
-            if (registerDto!=null){
+            RegisterationDto registerationDto=metroService.findByEmailInService(email);
+            if (registerationDto!=null){
                 boolean isOtpVerified= metroService.verifyOtp(email,optEntered);
                 if(isOtpVerified) {
-                    model.addAttribute("dto", registerDto);
+                    model.addAttribute("dto", registerationDto);
                     return "updatePassword";
-                }return "emailotp";
+                }
+                model.addAttribute("optVerification","invalid otp");
+                model.addAttribute("emailDto", registerationDto);
+                return "emailOtp";
             }
         }
-        return "emailotp";
+        return "emailOtp";
     }
 
     @PostMapping("updatePassword")
-    public String updatePassed(@RequestParam String email,String password,String confirmpassword){
-        if(email!=null && password!=null && confirmpassword!=null) {
-            boolean isPasswordUpdated = metroService.updatePasswordInService(email, password, confirmpassword);
+    public String updatePassed(@RequestParam String email,String password,String confirmPassword){
+        if(email!=null && password!=null && confirmPassword!=null) {
+            boolean isPasswordUpdated = metroService.updatePasswordInService(email, password, confirmPassword);
             if (isPasswordUpdated) {
                 return "login";
             }
@@ -176,22 +183,22 @@ public class MetroController {
 
     @GetMapping("profileUpdate")
     public String getProfileUpdatePage(@RequestParam String email,Model model){
-        RegisterDto registerDto = metroService.findByEmailInService(email);
-        model.addAttribute("dto",registerDto);
-        return "profileupdate";
+        RegisterationDto registerationDto = metroService.findByEmailInService(email);
+        model.addAttribute("dto",registerationDto);
+        return "profileUpdate";
     }
 
     @PostMapping("updateDetails")
-    public String editRegisterDetails(RegisterDto registerDto1,Model model){
-        boolean updateMessage = metroService.saveEditedProfile(registerDto1);
+    public String editRegisterDetails(RegisterationDto registerationDto1,Model model){
+        boolean updateMessage = metroService.saveEditedProfile(registerationDto1);
         if (updateMessage) {
-            RegisterDto registerDto = metroService.findByEmailInService(registerDto1.getEmail());
+            RegisterationDto registerationDto = metroService.findByEmailInService(registerationDto1.getEmail());
             model.addAttribute("msg", "data updated successfully");
-            model.addAttribute("details",registerDto);
-            return "userpage";
+            model.addAttribute("details",registerationDto);
+            return "userPage";
         }else{
-            model.addAttribute("errmsg","data not updated");
-            return "userpage";
+            model.addAttribute("errMsg","data not updated");
+            return "userPage";
         }
     }
 

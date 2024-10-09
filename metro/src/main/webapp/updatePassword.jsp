@@ -56,8 +56,8 @@
                 <div class="mb-3">
 
                   <label for="inputPassword5" class="form-label">Confirm your password</label>
-                  <input type="password" class="form-control" placeholder="confirm your password" name="confirmpassword" id="confirmPassword" onblur="confirm()">
-               <span id="confirmpass"></span>
+                  <input type="password" class="form-control" placeholder="confirm your password" name="confirmPassword" id="confirmPassword" onblur="confirm()">
+               <span id="confirmPass"></span>
                 </div>
 
                 <div class="text-center"> 
@@ -112,10 +112,10 @@ function confirm() {
           var button = document.getElementById("button");
 
           if (password === checkPassword) {
-            document.getElementById("confirmpass").innerHTML = "";
+            document.getElementById("confirmPass").innerHTML = "";
             button.removeAttribute("disabled");
           } else {
-            document.getElementById("confirmpass").innerHTML = "<span style='color:red;'>Password doesn't match</span>";
+            document.getElementById("confirmPass").innerHTML = "<span style='color:red;'>Password doesn't match</span>";
             button.setAttribute("disabled", "");
           }
         }

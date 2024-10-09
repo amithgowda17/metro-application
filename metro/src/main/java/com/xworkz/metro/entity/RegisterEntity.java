@@ -13,11 +13,11 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Table(name = "register_details")
 
-@NamedQuery(name = "findByEmailInRegister", query = "select entity from RegisterEntity entity where entity.email=:value")
-@NamedQuery(name = "findByPhNoInRegister", query = "select entity from RegisterEntity entity where entity.phNo=:valu")
-@NamedQuery(name = "updateOtp", query = "update RegisterEntity entit set entit.otp = :otp where entit.email = :email")
-@NamedQuery(name = "updatePassword", query = "update RegisterEntity entit set entit.password = :password where entit.email = :email")
-@NamedQuery(name = "passwordWrongAttempt" , query = "update RegisterEntity reg set reg.noOfAttempts =:noOfAttempts , reg.isAccountLocked =:isAccountLocked where reg.email = :email")
+@NamedQuery(name = "findByEmailInRegister", query = "select entity from RegisterEntity entity where entity.email=:emailValue")
+@NamedQuery(name = "findByPhNoInRegister", query = "select entity from RegisterEntity entity where entity.phNo=:getPhoneNumber")
+@NamedQuery(name = "updateOtp", query = "update RegisterEntity entity set entity.otp = :otp where entity.email = :getEmail")
+@NamedQuery(name = "updatePassword", query = "update RegisterEntity entity set entity.password = :password where entity.email = :getEmail")
+@NamedQuery(name = "passwordWrongAttempt" , query = "update RegisterEntity reg set reg.noOfAttempts =:noOfAttempts , reg.isAccountLocked =:isAccountLocked where reg.email = :getEmail")
 
 
 public class RegisterEntity {
@@ -26,16 +26,16 @@ public class RegisterEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "fname")
+    @Column(name = "f_Name")
     private String fname;
 
-    @Column(name = "lname")
+    @Column(name = "l_Name")
     private String lname;
 
     @Column(name = "email")
     private String email;
 
-    @Column(name = "phNo")
+    @Column(name = "ph_No")
     private String phNo;
 
     @Column(name = "Date_of_birth")
@@ -47,8 +47,8 @@ public class RegisterEntity {
     @Column(name = "city")
     private String city;
 
-    @Column(name = "pincode")
-    private Integer pincode;
+    @Column(name = "pinCode")
+    private Integer pinCode;
 
     @Column(name = "password")
     private String password;
@@ -56,10 +56,10 @@ public class RegisterEntity {
     @Column(name = "otp")
     private String otp;
 
-    @Column(name = "noOfAttempts")
+    @Column(name = "no_Of_Attempts")
     private Integer noOfAttempts;
 
-    @Column(name = "isAccountLocked")
+    @Column(name = "is_Account_Locked")
     private boolean isAccountLocked;
 
 }

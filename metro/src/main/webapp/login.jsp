@@ -57,13 +57,13 @@
                             <form action="login" method="post">
                                 <div class="mb-3">
                                     <label for="formGroupExampleInput2" class="form-label">Email</label>
-                                    <input type="email" class="form-control" placeholder="Enter your email" name="email" id="email" onblur="checkEmail()">
-                                    <span id="emailexists"></span>
+                                    <input type="email" class="form-control" placeholder="Enter your email" name="email" id="email" onblur="checkEmail()" value="${enteredEmail}">
+                                    <span id="emailExists"></span>
                   </div>
                                 <div class="mb-3">
                                     <label for="inputPassword5" class="form-label">Password</label>
                                     <input type="password" class="form-control" placeholder="Enter your password" name="password" >
-                                    <h6 style="color: red;text-align: center;">${loginerrmsg}</h6>
+                                    <h6 style="color: red;text-align: center;">${loginErrMsg}</h6>
                                 </div>
                                 <div class="text-center">
                                     <div class="col-12">
@@ -105,13 +105,13 @@
           var button = document.getElementById("button");
           const response = await axios("http://localhost:8080/metro/isEmailExists?email=" + emailId)
           if (emailId.length < 5) {
-            document.getElementById("emailexists").innerHTML = "<span style='color:red;'>invalid email</span>";
+            document.getElementById("emailExists").innerHTML = "<span style='color:red;'>invalid email</span>";
             button.setAttribute("disabled", "");
           } else if (response.data == "email already exists") {
-            document.getElementById("emailexists").innerHTML = "<span style='color:green;'>email_accepted</span>";
+            document.getElementById("emailExists").innerHTML = "<span style='color:green;'>email_accepted</span>";
             button.removeAttribute("disabled");
           } else {
-            document.getElementById("emailexists").innerHTML = "<span style='color:red;'>email not exists</span>";
+            document.getElementById("emailExists").innerHTML = "<span style='color:red;'>email not exists</span>";
             button.setAttribute("disabled", "");
           }
           console.log(response.data)

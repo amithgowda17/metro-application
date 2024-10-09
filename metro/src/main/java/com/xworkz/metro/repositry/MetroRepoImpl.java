@@ -41,7 +41,7 @@ public class MetroRepoImpl implements MetroRepo {
             EntityTransaction entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
             Query query = entityManager.createNamedQuery("findByEmailInRegister");
-            query.setParameter("value",email);
+            query.setParameter("emailValue",email);
             RegisterEntity registerEntity = (RegisterEntity) query.getSingleResult();
             entityTransaction.commit();
             return registerEntity;
@@ -59,7 +59,7 @@ public class MetroRepoImpl implements MetroRepo {
             EntityTransaction entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
             Query query = entityManager.createNamedQuery("findByPhNoInRegister");
-            query.setParameter("valu",phNo);
+            query.setParameter("getPhoneNumber",phNo);
             RegisterEntity registerEntity = (RegisterEntity) query.getSingleResult();
             entityTransaction.commit();
             return registerEntity;
@@ -95,7 +95,7 @@ public class MetroRepoImpl implements MetroRepo {
             entityTransaction.begin();
             Query query=entityManager.createNamedQuery("updateOtp");
             query.setParameter("otp",otp);
-            query.setParameter("email",email);
+            query.setParameter("getEmail",email);
             query.executeUpdate();
             entityTransaction.commit();
             return true;
@@ -114,7 +114,7 @@ public class MetroRepoImpl implements MetroRepo {
             entityTransaction.begin();
             Query query = entityManager.createNamedQuery("updatePassword");
             query.setParameter("password",password);
-            query.setParameter("email",email);
+            query.setParameter("getEmail",email);
             query.executeUpdate();
             entityTransaction.commit();
         }catch (Exception e) {
@@ -130,7 +130,7 @@ public class MetroRepoImpl implements MetroRepo {
             EntityTransaction entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
             Query query = entityManager.createNamedQuery("passwordWrongAttempt");
-            query.setParameter("email",email);
+            query.setParameter("getEmail",email);
             query.setParameter("noOfAttempts",noOfAttempts);
             query.setParameter("isAccountLocked",isAccountLocked);
             query.executeUpdate();

@@ -9,7 +9,7 @@
                       value="com.mysql.cj.jdbc.Driver" />
 
             <property name="javax.persistence.jdbc.url"
-                      value="jdbc:mysql://Localhost:3306/metroapplication" />
+                      value="jdbc:mysql://Localhost:3306/metro_application" />
 
             <property name="javax.persistence.jdbc.user" value="root" />
 

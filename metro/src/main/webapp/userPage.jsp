@@ -10,7 +10,7 @@
 <body>
 
    <header class="header">
-       <div class="container-fluid bg-secondary-subtle">
+       <div class="container-fluid bg-black text-white">
          <div class="row align-items-center">
            <div class="col-auto">
              <img src="https://www.x-workz.in/Logo.png" alt="Logo" height="50px">
@@ -20,12 +20,13 @@
            </div>
           <div class="col-auto d-flex justify-content-end">
             <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                ${details.fname}
+         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+${details.fname}
               </button>
+
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="profileUpdate?email=${details.email}">Profile</li>
-                <li><a class="dropdown-item"  href="loginPage">Logout</a></li>
+                <li class="bg-white text-dark"><a class="dropdown-item" href="profileUpdate?email=${details.email}">Profile</li>
+                <li class="bg-white text-dark"><a class="dropdown-item"  href="loginPage">Logout</a></li>
               </ul>
             </div>
          </div>
@@ -36,8 +37,9 @@
 
 
 <h6  style="color: green;">${msg}</h6>
-<h6 style="color: red;">${errmsg}</h6>
-<h6  style="color: green;">${successmsg}</h6>
+<h6 style="color: red;">${errMsg}</h6>
+<h6  style="color: green;">${successMsg}</h6>
+
 
 <footer class="fixed-bottom">
         <div  class="footer  bg-dark py-3 mt-auto">

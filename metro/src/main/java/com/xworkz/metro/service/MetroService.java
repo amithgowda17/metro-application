@@ -2,13 +2,13 @@ package com.xworkz.metro.service;
 
 
 import com.xworkz.metro.dto.LoginDto;
-import com.xworkz.metro.dto.RegisterDto;
+import com.xworkz.metro.dto.RegisterationDto;
 
 public interface MetroService {
 
-    String registerInService(RegisterDto registerDto);
+    String registerInService(RegisterationDto registerationDto);
 
-    RegisterDto findByEmailInService(String email);
+    RegisterationDto findByEmailInService(String email);
 
     boolean findByPhInService(String phNo);
 
@@ -20,7 +20,7 @@ public interface MetroService {
 
     boolean updatePasswordInService(String email,String password,String confirmpassword);
 
-    public boolean saveEditedProfile(RegisterDto registerDto);
+    public boolean saveEditedProfile(RegisterationDto registerationDto);
 
 
 }
