@@ -75,7 +75,7 @@
 
                   <div class="col-md-6 mb-3">
                     <label class="form-label">Date Of Birth</label>
-                    <input type="date" class="form-control" id="dob" placeholder="Enter your dob" name="dob" required value="${dto.dob}">
+                    <input type="date" class="form-control" id="dateInput" placeholder="Enter your dob" name="dob" required value="${dto.dob}">
                   </div>
 
 
@@ -241,9 +241,14 @@
         }
 
     document.addEventListener("DOMContentLoaded", function() {
+
         const gender = "${dto.gender}";
         document.getElementById(gender).checked = true;
     });
+
+
+
+
 
       </script>
 

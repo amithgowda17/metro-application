@@ -2,7 +2,6 @@
   <%@ page isELIgnored="false" %>
 
     <html>
-
     <head>
       <title>Register</title>
       <link rel="icon" href="https://www.x-workz.in/Logo.png">
@@ -35,7 +34,6 @@
            </header>
 
 
-
       <div class="container my-4" style="width: 35%;">
         <div class="card form-card mb-3">
           <div class="p-3 bg-secondary-subtle text-secondary-emphasis">
@@ -43,10 +41,7 @@
 
             <form action="register" method="post" onclick="form()">
 
-
-
               <h3 class="row justify-content-center">Register Admin</h3>
-
 
               <div style="margin-top: 8%;">
                 <div class="row">
@@ -348,6 +343,10 @@
             button.setAttribute("disabled", "");
           }
         }
+
+
+        const now = new Date().toISOString().split('T')[0];
+        document.getElementById('dob').setAttribute('max', now);
 
 
 

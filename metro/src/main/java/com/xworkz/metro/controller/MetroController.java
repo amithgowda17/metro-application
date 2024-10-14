@@ -191,7 +191,7 @@ public class MetroController {
     @PostMapping("updateDetails")
     public String editRegisterDetails(RegisterationDto registerationDto1,Model model){
         boolean updateMessage = metroService.saveEditedProfile(registerationDto1);
-        if (updateMessage) {
+        if(updateMessage) {
             RegisterationDto registerationDto = metroService.findByEmailInService(registerationDto1.getEmail());
             model.addAttribute("msg", "data updated successfully");
             model.addAttribute("details",registerationDto);
