@@ -181,10 +181,10 @@ public class MetroServiceImpl implements MetroService {
     }
 
     @Override
-    public boolean updatePasswordInService(String email, String password, String confirmpassword) {
+    public boolean updatePasswordInService(String email, String password, String confirmPassword) {
         RegisterationDto registerationDto=findByEmailInService(email);
         if(registerationDto!=null) {
-            if (password.equals(confirmpassword)){
+            if (password.equals(confirmPassword)){
 
                 registerationDto.setNoOfAttempts(0);
                 registerationDto.setAccountLocked(false);

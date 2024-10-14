@@ -18,7 +18,7 @@ public interface MetroService {
 
     boolean verifyOtp(String email,String otpEntered);
 
-    boolean updatePasswordInService(String email,String password,String confirmpassword);
+    boolean updatePasswordInService(String email,String password,String confirmPassword);
 
     public boolean saveEditedProfile(RegisterationDto registerationDto);
 

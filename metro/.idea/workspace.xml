@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0602b53b-9c99-4c49-979b-8a628a656a51" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/MetroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/MetroController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/profileUpdate.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/profileUpdate.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/configuration/MailConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/configuration/MailConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/configuration/WebInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/configuration/WebInit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/MetroService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/MetroService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/MetroServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/MetroServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,20 +132,5 @@
       <updated>1727152747338</updated>
     </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/MetroRepo.java</url>
-          <line>16</line>
-          <properties class="com.xworkz.metro.repositry.MetroRepo" method="saveOtpInRepo">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
