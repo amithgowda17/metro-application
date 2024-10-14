@@ -1,6 +1,5 @@
 package com.xworkz.metro.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,10 +14,6 @@ import javax.persistence.*;
 
 @NamedQuery(name = "findByEmailInRegister", query = "select entity from RegisterEntity entity where entity.email=:emailValue")
 @NamedQuery(name = "findByPhNoInRegister", query = "select entity from RegisterEntity entity where entity.phNo=:getPhoneNumber")
-@NamedQuery(name = "updateOtp", query = "update RegisterEntity entity set entity.otp = :otp where entity.email = :getEmail")
-@NamedQuery(name = "updatePassword", query = "update RegisterEntity entity set entity.password = :password where entity.email = :getEmail")
-@NamedQuery(name = "passwordWrongAttempt" , query = "update RegisterEntity reg set reg.noOfAttempts =:noOfAttempts , reg.isAccountLocked =:isAccountLocked where reg.email = :getEmail")
-
 
 public class RegisterEntity {
 
@@ -61,5 +56,7 @@ public class RegisterEntity {
 
     @Column(name = "is_Account_Locked")
     private boolean isAccountLocked;
+
+
 
 }

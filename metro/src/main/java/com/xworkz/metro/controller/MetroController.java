@@ -185,6 +185,7 @@ public class MetroController {
     public String getProfileUpdatePage(@RequestParam String email,Model model){
         RegisterationDto registerationDto = metroService.findByEmailInService(email);
         model.addAttribute("dto",registerationDto);
+        log.info("password in controller======="+registerationDto.getPassword());
         return "profileUpdate";
     }
 

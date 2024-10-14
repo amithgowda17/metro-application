@@ -21,7 +21,6 @@ public class MetroRepoImpl implements MetroRepo {
     public boolean register(RegisterEntity registerEntity) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
-            System.out.println("register entity in repo ======"+registerEntity);
             EntityTransaction entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
             entityManager.persist(registerEntity);
@@ -74,7 +73,7 @@ public class MetroRepoImpl implements MetroRepo {
     public boolean login(LoginEntity loginEntity) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
-            System.out.println("login entity in repo ======"+loginEntity);
+
             EntityTransaction entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
             entityManager.persist(loginEntity);
@@ -87,66 +86,9 @@ public class MetroRepoImpl implements MetroRepo {
         }
     }
 
-    @Override
-    public boolean saveOtpInRepo(String email,String otp) {
-        EntityManager entityManager= entityManagerFactory.createEntityManager();
-        try {
-            EntityTransaction entityTransaction=entityManager.getTransaction();
-            entityTransaction.begin();
-            Query query=entityManager.createNamedQuery("updateOtp");
-            query.setParameter("otp",otp);
-            query.setParameter("getEmail",email);
-            query.executeUpdate();
-            entityTransaction.commit();
-            return true;
-        }catch (Exception e) {
-            return false;
-        }finally {
-            entityManager.close();
-        }
-    }
 
     @Override
-    public void updatePasswordInRepo(String email, String password) {
-        EntityManager entityManager=entityManagerFactory.createEntityManager();
-        try{
-            EntityTransaction entityTransaction=entityManager.getTransaction();
-            entityTransaction.begin();
-            Query query = entityManager.createNamedQuery("updatePassword");
-            query.setParameter("password",password);
-            query.setParameter("getEmail",email);
-            query.executeUpdate();
-            entityTransaction.commit();
-        }catch (Exception e) {
-        }finally {
-            entityManager.close();
-        }
-    }
-
-    @Override
-    public void userLocked(String email, int noOfAttempts, boolean isAccountLocked) {
-        EntityManager entityManager=entityManagerFactory.createEntityManager();
-        try{
-            EntityTransaction entityTransaction = entityManager.getTransaction();
-            entityTransaction.begin();
-            Query query = entityManager.createNamedQuery("passwordWrongAttempt");
-            query.setParameter("getEmail",email);
-            query.setParameter("noOfAttempts",noOfAttempts);
-            query.setParameter("isAccountLocked",isAccountLocked);
-            query.executeUpdate();
-            entityTransaction.commit();
-            System.out.println(isAccountLocked+"==isAccountLocked=");
-            System.out.println(noOfAttempts+"========");
-            System.out.println("email===="+email);
-        }catch (Exception e){
-
-        }finally {
-            entityManager.close();
-        }
-    }
-
-    @Override
-    public boolean editProfileSave(RegisterEntity registerEntity) {
+    public boolean updateProfile(RegisterEntity registerEntity) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
             EntityTransaction entityTransaction = entityManager.getTransaction();

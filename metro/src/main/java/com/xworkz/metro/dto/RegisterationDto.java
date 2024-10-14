@@ -8,6 +8,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.sql.Time;
+import java.util.Timer;
 
 @Data
 @AllArgsConstructor
@@ -68,5 +70,6 @@ public class RegisterationDto {
     private Integer noOfAttempts;
 
     private boolean isAccountLocked;
+
 
 }

@@ -14,13 +14,7 @@ public interface MetroRepo {
 
     boolean login(LoginEntity loginEntity);
 
-    boolean saveOtpInRepo(String email,String otp);
-
-    void updatePasswordInRepo(String email,String password);
-
-    void userLocked(String email,int noOfAttempts,boolean isAccountLocked);
-
-    public boolean editProfileSave(RegisterEntity registerEntity);
+    boolean updateProfile(RegisterEntity registerEntity);
 
 
 }
