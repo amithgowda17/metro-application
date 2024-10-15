@@ -98,10 +98,11 @@
                   <div class="col-md-6 mb-3">
                     <label class="form-label">Gender</label>
                     <div>
-                      <input type="radio" id="male" name="gender" value="male">
-                      <label for="male">Male</label>
-                      <input type="radio" id="female" name="gender" value="female">
-                      <label for="female">Female</label>
+                      <input type="radio" id="male" name="gender" value="male" >
+                       <label for="male">Male</label>
+                       <input type="radio" id="female" name="gender" value="female" >
+                       <label for="male">Female</label>
+                       <span id="genderError"></span>
                     </div>
                   </div>
                 </div>
@@ -314,6 +315,8 @@
         }
 
 
+
+
         function form(event) {
 
           var fName = document.getElementById("fName").value;
@@ -323,7 +326,8 @@
           var phNo = document.getElementById("phNo").value;
           var password = document.getElementById("password").value;
           var confirmPassword = document.getElementById("confirmPassword").value;
-
+var maleChecked = document.getElementById("male").checked;
+    var femaleChecked = document.getElementById("female").checked;
           var button = document.getElementById("button");
 
 
@@ -334,10 +338,16 @@
             city.length > 4 &&city.length <= 25 &&
             email.trim() !== "" &&phNo.trim() !== "" &&
             phNo.length == 10 &&password.trim() !== "" &&
-            password.length >= 8 && password === confirmPassword
+            password.length >= 8 && password === confirmPassword 
           ) {
-            document.getElementById("formMessage").innerHTML ="";
+            if(maleChecked || femaleChecked){
+              document.getElementById("formMessage").innerHTML ="";
             button.removeAttribute("disabled");
+            }else{
+              document.getElementById("formMessage").innerHTML ="<span style='color:red;'>Please fill the form correctly</span>";
+              button.setAttribute("disabled", "");
+            }
+            
           } else {
             document.getElementById("formMessage").innerHTML ="<span style='color:red;'>Please fill the form correctly</span>";
             button.setAttribute("disabled", "");

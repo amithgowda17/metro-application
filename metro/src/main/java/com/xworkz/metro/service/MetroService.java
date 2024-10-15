@@ -20,7 +20,7 @@ public interface MetroService {
 
     boolean updatePasswordInService(String email,String password,String confirmPassword);
 
-    public boolean saveEditedProfile(RegisterationDto registerationDto);
+    boolean saveEditedProfile(RegisterationDto registerationDto);
 
 
 }
