@@ -11,15 +11,25 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 
 import java.time.LocalTime;
 
+
+
 @Slf4j
 @Service
 public class MetroServiceImpl implements MetroService {
+
+
+    private static String UPLOADED_FOLDER = "D://Project//metro-application//file_upload//";
 
     @Autowired
     EmailSent emailSent;
@@ -211,15 +221,38 @@ public class MetroServiceImpl implements MetroService {
 
 
     @Override
-    public boolean saveEditedProfile(RegisterationDto registerationDto) {
+    public boolean saveEditedProfile(RegisterationDto registerationDto,  MultipartFile file) {
         RegisterationDto registerationDto1 = findByEmailInService(registerationDto.getEmail());
         if (registerationDto1 != null) {
-            RegisterEntity registerEntity = new RegisterEntity();
-            BeanUtils.copyProperties(registerationDto, registerEntity);
-            metroRepo.updateProfile(registerEntity);
-            boolean isUpdated =  metroRepo.updateProfile(registerEntity);
-            if (isUpdated) {
-               return true;
+            try {
+                // Get the file and save it somewhere
+                byte[] bytes = file.getBytes();
+                Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+                Files.write(path, bytes);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }if(registerationDto.getFileName()== null || registerationDto.getFileContentType()==null) {
+                registerationDto.setFileName(registerationDto1.getFileName());
+                registerationDto.setFileContentType(registerationDto1.getFileContentType());
+
+                RegisterEntity registerEntity = new RegisterEntity();
+                BeanUtils.copyProperties(registerationDto, registerEntity);
+
+                boolean isUpdated = metroRepo.updateProfile(registerEntity);
+                if (isUpdated) {
+                    return true;
+                }
+            }else{
+                registerationDto.setFileName(file.getOriginalFilename());
+                registerationDto.setFileContentType(file.getContentType());
+
+                RegisterEntity registerEntity = new RegisterEntity();
+                BeanUtils.copyProperties(registerationDto, registerEntity);
+
+                boolean isUpdated = metroRepo.updateProfile(registerEntity);
+                if (isUpdated) {
+                    return true;
+                }
             }
         }
         return false;

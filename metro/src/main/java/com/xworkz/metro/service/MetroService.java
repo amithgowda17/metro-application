@@ -3,6 +3,7 @@ package com.xworkz.metro.service;
 
 import com.xworkz.metro.dto.LoginDto;
 import com.xworkz.metro.dto.RegisterationDto;
+import org.springframework.web.multipart.MultipartFile;
 
 public interface MetroService {
 
@@ -20,7 +21,7 @@ public interface MetroService {
 
     boolean updatePasswordInService(String email,String password,String confirmPassword);
 
-    boolean saveEditedProfile(RegisterationDto registerationDto);
+    boolean saveEditedProfile(RegisterationDto registerationDto, MultipartFile file);
 
 
 }

@@ -57,6 +57,10 @@ public class RegisterEntity {
     @Column(name = "is_Account_Locked")
     private boolean isAccountLocked;
 
+    @Column(name = "file_name")
+    private String fileName;
 
+    @Column(name = "file_Content_Type")
+    private String fileContentType;
 
 }

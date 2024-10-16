@@ -72,4 +72,7 @@ public class RegisterationDto {
     private boolean isAccountLocked;
 
 
+    private String fileName;
+
+    private String fileContentType;
 }

@@ -4,19 +4,22 @@ import com.xworkz.metro.dto.LoginDto;
 import com.xworkz.metro.dto.RegisterationDto;
 import com.xworkz.metro.service.MetroService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import java.io.*;
+import java.nio.file.AccessDeniedException;
 import java.util.List;
 
 @Slf4j
@@ -24,7 +27,7 @@ import java.util.List;
 @RequestMapping("/")
 public class MetroController {
 
-
+    private static String path = "D://Project//metro-application//file_upload//";
 
     public MetroController() {
         System.out.println("MetroController object created");
@@ -51,9 +54,9 @@ public class MetroController {
     }
 
     @GetMapping("getUserPage")
-    public String getUserPage(String email,Model model){
-        RegisterationDto registerationDto=metroService.findByEmailInService(email);
-        model.addAttribute("details",registerationDto);
+    public String getUserPage(String email, Model model) {
+        RegisterationDto registerationDto = metroService.findByEmailInService(email);
+        model.addAttribute("details", registerationDto);
         return "userPage";
     }
 
@@ -66,7 +69,7 @@ public class MetroController {
             return "register";
         }
         String successMsg = metroService.registerInService(registerationDto);
-        model.addAttribute("msg",successMsg);
+        model.addAttribute("msg", successMsg);
         return "register";
 
 
@@ -76,9 +79,9 @@ public class MetroController {
     public ResponseEntity<String> emailExists(@RequestParam String email) {
 
         if (email != null) {
-            RegisterationDto registerationDto= metroService.findByEmailInService(email);
+            RegisterationDto registerationDto = metroService.findByEmailInService(email);
 
-            if (registerationDto!=null) {
+            if (registerationDto != null) {
                 return ResponseEntity.ok("email already exists");
             }
         }
@@ -102,24 +105,24 @@ public class MetroController {
     @PostMapping("login")
     public String login(@Valid LoginDto loginDto, BindingResult bindingResult, Model model) {
 
-        RegisterationDto registerationDto=metroService.findByEmailInService(loginDto.getEmail());
+        RegisterationDto registerationDto = metroService.findByEmailInService(loginDto.getEmail());
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("loginErrMsg", "Please enter valid data");
             return "login";
-        }else if (registerationDto.isAccountLocked()) {
+        } else if (registerationDto.isAccountLocked()) {
             model.addAttribute("blockedMessage", "Account blocked can't login reset your password");
             return "emailOtp";
-        }else{
+        } else {
             String message = metroService.loginDetails(loginDto);
             if (message.equals("invalid password")) {
-                model.addAttribute("enteredEmail",loginDto.getEmail());
+                model.addAttribute("enteredEmail", loginDto.getEmail());
                 model.addAttribute("loginErrMsg", message);
                 return "login";
-            }else{
-                model.addAttribute("details",registerationDto);
-                model.addAttribute("successMsg",message);
-                log.info("registerDto===="+registerationDto);
+            } else {
+                model.addAttribute("details", registerationDto);
+                model.addAttribute("successMsg", message);
+                log.info("registerDto====" + registerationDto);
                 return "userPage";
             }
         }
@@ -128,20 +131,20 @@ public class MetroController {
 
     @GetMapping("forgotPassword")
 
-    public String forgotPassword(){
+    public String forgotPassword() {
 
         return "emailOtp";
     }
 
 
     @GetMapping("otp")
-    public String generateOtp(@RequestParam String email,String otp, Model model) {
+    public String generateOtp(@RequestParam String email, String otp, Model model) {
         if (email != null) {
-            RegisterationDto registerationDto=metroService.findByEmailInService(email);
-            boolean isSaved=metroService.generateOtpInService(email,otp);
-            if(isSaved){
-                model.addAttribute("emailDto",registerationDto);
-                model.addAttribute("sentMessage","opt have been sent");
+            RegisterationDto registerationDto = metroService.findByEmailInService(email);
+            boolean isSaved = metroService.generateOtpInService(email, otp);
+            if (isSaved) {
+                model.addAttribute("emailDto", registerationDto);
+                model.addAttribute("sentMessage", "opt have been sent");
                 return "emailOtp";
             }
             return "emailOtp";
@@ -153,16 +156,16 @@ public class MetroController {
     }
 
     @GetMapping("verifyOtp")
-    public String verifyOtp(@RequestParam String email, @RequestParam String optEntered, Model model){
-        if (email !=null || optEntered!=null){
-            RegisterationDto registerationDto=metroService.findByEmailInService(email);
-            if (registerationDto!=null){
-                boolean isOtpVerified= metroService.verifyOtp(email,optEntered);
-                if(isOtpVerified) {
+    public String verifyOtp(@RequestParam String email, @RequestParam String optEntered, Model model) {
+        if (email != null || optEntered != null) {
+            RegisterationDto registerationDto = metroService.findByEmailInService(email);
+            if (registerationDto != null) {
+                boolean isOtpVerified = metroService.verifyOtp(email, optEntered);
+                if (isOtpVerified) {
                     model.addAttribute("dto", registerationDto);
                     return "updatePassword";
                 }
-                model.addAttribute("optVerification","invalid otp");
+                model.addAttribute("optVerification", "invalid otp");
                 model.addAttribute("emailDto", registerationDto);
                 return "emailOtp";
             }
@@ -171,8 +174,8 @@ public class MetroController {
     }
 
     @PostMapping("updatePassword")
-    public String updatePassed(@RequestParam String email,String password,String confirmPassword){
-        if(email!=null && password!=null && confirmPassword!=null) {
+    public String updatePassed(@RequestParam String email, String password, String confirmPassword) {
+        if (email != null && password != null && confirmPassword != null) {
             boolean isPasswordUpdated = metroService.updatePasswordInService(email, password, confirmPassword);
             if (isPasswordUpdated) {
                 return "login";
@@ -182,25 +185,47 @@ public class MetroController {
     }
 
     @GetMapping("profileUpdate")
-    public String getProfileUpdatePage(@RequestParam String email,Model model){
+    public String getProfileUpdatePage(@RequestParam String email, Model model) {
         RegisterationDto registerationDto = metroService.findByEmailInService(email);
-        model.addAttribute("dto",registerationDto);
-        log.info("password in controller======="+registerationDto.getPassword());
+
+        model.addAttribute("dto", registerationDto);
+        log.info("password in controller=======" + registerationDto.getPassword());
+
         return "profileUpdate";
     }
 
     @PostMapping("updateDetails")
-    public String editRegisterDetails(RegisterationDto registerationDto1,Model model){
-        boolean updateMessage = metroService.saveEditedProfile(registerationDto1);
-        if(updateMessage) {
-            RegisterationDto registerationDto = metroService.findByEmailInService(registerationDto1.getEmail());
+    public String editRegisterDetails(@RequestParam("file") MultipartFile file, RegisterationDto registerationDto1, Model model) {
+        boolean updateMessage = metroService.saveEditedProfile(registerationDto1, file);
+        RegisterationDto registerationDto = metroService.findByEmailInService(registerationDto1.getEmail());
+
+        if (updateMessage) {
             model.addAttribute("msg", "data updated successfully");
-            model.addAttribute("details",registerationDto);
+            model.addAttribute("details", registerationDto);
             return "userPage";
-        }else{
-            model.addAttribute("errMsg","data not updated");
+        } else {
+            model.addAttribute("details", registerationDto);
+            model.addAttribute("errMsg", "data not updated");
             return "userPage";
         }
+    }
+
+    @GetMapping("getImage/{imageName}")
+    public void viewImage(@PathVariable String imageName, Model model, HttpServletResponse httpServletResponse) {
+
+        File file1 = new File(path + imageName);
+
+        try {
+            FileInputStream fileInputStream = new FileInputStream(file1);
+            InputStream inputStream = new BufferedInputStream(fileInputStream);
+            ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
+            IOUtils.copy(inputStream, servletOutputStream);
+            model.addAttribute("image",servletOutputStream);
+            httpServletResponse.flushBuffer();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 

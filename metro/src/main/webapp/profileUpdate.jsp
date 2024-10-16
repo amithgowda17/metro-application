@@ -30,8 +30,14 @@
         <div class="card form-card mb-3">
           <div class="p-3 mb-2 bg-light-subtle text-light-emphasis">
 
-            <form action="updateDetails" method="post">
+            <form action="updateDetails" method="post" enctype="multipart/form-data">
+              <div  class="text-center">
+                <img src="getImage/${dto.fileName}"  style="height: 150px;width:150px;border-radius: 50px;">
+                  </div> 
               <div style="margin-top: 8%;">
+
+             
+
                 <div class="row">
 
                   <input type="text" class="form-control" id="id" placeholder="Enter your id"
@@ -125,7 +131,11 @@
                   </div>
                 </div>
 
-                
+                 <div class="col-md-6 mb-3">
+                  <label class="form-label">Profile</label>
+                  <input type="file" name="file"/>
+                </div>
+
 
                 <div class="row">
                   <div class="text-center">
@@ -136,6 +146,10 @@
                   </div>
                 </div>
             </form>
+
+
+
+
           </div>
         </div>
       </div>
@@ -246,6 +260,8 @@
         document.getElementById(gender).checked = true;
     });
 
+   
+    
 
 
 

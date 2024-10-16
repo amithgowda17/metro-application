@@ -19,6 +19,7 @@
              <h1 class="my-0">X-Workz</h1>
            </div>
           <div class="col-auto d-flex justify-content-end">
+            <img src="getImage/${details.fileName}" style="height: 50px;width:50px;border-radius: 50px;">
             <div class="dropdown">
          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 ${details.fname}
