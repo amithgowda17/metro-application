@@ -23,13 +23,12 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 
-
 @Slf4j
 @Service
 public class MetroServiceImpl implements MetroService {
 
 
-    private static String UPLOADED_FOLDER = "D://Project//metro-application//file_upload//";
+    private static String UPLOADED_FOLDER = "D://Project//file_upload//";
 
     @Autowired
     EmailSent emailSent;
@@ -54,10 +53,8 @@ public class MetroServiceImpl implements MetroService {
         } else if (registerationDto.getPassword().equals(registerationDto.getConfirmPassword())) {
 
             registerationDto.setPassword(encryptionDecryption.encrypt(registerationDto.getPassword()));
-
-                registerationDto.setFileName("dummy.png");
-                registerationDto.setFileContentType("image/png");
-
+            registerationDto.setFileName("dummy.png");
+            registerationDto.setFileContentType("image/png");
             RegisterEntity registerEntity = new RegisterEntity();
             BeanUtils.copyProperties(registerationDto, registerEntity);
 

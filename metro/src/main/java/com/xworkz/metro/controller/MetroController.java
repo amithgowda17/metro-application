@@ -27,7 +27,7 @@ import java.util.List;
 @RequestMapping("/")
 public class MetroController {
 
-    private static String path = "D://Project//metro-application//file_upload//";
+    private static String path = "D://Project//file_upload//";
 
     public MetroController() {
         System.out.println("MetroController object created");
