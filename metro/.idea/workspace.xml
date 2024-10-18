@@ -5,20 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0602b53b-9c99-4c49-979b-8a628a656a51" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../file_upload/1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../file_upload/2023-04-30 (3).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../file_upload/ManualtestingNotes.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../file_upload/Photo.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../file_upload/Screenshot (1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../file_upload/Signature.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../file_upload/WhatsApp Image 2023-05-11 at 11.48.26.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../file_upload/WhatsApp Image 2024-06-19 at 16.49.54_43b6dbba.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../file_upload/cert.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../file_upload/dummy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../file_upload/heapmemory.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../file_upload/jdk.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/MetroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/MetroController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/MetroServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/MetroServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/profileUpdate.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/profileUpdate.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
