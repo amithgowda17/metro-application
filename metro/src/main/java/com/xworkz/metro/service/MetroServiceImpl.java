@@ -104,7 +104,7 @@ public class MetroServiceImpl implements MetroService {
 
             log.info("ecrypt password in service login======" + registerationDto.getPassword());
 
-           registerationDto.setPassword(encryptionDecryption.decrypt(registerationDto.getPassword()));
+            registerationDto.setPassword(encryptionDecryption.decrypt(registerationDto.getPassword()));
 
             log.info("decrypt password in service login======" + registerationDto.getPassword());
 
@@ -171,11 +171,11 @@ public class MetroServiceImpl implements MetroService {
             String encryptOtp = encryptionDecryption.encrypt(otpSave);
 
             registerationDto.setOtp(encryptOtp);
-            log.info("===registerationDto.getOtp()===="+registerationDto.getOtp());
-            log.info("encrypted otp============"+encryptOtp);
+            log.info("===registerationDto.getOtp()====" + registerationDto.getOtp());
+            log.info("encrypted otp============" + encryptOtp);
 
-            RegisterEntity registerEntity=new RegisterEntity();
-            BeanUtils.copyProperties(registerationDto,registerEntity);
+            RegisterEntity registerEntity = new RegisterEntity();
+            BeanUtils.copyProperties(registerationDto, registerEntity);
             metroRepo.updateProfile(registerEntity);
             return true;
         }
@@ -221,42 +221,37 @@ public class MetroServiceImpl implements MetroService {
 
 
     @Override
-    public boolean saveEditedProfile(RegisterationDto registerationDto,  MultipartFile file) {
-        RegisterationDto registerationDto1 = findByEmailInService(registerationDto.getEmail());
-        if (registerationDto1 != null) {
+    public boolean saveEditedProfile(RegisterationDto registerationDto, MultipartFile file) {
+        RegisterationDto existingDto = findByEmailInService(registerationDto.getEmail());
+        RegisterEntity registerEntity = new RegisterEntity();
+
+        if (file != null && !file.isEmpty()) {
             try {
-                // Get the file and save it somewhere
+
                 byte[] bytes = file.getBytes();
                 Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
                 Files.write(path, bytes);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }if(registerationDto.getFileName()== null || registerationDto.getFileContentType()==null) {
-                registerationDto.setFileName(registerationDto1.getFileName());
-                registerationDto.setFileContentType(registerationDto1.getFileContentType());
 
-                RegisterEntity registerEntity = new RegisterEntity();
-                BeanUtils.copyProperties(registerationDto, registerEntity);
-
-                boolean isUpdated = metroRepo.updateProfile(registerEntity);
-                if (isUpdated) {
-                    return true;
-                }
-            }else{
                 registerationDto.setFileName(file.getOriginalFilename());
                 registerationDto.setFileContentType(file.getContentType());
+            } catch (IOException ignored) {
 
-                RegisterEntity registerEntity = new RegisterEntity();
-                BeanUtils.copyProperties(registerationDto, registerEntity);
+            }
+        } else {
 
-                boolean isUpdated = metroRepo.updateProfile(registerEntity);
-                if (isUpdated) {
-                    return true;
-                }
+            registerationDto.setFileName(existingDto.getFileName());
+            registerationDto.setFileContentType(existingDto.getFileContentType());
+
+
+            if (registerationDto.getFileName() == null ) {
+                registerationDto.setFileName("dummy.png");
+                registerationDto.setFileContentType("image/png");
             }
         }
-        return false;
 
+
+        BeanUtils.copyProperties(registerationDto, registerEntity);
+        return metroRepo.updateProfile(registerEntity);
     }
 
 }

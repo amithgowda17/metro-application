@@ -33,10 +33,10 @@
             <form action="updateDetails" method="post" enctype="multipart/form-data">
               <div  class="text-center">
                 <img src="getImage/${dto.fileName}"  style="height: 150px;width:150px;border-radius: 50px;">
-                  </div> 
+                  </div>
               <div style="margin-top: 8%;">
 
-             
+
 
                 <div class="row">
 
@@ -63,7 +63,7 @@
 
                   <div class="col-md-6 mb-3">
                     <label class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" 
+                    <input type="email" class="form-control" id="email"
                       placeholder="Enter your email" name="email" required value="${dto.email}" readonly>
                     <span id="emailExists"></span>
                   </div>
@@ -116,7 +116,7 @@
 
                 <div class="row">
                   <div class="col-md-6 mb-3">
-                    
+
                     <input type="password" class="form-control" id="password" required placeholder="Enter your password"
                       name="password"   value="${dto.password}" hidden>
                     <span id="pass"></span>
@@ -124,12 +124,14 @@
 
 
                   <div class="col-md-6 mb-3">
-                    
+
                     <input type="password" class="form-control" id="confirmPassword" required
                       placeholder="Confirm your password"  name="confirmPassword"   value="${dto.password}" hidden >
                     <span id="confirmPass"></span>
                   </div>
-                </div>
+
+                  <div>
+
 
                  <div class="col-md-6 mb-3">
                   <label class="form-label">Profile</label>
@@ -145,6 +147,10 @@
                                </button>
                   </div>
                 </div>
+</div>
+ </div>
+                </div>
+
             </form>
 
 
@@ -153,20 +159,24 @@
           </div>
         </div>
       </div>
-      </div>
+     
 
 
-<footer class="fixed-bottom">
-        <div  class="footer  bg-dark py-3 mt-auto">
-        <div class="container-fluid">
-          <div class="row justify-content-center">
-            <div class="col-md-6 text-center">
-              <p class="text-white mb-0">Copyright &copy; 2024, All Rights Reserved</p>
-            </div>
-          </div>
-        </div>
-        </div>
-      </footer>
+
+
+       <footer class="footer">
+                   <div  class="footer  bg-dark py-3 mt-auto">
+                           <div class="container-fluid">
+                             <div class="row justify-content-center">
+                               <div class="col-md-6 text-center">
+                                 <p class="text-white mb-0">Copyright &copy; 2024, All Rights Reserved</p>
+                               </div>
+                             </div>
+                           </div>
+                           </div>
+                 </footer>
+
+
 
       <script>
 

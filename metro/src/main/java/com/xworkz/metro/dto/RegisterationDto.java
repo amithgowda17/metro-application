@@ -75,4 +75,7 @@ public class RegisterationDto {
     private String fileName;
 
     private String fileContentType;
+
+
+
 }

@@ -36,7 +36,7 @@ ${details.fname}
    </header>
 
 
-
+<h6  style="color: green;">${details.fileName}</h6>
 <h6  style="color: green;">${msg}</h6>
 <h6 style="color: red;">${errMsg}</h6>
 <h6  style="color: green;">${successMsg}</h6>

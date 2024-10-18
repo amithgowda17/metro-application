@@ -210,10 +210,10 @@ public class MetroController {
         }
     }
 
-    @GetMapping("getImage/{imageName}")
-    public void viewImage(@PathVariable String imageName, Model model, HttpServletResponse httpServletResponse) {
+    @GetMapping("getImage/{fileName}")
+    public void viewImage(@PathVariable String fileName, Model model, HttpServletResponse httpServletResponse) {
 
-        File file1 = new File(path + imageName);
+        File file1 = new File(path + fileName);
 
         try {
             FileInputStream fileInputStream = new FileInputStream(file1);
