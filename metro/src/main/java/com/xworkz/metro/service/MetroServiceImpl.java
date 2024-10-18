@@ -55,8 +55,10 @@ public class MetroServiceImpl implements MetroService {
 
             registerationDto.setPassword(encryptionDecryption.encrypt(registerationDto.getPassword()));
 
-            RegisterEntity registerEntity = new RegisterEntity();
+                registerationDto.setFileName("dummy.png");
+                registerationDto.setFileContentType("image/png");
 
+            RegisterEntity registerEntity = new RegisterEntity();
             BeanUtils.copyProperties(registerationDto, registerEntity);
 
             boolean isSaved = metroRepo.register(registerEntity);
@@ -149,6 +151,8 @@ public class MetroServiceImpl implements MetroService {
 
                 registerationDto.setNoOfAttempts(0);
                 registerationDto.setAccountLocked(false);
+
+
                 registerationDto.setPassword(encryptionDecryption.encrypt(registerationDto.getPassword()));
                 BeanUtils.copyProperties(registerationDto, registerEntity);
 
@@ -227,7 +231,6 @@ public class MetroServiceImpl implements MetroService {
 
         if (file != null && !file.isEmpty()) {
             try {
-
                 byte[] bytes = file.getBytes();
                 Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
                 Files.write(path, bytes);
@@ -242,16 +245,11 @@ public class MetroServiceImpl implements MetroService {
             registerationDto.setFileName(existingDto.getFileName());
             registerationDto.setFileContentType(existingDto.getFileContentType());
 
-
-            if (registerationDto.getFileName() == null ) {
-                registerationDto.setFileName("dummy.png");
-                registerationDto.setFileContentType("image/png");
-            }
         }
-
 
         BeanUtils.copyProperties(registerationDto, registerEntity);
         return metroRepo.updateProfile(registerEntity);
     }
+
 
 }
