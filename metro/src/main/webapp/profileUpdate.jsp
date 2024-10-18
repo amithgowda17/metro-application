@@ -28,7 +28,7 @@
 
       <div class="container my-4" style="width: 35%;">
         <div class="card form-card mb-3">
-          <div class= "p-3 mb-2 bg-light-subtle text-light-emphasis">
+          <div class="p-3 mb-2 bg-light-subtle text-light-emphasis">
 
             <form action="updateDetails" method="post" enctype="multipart/form-data">
               <div class="text-center">
@@ -90,14 +90,14 @@
                   <div class="col-md-6 mb-3">
                     <label class="form-label">Gender</label>
                     <div>
-                      <input type="radio" id="male" name="gender" value=" ${dto.gender == 'female' ? 'checked' : ''}>">
+                      <input type="radio" id="male" name="gender" value="male" ${dto.gender=='male' ? 'checked' : '' }>
                       <label for="male">Male</label>
-                      <input type="radio" id="female" name="gender"
-                        value=" ${dto.gender == 'female' ? 'checked' : ''} ">
-                      <label for="male">Female</label>
-                      <span id="genderError"></span>
+                      <input type="radio" id="female" name="gender" value="female" ${dto.gender=='female' ? 'checked'
+                        : '' }>
+                      <label for="female">Female</label>
                     </div>
                   </div>
+
                 </div>
 
                 <div class="row">
@@ -256,13 +256,12 @@
           console.log(response.data)
         }
 
-        document.addEventListener("DOMContentLoaded", function () {
 
+
+        document.addEventListener("DOMContentLoaded", function () {
           const gender = "${dto.gender}";
           document.getElementById(gender).checked = true;
         });
-
-
 
 
 

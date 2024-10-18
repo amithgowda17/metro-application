@@ -226,7 +226,7 @@ public class MetroServiceImpl implements MetroService {
         RegisterationDto existingDto = findByEmailInService(registerationDto.getEmail());
         RegisterEntity registerEntity = new RegisterEntity();
 
-        if (file != null && !file.isEmpty()) {
+        if (file != null && !file.isEmpty() ) {
             try {
                 byte[] bytes = file.getBytes();
                 Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
@@ -243,9 +243,11 @@ public class MetroServiceImpl implements MetroService {
             registerationDto.setFileContentType(existingDto.getFileContentType());
 
         }
-
-        BeanUtils.copyProperties(registerationDto, registerEntity);
-        return metroRepo.updateProfile(registerEntity);
+        if(registerationDto!=null) {
+            BeanUtils.copyProperties(registerationDto, registerEntity);
+            return metroRepo.updateProfile(registerEntity);
+        }
+        return false;
     }
 
 
