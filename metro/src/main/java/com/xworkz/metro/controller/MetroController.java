@@ -128,6 +128,11 @@ public class MetroController {
         }
     }
 
+    @GetMapping("loginOut")
+    public String getLogout() {
+        return "login";
+    }
+
 
     @GetMapping("forgotPassword")
 
@@ -137,7 +142,7 @@ public class MetroController {
     }
 
 
-    @GetMapping("otp")
+    @PostMapping("otp")
     public String generateOtp(@RequestParam String email, String otp, Model model) {
         if (email != null) {
             RegisterationDto registerationDto = metroService.findByEmailInService(email);

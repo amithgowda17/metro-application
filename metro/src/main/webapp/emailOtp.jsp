@@ -39,7 +39,7 @@
             <div class="p-3 bg-light.bg-gradient">
             <div class="card-body ">
 
-<form action="otp" method="get">
+<form action="otp" method="post">
     <div class="mb-3">
       <h6 style="color: red;text-align: center;">${blockedMessage}</h6>
         <label for="formGroupExampleInput2" class="form-label">Enter Email</label>

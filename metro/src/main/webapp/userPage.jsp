@@ -9,31 +9,31 @@
     </head>
 <body>
 
-   <header class="header">
-       <div class="container-fluid bg-black text-white">
-         <div class="row align-items-center">
-           <div class="col-auto">
-             <img src="https://www.x-workz.in/Logo.png" alt="Logo" height="50px">
-           </div>
-           <div class="col text-center d-flex justify-content-center">
-             <h1 class="my-0">X-Workz</h1>
-           </div>
-          <div class="col-auto d-flex justify-content-end">
-            <img src="getImage/${details.fileName}" style="height: 50px;width:50px;border-radius: 50px;">
-            <div class="dropdown">
-         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-${details.fname}
-              </button>
+  <header class="header">
+      <div class="container-fluid bg-black text-white">
+          <div class="row align-items-center">
+              <div class="col-auto">
+                  <img src="https://www.x-workz.in/Logo.png" alt="Logo" height="50px">
+              </div>
+              <div class="col text-center d-flex justify-content-center">
+                  <h1 class="my-0">X-Workz</h1>
+              </div>
+              <div class="col-auto d-flex align-items-center justify-content-end">
+                  <img src="getImage/${details.fileName}" style="height: 50px; width: 50px; border-radius: 50%;">
+                  <div class="dropdown ms-2">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          ${details.fname}
+                      </button>
+                      <ul class="dropdown-menu">
+                          <li class="bg-white text-dark"><a class="dropdown-item" href="profileUpdate?email=${details.email}">Profile</a></li>
+                          <li class="bg-white text-dark"><a class="dropdown-item" href="loginOut">Logout</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </header>
 
-              <ul class="dropdown-menu">
-                <li class="bg-white text-dark"><a class="dropdown-item" href="profileUpdate?email=${details.email}">Profile</li>
-                <li class="bg-white text-dark"><a class="dropdown-item"  href="loginPage">Logout</a></li>
-              </ul>
-            </div>
-         </div>
-       </div>
-     </div>
-   </header>
 
 
 <h6  style="color: green;">${details.fileName}</h6>
