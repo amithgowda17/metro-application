@@ -117,44 +117,30 @@ public class MetroServiceImpl implements MetroService {
 
                 registerationDto.setNoOfAttempts(registerationDto.getNoOfAttempts() + 1);
 
-                BeanUtils.copyProperties(registerationDto, registerEntity);
-
-                metroRepo.updateProfile(registerEntity);
-
                 if (registerationDto.getNoOfAttempts() >= 3) {
 
                     registerationDto.setAccountLocked(true);
 
-                    BeanUtils.copyProperties(registerationDto, registerEntity);
-
-                    metroRepo.updateProfile(registerEntity);
                 }
+                BeanUtils.copyProperties(registerationDto, registerEntity);
+
+                metroRepo.updateProfile(registerEntity);
                 return "invalid password";
             } else {
                 log.info("decrypt password in service login======" + registerationDto.getPassword());
                 log.info("logging in===========");
-
                 loginDto.setLoginDate(LocalDate.now().toString());
                 loginDto.setLoginTime(LocalTime.now().toString());
                 loginDto.setLogoutTime(null);
-
                 loginDto.setPassword(encryptionDecryption.encrypt(loginDto.getPassword()));
-
                 LoginEntity loginEntity = new LoginEntity();
-
                 BeanUtils.copyProperties(loginDto, loginEntity);
-
                 metroRepo.login(loginEntity);
-
                 registerationDto.setNoOfAttempts(0);
                 registerationDto.setAccountLocked(false);
-
-
                 registerationDto.setPassword(encryptionDecryption.encrypt(registerationDto.getPassword()));
                 BeanUtils.copyProperties(registerationDto, registerEntity);
-
                 metroRepo.updateProfile(registerEntity);
-
                 return "login successfull";
 
             }
@@ -170,11 +156,9 @@ public class MetroServiceImpl implements MetroService {
         if (registerationDto != null) {
             String otpSave = emailSent.emailSend(email);
             String encryptOtp = encryptionDecryption.encrypt(otpSave);
-
             registerationDto.setOtp(encryptOtp);
             log.info("===registerationDto.getOtp()====" + registerationDto.getOtp());
             log.info("encrypted otp============" + encryptOtp);
-
             RegisterEntity registerEntity = new RegisterEntity();
             BeanUtils.copyProperties(registerationDto, registerEntity);
             metroRepo.updateProfile(registerEntity);
@@ -241,12 +225,12 @@ public class MetroServiceImpl implements MetroService {
 
             registerationDto.setFileName(existingDto.getFileName());
             registerationDto.setFileContentType(existingDto.getFileContentType());
-
         }
         if(registerationDto!=null) {
             BeanUtils.copyProperties(registerationDto, registerEntity);
             return metroRepo.updateProfile(registerEntity);
         }
+
         return false;
     }
 
