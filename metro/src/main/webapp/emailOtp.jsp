@@ -58,7 +58,7 @@
     </form>
     
    
-      <form action="verifyOtp" method="get">
+      <form action="verifyOtp" method="post">
       <div class="mb-3">
 
         <input type="email" class="form-control" placeholder="Enter your email" name="email" value="${emailDto.email}" hidden>

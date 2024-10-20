@@ -160,7 +160,7 @@ public class MetroController {
 
     }
 
-    @GetMapping("verifyOtp")
+    @PostMapping("verifyOtp")
     public String verifyOtp(@RequestParam String email, @RequestParam String optEntered, Model model) {
         if (email != null || optEntered != null) {
             RegisterationDto registerationDto = metroService.findByEmailInService(email);
