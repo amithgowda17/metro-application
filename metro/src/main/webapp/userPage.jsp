@@ -1,64 +1,200 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
     <%@ page isELIgnored="false" %>
 
-<html>
-    <head>
-        <title>Login</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    </head>
-<body>
+        <html>
 
-  <header class="header">
-      <div class="container-fluid bg-black text-white">
-          <div class="row align-items-center">
-              <div class="col-auto">
-                  <img src="https://www.x-workz.in/Logo.png" alt="Logo" height="50px">
-              </div>
-              <div class="col text-center d-flex justify-content-center">
-                  <h1 class="my-0">X-Workz</h1>
-              </div>
-              <div class="col-auto d-flex align-items-center justify-content-end">
-                  <img src="getImage/${details.fileName}" style="height: 50px; width: 50px; border-radius: 50%;">
-                  <div class="dropdown ms-2">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          ${details.fname}
-                      </button>
-                      <ul class="dropdown-menu">
-                          <li class="bg-white text-dark"><a class="dropdown-item" href="profileUpdate?email=${details.email}">Profile</a></li>
-                          <li class="bg-white text-dark"><a class="dropdown-item" href="loginOut">Logout</a></li>
-                      </ul>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </header>
+        <head>
+            <title>Login</title>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        </head>
 
+        <body>
 
+            <header class="header">
+                <div class="container-fluid bg-black text-white">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <img src="https://www.x-workz.in/Logo.png" alt="Logo" height="50px">
+                        </div>
+                        <div class="col text-center d-flex justify-content-center">
+                            <button type="button" class="btn btn-success me-5" data-bs-toggle="modal"
+                                data-bs-target="#modal1">Add Location</button>
+                            <button type="button" class="btn btn-success me-5" data-bs-toggle="modal"
+                                data-bs-target="#modal2">Add Timings</button>
+                            <button type="button" class="btn btn-success me-5" data-bs-toggle="modal"
+                                data-bs-target="#modal3">Add Price List</button>
+                            <button type="button" class="btn btn-success me-5" data-bs-toggle="modal"
+                                data-bs-target="#modal4">Add Train</button>
+                        </div>
+                        <div class="col-auto d-flex align-items-center justify-content-end">
+                            <img src="getImage/${details.fileName}"
+                                style="height: 50px; width: 50px; border-radius: 50%;">
+                            <div class="dropdown ms-2">
+                                <button class="btn btn-secondary dropdown-toggle" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    ${details.fname}
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li class="bg-white text-dark"><a class="dropdown-item"
+                                            href="profileUpdate?email=${details.email}">Profile</a></li>
+                                    <li class="bg-white text-dark"><a class="dropdown-item" href="loginOut">Logout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
 
-<h6  style="color: green;">${details.fileName}</h6>
-<h6  style="color: green;">${msg}</h6>
-<h6 style="color: red;">${errMsg}</h6>
-<h6  style="color: green;">${successMsg}</h6>
+            <h6 style="color: green;">${details.fileName}</h6>
+            <h6 style="color: green;">${msg}</h6>
+            <h6 style="color: red;">${errMsg}</h6>
+            <h6 style="color: green;">${successMsg}</h6>
 
+            <!-- Modals -->
+            <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal1Label">Add Location</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="locationName" class="form-label">Metro Type</label>
+                                    <input type="text" class="form-control" id="type" name="type" required>
+                                </div>
 
-<footer class="fixed-bottom">
-        <div  class="footer  bg-dark py-3 mt-auto">
-        <div class="container-fluid">
-          <div class="row justify-content-center">
-            <div class="col-md-6 text-center">
-              <p class="text-white mb-0">Copyright &copy; 2024, All Rights Reserved</p>
+                                <div class="mb-3">
+                                    <label for="locationName" class="form-label">Location Name</label>
+                                    <input type="text" class="form-control" id="locationName" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
 
-        </div>
-        </div>
-      </footer>
+            <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modal2Label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal2Label">Add Timings</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="locationName" class="form-label">Source Station</label>
+                                    <input type="text" class="form-control" id="source" name="source" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="locationName" class="form-label">Destination</label>
+                                    <input type="text" class="form-control" id="destination" name="destination"
+                                        required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="locationName" class="form-label">Metro type</label>
+                                    <input type="text" class="form-control" id="type" name="type" required>
+                                </div>
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-</body>
-</html>
+            <div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="modal3Label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal3Label">Add Price List</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="locationName" class="form-label">Source Station</label>
+                                    <input type="text" class="form-control" id="source" name="source" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="locationName" class="form-label">Destination</label>
+                                    <input type="text" class="form-control" id="destination" name="destination"
+                                        required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="locationName" class="form-label">Metro Type</label>
+                                    <input type="text" class="form-control" id="type" name="type" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="locationName" class="form-label">Add Price</label>
+                                    <input type="text" class="form-control" id="price" name="price" required>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modal4" tabindex="-1" aria-labelledby="modal4Label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal4Label">Add Train</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="trainDetails" class="form-label">Train Details</label>
+                                    <input type="text" class="form-control" id="trainDetails" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="trainDetails" class="form-label">Train Number</label>
+                                    <input type="text" class="form-control" id="trainNumber" name="trainNumber"
+                                        required>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="fixed-bottom">
+                <div class="footer bg-dark py-3 mt-auto">
+                    <div class="container-fluid">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 text-center">
+                                <p class="text-white mb-0">Copyright &copy; 2024, All Rights Reserved</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+                integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+                crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+                integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+                crossorigin="anonymous"></script>
+
+        </body>
+
+        </html>
