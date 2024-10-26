@@ -52,7 +52,7 @@
             <h6 style="color: red;">${errMsg}</h6>
             <h6 style="color: green;">${successMsg}</h6>
 
-            <!-- Modals -->
+
             <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -61,15 +61,15 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form action="addLocation?email=${details.email}" method="post">
                                 <div class="mb-3">
                                     <label for="locationName" class="form-label">Metro Type</label>
-                                    <input type="text" class="form-control" id="type" name="type" required>
+                                    <input type="text" class="form-control" id="type" name="metroType" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="locationName" class="form-label">Location Name</label>
-                                    <input type="text" class="form-control" id="locationName" required>
+                                    <input type="text" class="form-control" id="locationName" name="locationName" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
@@ -86,21 +86,31 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form action="addTimings?email=${details.email}" method="post">
                                 <div class="mb-3">
                                     <label for="locationName" class="form-label">Source Station</label>
-                                    <input type="text" class="form-control" id="source" name="source" required>
+                                    <input type="text" class="form-control" id="source" name="sourceStation" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="locationName" class="form-label">Destination</label>
-                                    <input type="text" class="form-control" id="destination" name="destination"
+                                    <input type="text" class="form-control" id="destination" name="destinationStation"
                                         required>
                                 </div>
 
                                 <div class="mb-3">
+                                    <label for="locationName" class="form-label">From</label>
+                                    <input type="time" class="form-control" id="from" name="fromTimings" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="locationName" class="form-label">To</label>
+                                    <input type="time" class="form-control" id="to" name="toTimings" required>
+                                </div>
+
+                                <div class="mb-3">
                                     <label for="locationName" class="form-label">Metro type</label>
-                                    <input type="text" class="form-control" id="type" name="type" required>
+                                    <input type="text" class="form-control" id="type" name="metroType" required>
                                 </div>
 
 
@@ -120,26 +130,26 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form action="addPrice?email=${details.email}" method="post">
                                 <div class="mb-3">
                                     <label for="locationName" class="form-label">Source Station</label>
-                                    <input type="text" class="form-control" id="source" name="source" required>
+                                    <input type="text" class="form-control" id="source" name="sourceStation" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="locationName" class="form-label">Destination</label>
-                                    <input type="text" class="form-control" id="destination" name="destination"
+                                    <input type="text" class="form-control" id="destination" name="destinationStation"
                                         required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="locationName" class="form-label">Metro Type</label>
-                                    <input type="text" class="form-control" id="type" name="type" required>
+                                    <input type="text" class="form-control" id="type" name="metroType" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="locationName" class="form-label">Add Price</label>
-                                    <input type="text" class="form-control" id="price" name="price" required>
+                                    <input type="text" class="form-control" id="price" name="addPrice" required>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -157,15 +167,15 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form action="addMetro?email=${details.email}" method="post">
                                 <div class="mb-3">
-                                    <label for="trainDetails" class="form-label">Train Details</label>
-                                    <input type="text" class="form-control" id="trainDetails" required>
+                                    <label for="trainDetails" class="form-label">Metro Type</label>
+                                    <input type="text" class="form-control" id="metroType" required>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="trainDetails" class="form-label">Train Number</label>
-                                    <input type="text" class="form-control" id="trainNumber" name="trainNumber"
+                                    <label for="trainDetails" class="form-label">Metro Number</label>
+                                    <input type="text" class="form-control" id="metroNumber" name="trainNumber"
                                         required>
                                 </div>
 

@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -42,25 +43,9 @@ public class MetroController {
     }
 
 
-    @GetMapping("registerPage")
-    public String registerPage() {
-        return "register";
-    }
-
-    @GetMapping("loginPage")
-    public String loginPage() {
-        return "login";
-    }
-
-    @GetMapping("getUserPage")
-    public String getUserPage(String email, Model model) {
-        RegisterationDto registerationDto = metroService.findByEmailInService(email);
-        model.addAttribute("details", registerationDto);
-        return "userPage";
-    }
 
     @PostMapping("register")
-    public String register(@Valid RegisterationDto registerationDto, BindingResult bindingResult, Model model) {
+    public String register(@Valid RegisterationDto registerationDto, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
 
@@ -69,10 +54,15 @@ public class MetroController {
         }
         String successMsg = metroService.registerInService(registerationDto);
         model.addAttribute("msg", successMsg);
-        return "register";
-
-
+        redirectAttributes.getFlashAttributes();
+        return "redirect:/registerPage";
     }
+
+    @GetMapping("registerPage")
+    public String registerPage() {
+        return "register";
+    }
+
 
     @GetMapping("isEmailExists")
     public ResponseEntity<String> emailExists(@RequestParam String email) {
@@ -102,7 +92,7 @@ public class MetroController {
 
 
     @PostMapping("login")
-    public String login(@Valid LoginDto loginDto, BindingResult bindingResult, Model model) {
+    public String login(@Valid LoginDto loginDto, BindingResult bindingResult, Model model,RedirectAttributes redirectAttributes) {
 
         RegisterationDto registerationDto = metroService.findByEmailInService(loginDto.getEmail());
 
@@ -117,14 +107,28 @@ public class MetroController {
             if (message.equals("invalid password")) {
                 model.addAttribute("enteredEmail", loginDto.getEmail());
                 model.addAttribute("loginErrMsg", message);
-                return "login";
+                redirectAttributes.getFlashAttributes();
+                return "redirect:/loginPage";
             } else {
                 model.addAttribute("details", registerationDto);
                 model.addAttribute("successMsg", message);
                 log.info("registerDto====" + registerationDto);
-                return "userPage";
+                redirectAttributes.getFlashAttributes();
+                return "redirect:/getUserPage?email=" + registerationDto.getEmail();
             }
         }
+    }
+
+    @GetMapping("loginPage")
+    public String loginPage() {
+        return "login";
+    }
+
+    @GetMapping("getUserPage")
+    public String getUserPage(String email, Model model) {
+        RegisterationDto registerationDto = metroService.findByEmailInService(email);
+        model.addAttribute("details", registerationDto);
+        return "userPage";
     }
 
     @GetMapping("loginOut")
