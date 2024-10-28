@@ -88,36 +88,31 @@
 
 
                   <div class="col-md-6 mb-3">
-                    <label class="form-label">Gender</label>
-                    <div>
-                      <input type="radio" id="male" name="gender" value="male" ${dto.gender=='male' ? 'checked' : '' }>
-                      <label for="male">Male</label>
-                      <input type="radio" id="female" name="gender" value="female" ${dto.gender=='female' ? 'checked'
-                        : '' }>
-                      <label for="female">Female</label>
-                    </div>
-                  </div>
-
-                </div>
-
-                <div class="row">
-                  <div class="col-md-6 mb-3">
                     <label class="form-label">City</label>
                     <input type="text" class="form-control" id="city" required placeholder="Enter your city"
                       onchange="cityName()" name="city" value="${dto.city}">
                     <span id="cityName"></span>
                   </div>
+                </div>
 
-
+                <div class="row">
                   <div class="col-md-6 mb-3">
                     <label class="form-label">Pincode</label>
                     <input type="number" class="form-control" id="pinCode" required placeholder="Enter your pincode"
                       name="pinCode" onchange="pinCodeValid()" value="${dto.pinCode}">
                     <span id="pin"></span>
                   </div>
+
+
+
+
+                  <div class="col-md-6 mb-3">
+
+                    <label class="form-label">Profile</label>
+                    <input type="file" name="file" />
+                  </div>
                 </div>
               </div>
-
               <div class="row">
                 <div class="col-md-6 mb-3">
 
@@ -135,10 +130,7 @@
                 </div>
               </div>
 
-              <div class="col-md-6 mb-3">
-                <label class="form-label">Profile</label>
-                <input type="file" name="file" />
-              </div>
+
 
               <div class="row">
                 <div class="text-center">
@@ -257,11 +249,6 @@
         }
 
 
-
-        document.addEventListener("DOMContentLoaded", function () {
-          const gender = "${dto.gender}";
-          document.getElementById(gender).checked = true;
-        });
 
 
 

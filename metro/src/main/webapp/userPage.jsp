@@ -99,12 +99,12 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="locationName" class="form-label">From</label>
+                                    <label for="locationName" class="form-label">Arrival Time</label>
                                     <input type="time" class="form-control" id="from" name="fromTimings" required>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="locationName" class="form-label">To</label>
+                                    <label for="locationName" class="form-label">End Time</label>
                                     <input type="time" class="form-control" id="to" name="toTimings" required>
                                 </div>
 
@@ -112,6 +112,17 @@
                                     <label for="locationName" class="form-label">Metro type</label>
                                     <input type="text" class="form-control" id="type" name="metroType" required>
                                 </div>
+
+                                <div class="mb-3">
+                                                                    <label for="locationName" class="form-label">From</label>
+                                                                    <input type="text" class="form-control"  name="from" required>
+                                                                </div>
+
+                                                                <div class="mb-3">
+                                                                    <label for="locationName" class="form-label">To</label>
+                                                                    <input type="text" class="form-control" name="to" required>
+                                                                </div>
+
 
 
 
@@ -170,12 +181,12 @@
                             <form action="addMetro?email=${details.email}" method="post">
                                 <div class="mb-3">
                                     <label for="trainDetails" class="form-label">Metro Type</label>
-                                    <input type="text" class="form-control" id="metroType" required>
+                                    <input type="text" class="form-control" id="metroType" name="metroType" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="trainDetails" class="form-label">Metro Number</label>
-                                    <input type="text" class="form-control" id="metroNumber" name="trainNumber"
+                                    <input type="text" class="form-control" id="metroNumber" name="metroNumber"
                                         required>
                                 </div>
 

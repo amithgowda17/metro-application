@@ -105,9 +105,8 @@ public class MetroController {
         } else {
             String message = metroService.loginDetails(loginDto);
             if (message.equals("invalid password")) {
-                model.addAttribute("enteredEmail", loginDto.getEmail());
-                model.addAttribute("loginErrMsg", message);
-                redirectAttributes.getFlashAttributes();
+                redirectAttributes.addFlashAttribute("loginErrMsg", message);
+                redirectAttributes.addFlashAttribute("enteredEmail", loginDto.getEmail());
                 return "redirect:/loginPage";
             } else {
                 model.addAttribute("details", registerationDto);
