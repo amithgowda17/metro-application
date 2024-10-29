@@ -257,7 +257,7 @@
         }
 
 
-        const dto = { gender: value };
+        const dto = { gender:"${dto.gender}"};
         document.getElementById(dto.gender).checked = true;
 
 

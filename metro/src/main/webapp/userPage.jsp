@@ -91,12 +91,12 @@
                                     <label for="source" class="form-label">Source Station</label>
                                     <input type="text" class="form-control" id="source" name="sourceStation" required>
                                 </div>
-            
+
                                 <div class="mb-3">
                                     <label for="destination" class="form-label">Destination</label>
                                     <input type="text" class="form-control" id="destination" name="destinationStation" required>
                                 </div>
-            
+
                                 <div class="row mb-3">
                                     <div class="col">
                                         <label for="from" class="form-label">Arrival Time</label>
@@ -107,12 +107,12 @@
                                         <input type="time" class="form-control" id="to" name="toTimings" required>
                                     </div>
                                 </div>
-            
+
                                 <div class="mb-3">
                                     <label for="type" class="form-label">Metro type</label>
                                     <input type="text" class="form-control" id="type" name="metroType" required>
                                 </div>
-            
+
                                 <div class="row mb-3">
                                     <div class="col">
                                         <label for="fromLocation" class="form-label">From</label>
@@ -123,7 +123,7 @@
                                         <input type="text" class="form-control" id="toLocation" name="to" required>
                                     </div>
                                 </div>
-            
+
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
                         </div>
@@ -214,7 +214,8 @@
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
                 integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
                 crossorigin="anonymous"></script>
-
+                <script>
+           </script>
         </body>
 
         </html>
