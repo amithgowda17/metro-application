@@ -5,5 +5,5 @@ import com.xworkz.metro.entity.AddTimingsEntity;
 
 public interface AddTimingsRepo {
 
-    void addTimings(AddTimingsEntity addTimingsEntity);
+    boolean addTimings(AddTimingsEntity addTimingsEntity);
 }

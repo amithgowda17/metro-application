@@ -14,11 +14,14 @@ public class AddTimingsServiceImpl implements AddTimingsService{
     AddTimingsRepo addTimingsRepo;
 
     @Override
-    public void addTimings(AddTimingsDto addTimingsDto) {
+    public String addTimings(AddTimingsDto addTimingsDto) {
 
         AddTimingsEntity addTimingsEntity=new AddTimingsEntity();
         BeanUtils.copyProperties(addTimingsDto,addTimingsEntity);
-        addTimingsRepo.addTimings(addTimingsEntity);
-
+        boolean isSaved = addTimingsRepo.addTimings(addTimingsEntity);
+        if (isSaved){
+            return "data added successfully";
+        }
+        return "data not saved";
     }
 }

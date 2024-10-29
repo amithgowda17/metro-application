@@ -2,6 +2,7 @@
   <%@ page isELIgnored="false" %>
 
     <html>
+
     <head>
       <title>Register</title>
       <link rel="icon" href="https://www.x-workz.in/Logo.png">
@@ -11,27 +12,27 @@
 
     <body>
 
-          <header class="header">
-             <div class="container-fluid bg-secondary-subtle">
-               <div class="row align-items-center">
-                 <div class="col-auto">
-                   <img src="https://www.x-workz.in/Logo.png" alt="Logo" height="50px">
-                 </div>
-                 <div class="col text-center d-flex justify-content-center">
-                   <h1 class="my-0">X-Workz</h1>
-                 </div>
-                 <div class="col-auto d-flex align-items-center">
+      <header class="header">
+        <div class="container-fluid bg-secondary-subtle">
+          <div class="row align-items-center">
+            <div class="col-auto">
+              <img src="https://www.x-workz.in/Logo.png" alt="Logo" height="50px">
+            </div>
+            <div class="col text-center d-flex justify-content-center">
+              <h1 class="my-0">X-Workz</h1>
+            </div>
+            <div class="col-auto d-flex align-items-center">
 
-                   <button type="button" class="btn btn-primary me-2">
-                                         <a href="indexPage" style="text-decoration: none; color: white;">Home</a>
-                                       </button>
-                   <button type="button" class="btn btn-primary">
-                     <a href="loginPage" style="text-decoration: none; color: white;">Login</a>
-                   </button>
-                 </div>
-               </div>
-             </div>
-           </header>
+              <button type="button" class="btn btn-primary me-2">
+                <a href="indexPage" style="text-decoration: none; color: white;">Home</a>
+              </button>
+              <button type="button" class="btn btn-primary">
+                <a href="loginPage" style="text-decoration: none; color: white;">Login</a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
 
 
       <div class="container my-4" style="width: 35%;">
@@ -48,8 +49,7 @@
 
                   <span id="formMessage"></span>
 
-                  <input type="text" class="form-control" id="id" placeholder="Enter your id"
-                                         name="id" hidden>
+                  <input type="text" class="form-control" id="id" placeholder="Enter your id" name="id" hidden>
 
 
                   <div class="col-md-6 mb-3">
@@ -98,11 +98,11 @@
                   <div class="col-md-6 mb-3">
                     <label class="form-label">Gender</label>
                     <div>
-                      <input type="radio" id="male" name="gender" value="male" >
-                       <label for="male">Male</label>
-                       <input type="radio" id="female" name="gender" value="female" >
-                       <label for="male">Female</label>
-                       <span id="genderError"></span>
+                      <input type="radio" id="male" name="gender" value="male">
+                      <label for="male">Male</label>
+                      <input type="radio" id="female" name="gender" value="female">
+                      <label for="female">Female</label>
+                      <span id="genderError"></span>
                     </div>
                   </div>
                 </div>
@@ -116,57 +116,57 @@
                   </div>
 
 
-                 <div class="col-md-6 mb-3">
-                                   <label class="form-label">Pincode</label>
-                                   <input type="number" class="form-control" id="pinCode" required placeholder="Enter your pincode"
-                                     name="pinCode" onchange="pinCodeValid()">
-                                   <span id="pin"></span>
-                                 </div>
-                               </div>
-                </div>
-
-                <div class="row">
                   <div class="col-md-6 mb-3">
-                    <label class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" required placeholder="Enter your password"
-                      name="password" onchange="passwordEntry()">
-                    <span id="pass"></span>
-                  </div>
-
-
-                  <div class="col-md-6 mb-3">
-                    <label class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirmPassword" required
-                      placeholder="Confirm your password" onblur="confirm()" name="confirmPassword">
-                    <span id="confirmPass"></span>
+                    <label class="form-label">Pincode</label>
+                    <input type="number" class="form-control" id="pinCode" required placeholder="Enter your pincode"
+                      name="pinCode" onchange="pinCodeValid()">
+                    <span id="pin"></span>
                   </div>
                 </div>
+              </div>
 
-                <div class="row">
-                  <div class="text-center">
-                    <button id="button" type="submit" class="btn btn-primary">Register</button>
-                    <button type="reset" class="btn btn-primary">Reset</button>
-                    <div class="mt-2">
-                      Already have an account? <a href="loginPage" style="text-decoration: none;">Login</a>
-                    </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Password</label>
+                  <input type="password" class="form-control" id="password" required placeholder="Enter your password"
+                    name="password" onchange="passwordEntry()">
+                  <span id="pass"></span>
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Confirm Password</label>
+                  <input type="password" class="form-control" id="confirmPassword" required
+                    placeholder="Confirm your password" onblur="confirm()" name="confirmPassword">
+                  <span id="confirmPass"></span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="text-center">
+                  <button id="button" type="submit" class="btn btn-primary">Register</button>
+                  <button type="reset" class="btn btn-primary">Reset</button>
+                  <div class="mt-2">
+                    Already have an account? <a href="loginPage" style="text-decoration: none;">Login</a>
                   </div>
                 </div>
+              </div>
             </form>
           </div>
         </div>
       </div>
       </div>
 
-<footer>
-        <div  class="footer  bg-dark py-3 mt-auto">
-        <div class="container-fluid">
-          <div class="row justify-content-center">
-            <div class="col-md-6 text-center">
-              <p class="text-white mb-0">Copyright &copy; 2024, All Rights Reserved</p>
+      <footer>
+        <div class="footer  bg-dark py-3 mt-auto">
+          <div class="container-fluid">
+            <div class="row justify-content-center">
+              <div class="col-md-6 text-center">
+                <p class="text-white mb-0">Copyright &copy; 2024, All Rights Reserved</p>
+              </div>
             </div>
-          </div>
 
-        </div>
+          </div>
         </div>
       </footer>
 
@@ -177,7 +177,7 @@
           console.log(names)
           var button = document.getElementById("button");
 
-          if (names.trim() !== '' && names.length >3&& names.length <= 25) {
+          if (names.trim() !== '' && names.length > 3 && names.length <= 25) {
             document.getElementById("firstName").innerHTML = "";
             button.removeAttribute("Disabled");
           } else {
@@ -220,21 +220,21 @@
         }
 
         function pinCodeValid() {
-                 var names = document.getElementById("pinCode").value;
-                 console.log(names.length)
-                 var button = document.getElementById("button");
+          var names = document.getElementById("pinCode").value;
+          console.log(names.length)
+          var button = document.getElementById("button");
 
-                 if (names.trim() !== '' && names.length == 6) {
-                   document.getElementById("pin").innerHTML = "";
-                   button.removeAttribute("Disabled");
-                 } else {
-                   document.getElementById("pin").innerHTML = "<span style='color:red;'>Invalid Pincode</span>";
-                   button.setAttribute("Disabled", "");
-                   console.log("invalid")
-                   return;
-                 }
+          if (names.trim() !== '' && names.length == 6) {
+            document.getElementById("pin").innerHTML = "";
+            button.removeAttribute("Disabled");
+          } else {
+            document.getElementById("pin").innerHTML = "<span style='color:red;'>Invalid Pincode</span>";
+            button.setAttribute("Disabled", "");
+            console.log("invalid")
+            return;
+          }
 
-               }
+        }
 
         function passwordEntry() {
 
@@ -326,30 +326,30 @@
           var phNo = document.getElementById("phNo").value;
           var password = document.getElementById("password").value;
           var confirmPassword = document.getElementById("confirmPassword").value;
-var maleChecked = document.getElementById("male").checked;
-    var femaleChecked = document.getElementById("female").checked;
+          var maleChecked = document.getElementById("male").checked;
+          var femaleChecked = document.getElementById("female").checked;
           var button = document.getElementById("button");
 
 
           if (
-            fName.trim() !== "" && fName.length >3&& fName.length <= 25 &&
+            fName.trim() !== "" && fName.length > 3 && fName.length <= 25 &&
             lName.trim() !== "" && lName.length > 0 &&
-            lName.length <= 25 &&city.trim() !== "" &&
-            city.length > 4 &&city.length <= 25 &&
-            email.trim() !== "" &&phNo.trim() !== "" &&
-            phNo.length == 10 &&password.trim() !== "" &&
-            password.length >= 8 && password === confirmPassword 
+            lName.length <= 25 && city.trim() !== "" &&
+            city.length > 4 && city.length <= 25 &&
+            email.trim() !== "" && phNo.trim() !== "" &&
+            phNo.length == 10 && password.trim() !== "" &&
+            password.length >= 8 && password === confirmPassword
           ) {
-            if(maleChecked || femaleChecked){
-              document.getElementById("formMessage").innerHTML ="";
-            button.removeAttribute("disabled");
-            }else{
-              document.getElementById("formMessage").innerHTML ="<span style='color:red;'>Please fill the form correctly</span>";
+            if (maleChecked || femaleChecked) {
+              document.getElementById("formMessage").innerHTML = "";
+              button.removeAttribute("disabled");
+            } else {
+              document.getElementById("formMessage").innerHTML = "<span style='color:red;'>Please fill the form correctly</span>";
               button.setAttribute("disabled", "");
             }
-            
+
           } else {
-            document.getElementById("formMessage").innerHTML ="<span style='color:red;'>Please fill the form correctly</span>";
+            document.getElementById("formMessage").innerHTML = "<span style='color:red;'>Please fill the form correctly</span>";
             button.setAttribute("disabled", "");
           }
         }

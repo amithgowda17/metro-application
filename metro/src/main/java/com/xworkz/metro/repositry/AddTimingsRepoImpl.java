@@ -15,7 +15,7 @@ public class AddTimingsRepoImpl implements AddTimingsRepo{
     EntityManagerFactory entityManagerFactory;
 
     @Override
-    public void addTimings(AddTimingsEntity addTimingsEntity) {
+    public boolean addTimings(AddTimingsEntity addTimingsEntity) {
 
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -24,9 +24,9 @@ public class AddTimingsRepoImpl implements AddTimingsRepo{
             entityTransaction.begin();
             entityManager.persist(addTimingsEntity);
             entityTransaction.commit();
-
+            return true;
         } catch (Exception e) {
-
+            return false;
         } finally {
             entityManager.close();
         }

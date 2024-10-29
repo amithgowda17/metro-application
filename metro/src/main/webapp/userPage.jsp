@@ -69,7 +69,8 @@
 
                                 <div class="mb-3">
                                     <label for="locationName" class="form-label">Location Name</label>
-                                    <input type="text" class="form-control" id="locationName" name="locationName" required>
+                                    <input type="text" class="form-control" id="locationName" name="locationName"
+                                        required>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
@@ -77,7 +78,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modal2Label" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -88,50 +88,49 @@
                         <div class="modal-body">
                             <form action="addTimings?email=${details.email}" method="post">
                                 <div class="mb-3">
-                                    <label for="locationName" class="form-label">Source Station</label>
+                                    <label for="source" class="form-label">Source Station</label>
                                     <input type="text" class="form-control" id="source" name="sourceStation" required>
                                 </div>
-
+            
                                 <div class="mb-3">
-                                    <label for="locationName" class="form-label">Destination</label>
-                                    <input type="text" class="form-control" id="destination" name="destinationStation"
-                                        required>
+                                    <label for="destination" class="form-label">Destination</label>
+                                    <input type="text" class="form-control" id="destination" name="destinationStation" required>
                                 </div>
-
-                                <div class="mb-3">
-                                    <label for="locationName" class="form-label">Arrival Time</label>
-                                    <input type="time" class="form-control" id="from" name="fromTimings" required>
+            
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <label for="from" class="form-label">Arrival Time</label>
+                                        <input type="time" class="form-control" id="from" name="fromTimings" required>
+                                    </div>
+                                    <div class="col">
+                                        <label for="to" class="form-label">End Time</label>
+                                        <input type="time" class="form-control" id="to" name="toTimings" required>
+                                    </div>
                                 </div>
-
+            
                                 <div class="mb-3">
-                                    <label for="locationName" class="form-label">End Time</label>
-                                    <input type="time" class="form-control" id="to" name="toTimings" required>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="locationName" class="form-label">Metro type</label>
+                                    <label for="type" class="form-label">Metro type</label>
                                     <input type="text" class="form-control" id="type" name="metroType" required>
                                 </div>
-
-                                <div class="mb-3">
-                                                                    <label for="locationName" class="form-label">From</label>
-                                                                    <input type="text" class="form-control"  name="from" required>
-                                                                </div>
-
-                                                                <div class="mb-3">
-                                                                    <label for="locationName" class="form-label">To</label>
-                                                                    <input type="text" class="form-control" name="to" required>
-                                                                </div>
-
-
-
-
+            
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <label for="fromLocation" class="form-label">From</label>
+                                        <input type="text" class="form-control" id="fromLocation" name="from" required>
+                                    </div>
+                                    <div class="col">
+                                        <label for="toLocation" class="form-label">To</label>
+                                        <input type="text" class="form-control" id="toLocation" name="to" required>
+                                    </div>
+                                </div>
+            
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
+            
 
             <div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="modal3Label" aria-hidden="true">
                 <div class="modal-dialog">

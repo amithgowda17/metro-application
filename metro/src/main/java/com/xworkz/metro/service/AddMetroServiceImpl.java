@@ -15,10 +15,14 @@ public class AddMetroServiceImpl implements AddMetroService{
 
 
     @Override
-    public void addMetro(AddMetroDto addMetroDto) {
+    public String addMetro(AddMetroDto addMetroDto) {
         AddMetroEntity addMetroEntity=new AddMetroEntity();
         BeanUtils.copyProperties(addMetroDto,addMetroEntity);
-        addMetroRepo.addMetro(addMetroEntity);
+        boolean isSaved = addMetroRepo.addMetro(addMetroEntity);
+        if (isSaved){
+            return "data added successfully";
+        }
+        return "data not saved";
 
     }
 }

@@ -17,7 +17,7 @@ public class AddLocationRepoImpl implements AddLocationRepo{
     EntityManagerFactory entityManagerFactory;
 
     @Override
-    public void saveLocation(AddLocationEntity addLocationEntity) {
+    public boolean saveLocation(AddLocationEntity addLocationEntity) {
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
@@ -25,9 +25,9 @@ public class AddLocationRepoImpl implements AddLocationRepo{
             entityTransaction.begin();
             entityManager.persist(addLocationEntity);
             entityTransaction.commit();
-
+            return true;
         } catch (Exception e) {
-
+            return false;
         } finally {
             entityManager.close();
         }

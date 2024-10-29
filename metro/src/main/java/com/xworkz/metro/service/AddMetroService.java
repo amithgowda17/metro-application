@@ -4,5 +4,5 @@ import com.xworkz.metro.dto.AddMetroDto;
 
 public interface AddMetroService {
 
-    void addMetro(AddMetroDto addMetroDto);
+    String addMetro(AddMetroDto addMetroDto);
 }

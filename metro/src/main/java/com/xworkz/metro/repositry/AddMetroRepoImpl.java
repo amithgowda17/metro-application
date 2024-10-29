@@ -17,7 +17,7 @@ public class AddMetroRepoImpl implements AddMetroRepo{
 
 
     @Override
-    public void addMetro(AddMetroEntity addMetroEntity) {
+    public boolean addMetro(AddMetroEntity addMetroEntity) {
 
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -26,9 +26,9 @@ public class AddMetroRepoImpl implements AddMetroRepo{
             entityTransaction.begin();
             entityManager.persist(addMetroEntity);
             entityTransaction.commit();
-
+            return true;
         } catch (Exception e) {
-
+            return false;
         } finally {
             entityManager.close();
         }

@@ -14,9 +14,13 @@ public class AddLocationServiceImpl implements AddLocationService{
     AddLocationRepo addLocationRepo;
 
     @Override
-    public void addLocation(AddLocationDto addLocationDto) {
+    public String  addLocation(AddLocationDto addLocationDto) {
         AddLocationEntity addLocationEntity=new AddLocationEntity();
         BeanUtils.copyProperties(addLocationDto,addLocationEntity);
-        addLocationRepo.saveLocation(addLocationEntity);
+        boolean isSaved = addLocationRepo.saveLocation(addLocationEntity);
+        if(isSaved){
+            return "data added successfully";
+        }
+        return "data not saved";
     }
 }

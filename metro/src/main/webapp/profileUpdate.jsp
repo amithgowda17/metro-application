@@ -103,6 +103,14 @@
                     <span id="pin"></span>
                   </div>
 
+                  <input type="radio" id="male" name="gender" value="male" ${dto.gender=='male' ? 'checked' : '' }
+                    hidden>
+
+
+                  <input type="radio" id="female" name="gender" value="female" ${dto.gender=='female' ? 'checked' : '' }
+                    hidden>
+
+
 
 
 
@@ -247,6 +255,10 @@
           }
           console.log(response.data)
         }
+
+
+        const dto = { gender: value };
+        document.getElementById(dto.gender).checked = true;
 
 
 

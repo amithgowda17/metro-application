@@ -15,12 +15,13 @@ public class AddPriceServiceImpl implements AddPriceService{
 
 
     @Override
-    public void addPrice(AddPriceDto addPriceDto) {
+    public String addPrice(AddPriceDto addPriceDto) {
         AddPriceEntity addPriceEntity=new AddPriceEntity();
-
         BeanUtils.copyProperties(addPriceDto,addPriceEntity);
-
-        addPriceRepo.addPrice(addPriceEntity);
-
+        boolean isSaved = addPriceRepo.addPrice(addPriceEntity);
+        if (isSaved){
+            return "data added successfully";
+        }
+        return "data not saved";
     }
 }

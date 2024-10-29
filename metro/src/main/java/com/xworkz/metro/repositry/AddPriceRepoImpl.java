@@ -15,7 +15,7 @@ public class AddPriceRepoImpl implements AddPriceRepo{
     EntityManagerFactory entityManagerFactory;
 
     @Override
-    public void addPrice(AddPriceEntity addPriceEntity) {
+    public boolean addPrice(AddPriceEntity addPriceEntity) {
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
@@ -24,9 +24,9 @@ public class AddPriceRepoImpl implements AddPriceRepo{
             Object addLocationEntity;
             entityManager.persist(addPriceEntity);
             entityTransaction.commit();
-
+            return true;
         } catch (Exception e) {
-
+            return false;
         } finally {
             entityManager.close();
         }

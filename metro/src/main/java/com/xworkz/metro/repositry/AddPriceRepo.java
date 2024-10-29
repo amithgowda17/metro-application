@@ -4,5 +4,5 @@ import com.xworkz.metro.entity.AddPriceEntity;
 
 public interface AddPriceRepo {
 
-    void addPrice(AddPriceEntity addPriceEntity);
+    boolean addPrice(AddPriceEntity addPriceEntity);
 }

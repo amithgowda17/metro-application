@@ -31,15 +31,16 @@ public class AddMetroController {
     @PostMapping("addMetro")
     public String getAddTrain(@RequestParam String email, @Valid AddMetroDto addMetroDto, BindingResult bindingResult ,Model model){
         RegisterationDto registerationDto = metroService.findByEmailInService(email);
-        if(bindingResult.hasErrors()){
+        String message =  addMetroService.addMetro(addMetroDto);
+        if(bindingResult.hasErrors() || message.equals("data not saved")){
 
             model.addAttribute("details",registerationDto);
-            model.addAttribute("errmsg","please add valid details");
+            model.addAttribute("errMsg","please add valid details");
             return "userPage";
         }
-       addMetroService.addMetro(addMetroDto);
+
         model.addAttribute("details",registerationDto);
-        model.addAttribute("succesmsg","data added successfully");
+        model.addAttribute("successMsg","data added successfully");
         return "userPage";
 
     }

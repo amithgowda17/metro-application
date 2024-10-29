@@ -4,5 +4,5 @@ import com.xworkz.metro.entity.AddLocationEntity;
 
 public interface AddLocationRepo {
 
-    void saveLocation(AddLocationEntity addLocationEntity);
+    boolean saveLocation(AddLocationEntity addLocationEntity);
 }

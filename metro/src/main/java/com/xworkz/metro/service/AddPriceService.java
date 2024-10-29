@@ -4,5 +4,5 @@ import com.xworkz.metro.dto.AddPriceDto;
 
 public interface AddPriceService {
 
-    void addPrice(AddPriceDto addPriceDto);
+    String addPrice(AddPriceDto addPriceDto);
 }

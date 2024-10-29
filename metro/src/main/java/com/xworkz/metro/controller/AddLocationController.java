@@ -29,15 +29,15 @@ public class AddLocationController {
     @PostMapping("addLocation")
     public String getMetroLocation(@RequestParam String email, @Valid AddLocationDto addLocationDto, BindingResult bindingResult, Model model){
         RegisterationDto registerationDto = metroService.findByEmailInService(email);
-        if(bindingResult.hasErrors()){
-
+       String message =  addLocationService.addLocation(addLocationDto);
+        if(bindingResult.hasErrors() || message.equals("data not saved")){
             model.addAttribute("details",registerationDto);
-            model.addAttribute("errmsg","please add valid details");
+            model.addAttribute("errMsg","please add valid details");
             return "userPage";
         }
-        addLocationService.addLocation(addLocationDto);
+
         model.addAttribute("details",registerationDto);
-        model.addAttribute("succesmsg","data added successfully");
+        model.addAttribute("successMsg","data added successfully");
         return "userPage";
 
     }
