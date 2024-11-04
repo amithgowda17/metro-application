@@ -117,42 +117,46 @@
                   <div class="col-md-6 mb-3">
 
                     <label class="form-label">Profile</label>
-                    <input type="file" name="file" />
+                    <input type="file" name="file" id="fileInput" onchange="validateFileSize()" />
+                    <span id="fileSizeError" style="color:red;"></span>
+                  </div>
+                </div>
+
+
+
+
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+
+                    <input type="password" class="form-control" id="password" required placeholder="Enter your password"
+                      name="password" value="${dto.password}" hidden>
+                    <span id="pass"></span>
+                  </div>
+
+
+                  <div class="col-md-6 mb-3">
+
+                    <input type="password" class="form-control" id="confirmPassword" required
+                      placeholder="Confirm your password" name="confirmPassword" value="${dto.password}" hidden>
+                    <span id="confirmPass"></span>
+                  </div>
+                </div>
+
+
+
+                <div class="row">
+                  <div class="text-center">
+                    <button id="button" type="submit" class="btn btn-primary">Edit</button>
+                    <button type="button" class="btn btn-primary">
+                      <a href="getUserPage?email=${dto.email}" style="text-decoration: none; color: white;">Back</a>
+                    </button>
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-6 mb-3">
+            </form>
 
-                  <input type="password" class="form-control" id="password" required placeholder="Enter your password"
-                    name="password" value="${dto.password}" hidden>
-                  <span id="pass"></span>
-                </div>
-
-
-                <div class="col-md-6 mb-3">
-
-                  <input type="password" class="form-control" id="confirmPassword" required
-                    placeholder="Confirm your password" name="confirmPassword" value="${dto.password}" hidden>
-                  <span id="confirmPass"></span>
-                </div>
-              </div>
-
-
-
-              <div class="row">
-                <div class="text-center">
-                  <button id="button" type="submit" class="btn btn-primary">Edit</button>
-                  <button type="button" class="btn btn-primary">
-                    <a href="getUserPage?email=${dto.email}" style="text-decoration: none; color: white;">Back</a>
-                  </button>
-                </div>
-              </div>
           </div>
-          </form>
-
         </div>
-      </div>
       </div>
 
 
@@ -257,11 +261,24 @@
         }
 
 
-        const dto = { gender:"${dto.gender}"};
+        const dto = { gender: "${dto.gender}" };
         document.getElementById(dto.gender).checked = true;
 
+        function validateFileSize() {
+          const fileInput = document.getElementById('fileInput');
+          const file = fileInput.files[0];
+          const maxSizeInMB = 2;
+          const maxSizeInBytes = maxSizeInMB * 1024 * 1024;
+          const errorMessageElement = document.getElementById('fileSizeError');
+          if (file.size > maxSizeInBytes) {
+            errorMessageElement.textContent = `File size exceeds 2mb limit.`;
+            document.getElementById("button").setAttribute("disabled", "");
+          } else {
+            errorMessageElement.textContent = "";
+            document.getElementById("button").removeAttribute("disabled");
+          }
 
-
+        }
 
 
       </script>
