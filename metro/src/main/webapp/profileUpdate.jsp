@@ -270,8 +270,9 @@
           const maxSizeInMB = 2;
           const maxSizeInBytes = maxSizeInMB * 1024 * 1024;
           const errorMessageElement = document.getElementById('fileSizeError');
+
           if (file.size > maxSizeInBytes) {
-            errorMessageElement.textContent = `File size exceeds 2mb limit.`;
+            errorMessageElement.textContent = `file size exceeds 2mb limit.`;
             document.getElementById("button").setAttribute("disabled", "");
           } else {
             errorMessageElement.textContent = "";
