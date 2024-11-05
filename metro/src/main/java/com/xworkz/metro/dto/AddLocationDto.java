@@ -22,4 +22,6 @@ public class AddLocationDto {
     @NotEmpty
     private String locationName;
 
+
+
 }

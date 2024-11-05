@@ -14,11 +14,9 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-
 import java.io.*;
 import java.util.List;
 
@@ -44,7 +42,7 @@ public class MetroController {
 
 
 
-    @PostMapping("register")
+    @GetMapping("register")
     public String register(@Valid RegisterationDto registerationDto, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
@@ -55,7 +53,7 @@ public class MetroController {
         String successMsg = metroService.registerInService(registerationDto);
         model.addAttribute("msg", successMsg);
         redirectAttributes.getFlashAttributes();
-        return "redirect:/registerPage";
+        return "redirect:/register";
     }
 
     @GetMapping("registerPage")
