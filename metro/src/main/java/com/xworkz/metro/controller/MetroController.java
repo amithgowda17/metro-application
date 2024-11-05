@@ -42,8 +42,8 @@ public class MetroController {
 
 
 
-    @GetMapping("register")
-    public String register(@Valid RegisterationDto registerationDto, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
+    @PostMapping("register")
+    public String register(@Valid RegisterationDto registerationDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
 
@@ -51,9 +51,8 @@ public class MetroController {
             return "register";
         }
         String successMsg = metroService.registerInService(registerationDto);
-        model.addAttribute("msg", successMsg);
-        redirectAttributes.getFlashAttributes();
-        return "redirect:/register";
+        redirectAttributes.addFlashAttribute("msg", successMsg);
+        return "redirect:/registerPage";
     }
 
     @GetMapping("registerPage")
@@ -107,10 +106,8 @@ public class MetroController {
                 redirectAttributes.addFlashAttribute("enteredEmail", loginDto.getEmail());
                 return "redirect:/loginPage";
             } else {
-                model.addAttribute("details", registerationDto);
-                model.addAttribute("successMsg", message);
                 log.info("registerDto====" + registerationDto);
-                redirectAttributes.getFlashAttributes();
+                redirectAttributes.addFlashAttribute("successMsg", message);
                 return "redirect:/getUserPage?email=" + registerationDto.getEmail();
             }
         }
@@ -179,10 +176,11 @@ public class MetroController {
     }
 
     @PostMapping("updatePassword")
-    public String updatePassed(@RequestParam String email, String password, String confirmPassword) {
+    public String updatePassed(@RequestParam String email, String password, String confirmPassword,Model model) {
         if (email != null && password != null && confirmPassword != null) {
             boolean isPasswordUpdated = metroService.updatePasswordInService(email, password, confirmPassword);
             if (isPasswordUpdated) {
+                model.addAttribute("success","password reset successfull");
                 return "login";
             }
         }

@@ -40,7 +40,7 @@
           <div class="p-3 bg-secondary-subtle text-secondary-emphasis">
             <h6 style="color: green;text-align: center;">${msg}</h6>
 
-            <form action="register" method="get" onclick="form()">
+            <form action="register" method="post" onclick="form()">
 
               <h3 class="row justify-content-center">Register Admin</h3>
 

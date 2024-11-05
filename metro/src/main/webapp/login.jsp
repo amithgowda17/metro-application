@@ -61,6 +61,7 @@
             <div class="card mb-3" style="width: 20rem;">
               <div class="p-3 bg-light.bg-gradient">
                 <div class="card-body ">
+                <h6 style="color: green;text-align: center;">${success}</h6>
                   <form action="login" method="post">
                     <div class="mb-3">
                       <label for="formGroupExampleInput2" class="form-label">Email</label>
