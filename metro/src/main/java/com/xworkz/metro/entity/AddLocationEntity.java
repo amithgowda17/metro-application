@@ -12,6 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "metro_location")
+@NamedQuery(name = "ReadAllLocation",query="Select entities from AddLocationEntity entities")
 public class AddLocationEntity {
 
 

@@ -7,6 +7,9 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
+import java.util.Collections;
+import java.util.List;
 
 @Repository
 public class AddTimingsRepoImpl implements AddTimingsRepo{
@@ -32,5 +35,22 @@ public class AddTimingsRepoImpl implements AddTimingsRepo{
         }
 
 
+    }
+
+    @Override
+    public List<AddTimingsEntity> getAllMetroTimingsDetails() {
+      EntityManager entityManager =  entityManagerFactory.createEntityManager();
+      try {
+         EntityTransaction entityTransaction = entityManager.getTransaction();
+         entityTransaction.begin();
+         Query query = entityManager.createNamedQuery("ReadAllMetroTimings");
+         List<AddTimingsEntity> addTimingsEntities = query.getResultList();
+         entityTransaction.commit();
+         return addTimingsEntities;
+      }catch (Exception e){
+          return Collections.emptyList();
+      }finally {
+          entityManager.close();
+      }
     }
 }

@@ -7,8 +7,18 @@
     <list default="true" id="0602b53b-9c99-4c49-979b-8a628a656a51" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/MetroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/MetroController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/entity/AddLocationEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/entity/AddLocationEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/entity/AddMetroEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/entity/AddMetroEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/entity/AddPriceEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/entity/AddPriceEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/entity/AddTimingsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/entity/AddTimingsEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/AddLocationRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/AddLocationRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/AddLocationRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/AddLocationRepoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/AddMetroRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/AddMetroRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/AddMetroRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/AddMetroRepoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/AddPriceRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/AddPriceRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/AddPriceRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/AddPriceRepoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/AddTimingsRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/AddTimingsRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/AddTimingsRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/AddTimingsRepoImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +28,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>

@@ -11,6 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "metro_price")
+@NamedQuery(name = "ReadAllMetroPrice", query = "Select entities from AddPriceEntity entities")
 public class AddPriceEntity {
 
     @Id

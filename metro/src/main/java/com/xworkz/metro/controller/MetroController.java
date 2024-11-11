@@ -34,7 +34,6 @@ public class MetroController {
     @Autowired
     MetroService metroService;
 
-
     @GetMapping("indexPage")
     public String homePage() {
         return "index";
