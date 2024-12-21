@@ -30,7 +30,7 @@
         <div class="card form-card mb-3">
           <div class="p-3 mb-2 bg-light-subtle text-light-emphasis">
 
-            <form action="updateDetails" method="post" enctype="multipart/form-data">
+            <form action="updateAdminDetails" method="post" enctype="multipart/form-data">
               <div class="text-center">
                 <img src="getImage/${dto.fileName}" style="height: 150px;width:150px;border-radius: 50px;">
               </div>

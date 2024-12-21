@@ -285,11 +285,9 @@
             document.getElementById("emailExists").innerHTML = "<span style='color:green;'>email_accepted</span>";
             button.removeAttribute("disabled");
           }
-
           console.log(response.data)
 
-
-        }
+      }
 
 
         const phone = async () => {

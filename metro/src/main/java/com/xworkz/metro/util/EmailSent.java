@@ -1,11 +1,11 @@
 package com.xworkz.metro.util;
 
-import com.xworkz.metro.service.MetroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
-
 import java.util.Random;
 
 @Service
@@ -14,11 +14,6 @@ public class EmailSent {
     @Autowired
     private  JavaMailSender emailSender;
 
-    @Autowired
-    private MetroService metroService;
-
-    @Autowired
-    private EncryptionDecryption encryptionDecryption;
 
     private String otpGeneretor(){
         Random rnd = new Random();
@@ -27,7 +22,6 @@ public class EmailSent {
     }
 
     public String emailSend(String email){
-
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("amith.s.xworkz@gmail.com");
         message.setTo(email);
@@ -38,6 +32,47 @@ public class EmailSent {
         return generatedOtp;
     }
 
+    public String mimeMessage(String email) {
 
+        MimeMessagePreparator preparator = mimeMessage -> {
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage,"UTF-8");
+            helper.setFrom("rajendra18raj@gmail.com");
+            helper.addTo(email);
+            helper.setSubject("Metro Registration");
+            String content = "<html>" +
+                    "<body>" +
+                    "<p>Your registration was completed successfully!</p>" +
+                    "</body>" +
+                    "</html>";
+
+            helper.setText(content,true);
+        };
+        emailSender.send(preparator);
+
+        return "Mail sent successfully";
+
+    }
+
+
+
+    public String ticketMessage(String email,String ticketNumber) {
+
+        MimeMessagePreparator preparator = mimeMessage -> {
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage,"UTF-8");
+            helper.setFrom("rajendra18raj@gmail.com");
+            helper.addTo(email,ticketNumber);
+            helper.setSubject("Metro Ticket");
+            String content = ("<html>" +
+                    "<body>" +
+                    "<h2>Ticket Booked Successfully<h2>" +
+                    "</body>" +
+                    "</html>");
+            helper.setText(content,true);
+        };
+        emailSender.send(preparator);
+
+        return "Mail sent successfully";
+
+    }
 
 }

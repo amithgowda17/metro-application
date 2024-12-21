@@ -51,6 +51,7 @@ public class MetroController {
         }
         String successMsg = metroService.registerInService(registerationDto);
         redirectAttributes.addFlashAttribute("msg", successMsg);
+
         return "redirect:/registerPage";
     }
 
@@ -196,7 +197,7 @@ public class MetroController {
         return "profileUpdate";
     }
 
-    @PostMapping("updateDetails")
+    @PostMapping("updateAdminDetails")
     public String editRegisterDetails(@RequestParam("file") MultipartFile file, RegisterationDto registerationDto1, Model model) {
         boolean updateMessage = metroService.saveEditedProfile(registerationDto1, file);
         RegisterationDto registerationDto = metroService.findByEmailInService(registerationDto1.getEmail());
@@ -215,10 +216,10 @@ public class MetroController {
     @GetMapping("getImage/{fileName}")
     public void viewImage(@PathVariable String fileName, Model model, HttpServletResponse httpServletResponse) {
 
-        File file1 = new File(path + fileName);
+        File file = new File(path + fileName);
 
         try {
-            FileInputStream fileInputStream = new FileInputStream(file1);
+            FileInputStream fileInputStream = new FileInputStream(file);
             InputStream inputStream = new BufferedInputStream(fileInputStream);
             ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
             IOUtils.copy(inputStream, servletOutputStream);

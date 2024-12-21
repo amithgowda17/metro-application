@@ -31,13 +31,13 @@ public class MetroServiceImpl implements MetroService {
     private static String UPLOADED_FOLDER = "D://Project//file_upload//";
 
     @Autowired
-    EmailSent emailSent;
+    private EmailSent emailSent;
 
     @Autowired
-    MetroRepo metroRepo;
+    private MetroRepo metroRepo;
 
     @Autowired
-    EncryptionDecryption encryptionDecryption;
+    private EncryptionDecryption encryptionDecryption;
 
     @Override
     public String registerInService(RegisterationDto registerationDto) {
@@ -51,7 +51,6 @@ public class MetroServiceImpl implements MetroService {
             return null;
 
         } else if (registerationDto.getPassword().equals(registerationDto.getConfirmPassword())) {
-
             registerationDto.setPassword(encryptionDecryption.encrypt(registerationDto.getPassword()));
             registerationDto.setFileName("dummy.png");
             registerationDto.setFileContentType("image/png");
@@ -215,17 +214,16 @@ public class MetroServiceImpl implements MetroService {
                 byte[] bytes = file.getBytes();
                 Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
                 Files.write(path, bytes);
-
                 registerationDto.setFileName(file.getOriginalFilename());
                 registerationDto.setFileContentType(file.getContentType());
             } catch (IOException ignored) {
 
             }
         } else {
-
             registerationDto.setFileName(existingDto.getFileName());
             registerationDto.setFileContentType(existingDto.getFileContentType());
         }
+
         if(registerationDto!=null) {
             BeanUtils.copyProperties(registerationDto, registerEntity);
             return metroRepo.updateProfile(registerEntity);
