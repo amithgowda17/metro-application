@@ -1,57 +1,32 @@
 package com.xworkz.metro.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Data;
 
+import javax.persistence.*;
+
+@Data
+@Entity
+@Table(name = "userRegister")
+@NamedQuery(name = "emailFindByMe",
+        query = "SELECT entity FROM UserRegisterEntity entity WHERE entity.email=:email")
+@NamedQuery(name = "oneTimeOtp", query = "UPDATE UserRegisterEntity l SET l.otp = :otp WHERE l.email = :email")
+@NamedQuery(name = "findUserByMobileNumber",
+        query = "SELECT e FROM UserRegisterEntity e WHERE e.mobileNumber=:mobileNumber")
 public class UserRegisterEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name = "f_Name")
-    private String fname;
-
-    @Column(name = "l_Name")
-    private String lname;
-
-    @Column(name = "email")
+    private String firstName;
+    private String lastName;
+    private String dateOfBirth;
     private String email;
-
-    @Column(name = "ph_No")
-    private String phNo;
-
-    @Column(name = "Date_of_birth")
-    private String dob;
-
-    @Column(name = "gender")
-    private String gender;
-
-    @Column(name = "city")
-    private String city;
-
-    @Column(name = "pinCode")
-    private Integer pinCode;
-
-    @Column(name = "password")
+    private String mobileNumber;
     private String password;
-
-    @Column(name = "otp")
+    private String gender;
     private String otp;
-
-    @Column(name = "no_Of_Attempts")
-    private Integer noOfAttempts;
-
-    @Column(name = "is_Account_Locked")
-    private boolean isAccountLocked;
-
-    @Column(name = "file_name")
-    private String fileName;
-
-    @Column(name = "file_Content_Type")
-    private String fileContentType;
+    private String imageName;
+    private String imageType;
 
 
 }

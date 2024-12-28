@@ -58,20 +58,6 @@ public class PriceRepositoryImpl implements PriceRepository{
         return null;
     }
 
-    @Override
-    public List<PriceEntity> readPrice() {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        try{
-            Query query = entityManager.createNamedQuery("readPrice");
-            List<PriceEntity> resultList =(List<PriceEntity>) query.getResultList();
-            return resultList;
-        }catch(Exception e){
-            log.info("========================");
-        }finally {
-            entityManager.close();
-        }
-        return null;
-    }
 
     @Override
     public PriceEntity findById(Integer priceId) {
@@ -90,57 +76,4 @@ public class PriceRepositoryImpl implements PriceRepository{
         return null;
     }
 
-    @Override
-    public PriceEntity findByTrainType(String trainType) {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        try{
-            Query query =entityManager.createNamedQuery("trainType");
-            query.setParameter("trainType",trainType);
-            Object object = query.getSingleResult();
-            PriceEntity priceEntity = (PriceEntity) object;
-            return priceEntity;
-        }catch (Exception e){
-            log.error("================findBYTRAINTYPE");
-        }finally {
-            entityManager.close();
-        }
-        return null;
-
-    }
-
-    @Override
-    public PriceEntity findByPrice(Integer price) {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        try {
-            Query query = entityManager.createNamedQuery("findPrice");
-            query.setParameter("price",price);
-            Object object =query.getSingleResult();
-            PriceEntity priceEntity = (PriceEntity) object;
-            return priceEntity;
-        }catch (Exception e){
-            log.info("==price==");
-        }finally {
-            entityManager.close();
-        }
-        return null;
-    }
-
-    @Override
-    public PriceEntity findPriceBySourceAndDestination(Integer price, String source, String destination) {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        try {
-            Query query = entityManager.createNamedQuery("findPriceBySourceAndDestination");
-            query.setParameter("price",price);
-            query.setParameter("source",source);
-            query.setParameter("destination",destination);
-            Object object = query.getSingleResult();
-            PriceEntity priceEntity = (PriceEntity) object;
-            return priceEntity;
-        }catch (Exception e){
-            log.info("====================");
-        }finally {
-            entityManager.close();
-        }
-        return null;
-    }
 }

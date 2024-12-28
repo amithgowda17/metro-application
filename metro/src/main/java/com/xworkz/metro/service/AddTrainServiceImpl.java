@@ -55,17 +55,6 @@ public class AddTrainServiceImpl implements AddTrainService{
 
 
     @Override
-    public AddTrainDto findByTrainNumberAndTrainType(String trainNumber, String trainType) {
-        if (trainNumber != null && trainType != null) {
-            AddTrainDto addTrainDto = new AddTrainDto();
-            AddTrainEntity addTrainEntity = addTrainRepository.findByTrainNumberAndTrainType(trainNumber, trainType);
-            BeanUtils.copyProperties(addTrainEntity, addTrainDto);
-            return addTrainDto;
-        }
-        return null;
-    }
-
-    @Override
     public List<AddTrainDto> readAddTrainData() {
         List<AddTrainEntity> addTrainEntities = addTrainRepository.readAddTrainDetails();
 
@@ -107,18 +96,6 @@ public class AddTrainServiceImpl implements AddTrainService{
         return  addTrainDtoList;
     }
 
-
-    @Override
-    public AddTrainDto getTrainTypeService(String trainType) {
-        if (trainType != null) {
-            System.out.println(trainType);
-            AddTrainDto addTrainDto = new AddTrainDto();
-            AddTrainEntity addTrainEntity = addTrainRepository.findByTrainType(trainType);
-            BeanUtils.copyProperties(addTrainEntity, addTrainDto);
-            return addTrainDto;
-        }
-        return null;
-    }
 
     @Override
     public AddTrainDto getDetails(Integer addTrainId) {

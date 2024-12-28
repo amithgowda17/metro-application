@@ -39,9 +39,9 @@
       <div class="container my-4" style="width: 35%;">
         <div class="card form-card mb-3">
           <div class="p-3 bg-secondary-subtle text-secondary-emphasis">
-            <h6 style="color: green;text-align: center;">${msg}</h6>
 
-            <form action="register" method="post" onclick="form()">
+
+            <form action="userRegistration" method="post" onclick="form()">
 
               <h3 class="row justify-content-center">Register Admin</h3>
 
@@ -50,20 +50,20 @@
 
                   <span id="formMessage"></span>
 
-                  <input type="text" class="form-control" id="id" placeholder="Enter your id" name="id" hidden>
+
 
 
                   <div class="col-md-6 mb-3">
                     <label class="form-label">First name</label>
                     <input type="text" class="form-control" id="fName" placeholder="Enter your first name"
-                      onchange="fNameValidation()" name="fname" required>
+                      onchange="fNameValidation()" name="firstName" required>
                     <span id="firstName"></span>
                   </div>
 
                   <div class="col-md-6 mb-3">
                     <label class="form-label">Last name</label>
                     <input type="text" class="form-control" id="lName" placeholder="Enter your last name"
-                      onchange="lNameValidation()" name="lname" required>
+                      onchange="lNameValidation()" name="lastName" required>
                     <span id="lastName"></span>
                   </div>
                 </div>
@@ -81,7 +81,7 @@
                   <div class="col-md-6 mb-3">
                     <label class="form-label ">Contact Number</label>
                     <input type="number" class="form-control" id="phNo" placeholder="Enter your contact number"
-                      name="phNo" onblur="phone()" required>
+                      name="mobileNumber" onblur="phone()" required>
                     <span id="ph"></span>
                   </div>
 
@@ -91,7 +91,7 @@
 
                   <div class="col-md-6 mb-3">
                     <label class="form-label">Date Of Birth</label>
-                    <input type="date" class="form-control" id="dob" placeholder="Enter your dob" name="dob" required>
+                    <input type="date" class="form-control" id="dob" placeholder="Enter your dob" name="dateOfBirth" required>
                   </div>
 
 
@@ -108,23 +108,7 @@
                   </div>
                 </div>
 
-                <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <label class="form-label">City</label>
-                    <input type="text" class="form-control" id="city" required placeholder="Enter your city"
-                      onchange="cityName()" name="city">
-                    <span id="cityName"></span>
-                  </div>
 
-
-                  <div class="col-md-6 mb-3">
-                    <label class="form-label">Pincode</label>
-                    <input type="number" class="form-control" id="pinCode" required placeholder="Enter your pincode"
-                      name="pinCode" onchange="pinCodeValid()">
-                    <span id="pin"></span>
-                  </div>
-                </div>
-              </div>
 
               <div class="row">
                 <div class="col-md-6 mb-3">
@@ -148,7 +132,7 @@
                   <button id="button" type="submit" class="btn btn-primary">Register</button>
                   <button type="reset" class="btn btn-primary">Reset</button>
                   <div class="mt-2">
-                    Already have an account? <a href="loginPage" style="text-decoration: none;">Login</a>
+                    Already have an account? <a href="userCanLoginHere" style="text-decoration: none;">Login</a>
                   </div>
                 </div>
               </div>
@@ -166,7 +150,6 @@
                 <p class="text-white mb-0">Copyright &copy; 2024, All Rights Reserved</p>
               </div>
             </div>
-
           </div>
         </div>
       </footer>
@@ -179,10 +162,10 @@
           var button = document.getElementById("button");
 
           if (names.trim() !== '' && names.length > 3 && names.length <= 25) {
-            document.getElementById("firstName").innerHTML = "";
+            document.getElementById("fName").innerHTML = "";
             button.removeAttribute("Disabled");
           } else {
-            document.getElementById("firstName").innerHTML = "<span style='color:red;'>must be 4 & 25</span>";
+            document.getElementById("fName").innerHTML = "<span style='color:red;'>must be 4 & 25</span>";
             button.setAttribute("Disabled", "");
             return;
           }
@@ -194,48 +177,17 @@
           console.log(names)
           var button = document.getElementById("button");
           if (names.trim() !== '' && names.length > 0 && names.length <= 25) {
-            document.getElementById("lastName").innerHTML = "";
+            document.getElementById("lName").innerHTML = "";
             button.removeAttribute("Disabled");
           } else {
-            document.getElementById("lastName").innerHTML = "<span style='color:red;'>must be 1 & 25</span>";
+            document.getElementById("lName").innerHTML = "<span style='color:red;'>must be 1 & 25</span>";
             button.setAttribute("Disabled", "");
             return;
           }
 
         }
 
-        function cityName() {
-          var names = document.getElementById("city").value;
-          console.log(names)
-          var button = document.getElementById("button");
 
-          if (names.trim() !== '' && names.length > 4 && names.length <= 25) {
-            document.getElementById("cityName").innerHTML = "";
-            button.removeAttribute("Disabled");
-          } else {
-            document.getElementById("cityName").innerHTML = "<span style='color:red;'>must be 4 & 25</span>";
-            button.setAttribute("Disabled", "");
-            return;
-          }
-
-        }
-
-        function pinCodeValid() {
-          var names = document.getElementById("pinCode").value;
-          console.log(names.length)
-          var button = document.getElementById("button");
-
-          if (names.trim() !== '' && names.length == 6) {
-            document.getElementById("pin").innerHTML = "";
-            button.removeAttribute("Disabled");
-          } else {
-            document.getElementById("pin").innerHTML = "<span style='color:red;'>Invalid Pincode</span>";
-            button.setAttribute("Disabled", "");
-            console.log("invalid")
-            return;
-          }
-
-        }
 
         function passwordEntry() {
 
@@ -274,7 +226,7 @@
 
           let emailId = document.getElementById("email").value
           var button = document.getElementById("button");
-          const response = await axios("http://localhost:8080/metro/isEmailExists?email=" + emailId)
+          const response = await axios("http://localhost:8080/metro/FindEmail?email=" + emailId)
 
           if (emailId.length < 5) {
             document.getElementById("emailExists").innerHTML = "<span style='color:red;'>invalid email</span>";
@@ -295,7 +247,7 @@
 
           let phoneNumber = document.getElementById("phNo").value
           var button = document.getElementById("button");
-          const response = await axios("http://localhost:8080/metro/isPhNoExists?phNo=" + phoneNumber)
+          const response = await axios("http://localhost:8080/metro/phoneNumberExists?mobileNumber=" + phoneNumber)
 
           if (phoneNumber.length < 10 || phoneNumber.length > 10) {
             document.getElementById("ph").innerHTML = "<span style='color:red;'>invalid phone number</span>";
@@ -320,7 +272,6 @@
 
           var fName = document.getElementById("fName").value;
           var lName = document.getElementById("lName").value;
-          var city = document.getElementById("city").value;
           var email = document.getElementById("email").value;
           var phNo = document.getElementById("phNo").value;
           var password = document.getElementById("password").value;
@@ -334,7 +285,6 @@
             fName.trim() !== "" && fName.length > 3 && fName.length <= 25 &&
             lName.trim() !== "" && lName.length > 0 &&
             lName.length <= 25 && city.trim() !== "" &&
-            city.length > 4 && city.length <= 25 &&
             email.trim() !== "" && phNo.trim() !== "" &&
             phNo.length == 10 && password.trim() !== "" &&
             password.length >= 8 && password === confirmPassword

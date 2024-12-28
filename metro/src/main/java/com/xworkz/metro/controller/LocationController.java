@@ -10,12 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import javax.validation.Valid;
+
 
 
 @Controller
@@ -23,41 +24,33 @@ import javax.validation.Valid;
 @Slf4j
 public class LocationController {
 
-    @Autowired //
+
+    @Autowired
     LocationService locationService;
 
     @Autowired
     MetroService metroService;
 
-    @GetMapping("/addLocations")
-    public String addLocation(@RequestParam String email,Model model){
+    @GetMapping("addLocations")
+    public String addLocation(@RequestParam String email, Model model) {
         RegisterationDto registrationDto = metroService.findByEmailInService(email);
-        model.addAttribute("dto",registrationDto);
-        return "AddLocation";
+        model.addAttribute("dto", registrationDto);
+        return "addLocation";
     }
 
-    @PostMapping("/location")
-    public String addingLocationAndTrainType(@Valid LocationDto locationDto, @RequestParam String email, BindingResult bindingResult, Model model){
-
-        if(bindingResult.hasErrors()){
-            model.addAttribute("errors",bindingResult.getAllErrors());
-            return "Message";
-        }else{
-            RegisterationDto registrationDto = metroService.findByEmailInService(email);
-            log.info(email+"email");
-            model.addAttribute("dto",registrationDto);
-            model.addAttribute("success", "Add Location and TrainType successful");
-            locationService.onSaveLocationAndType(locationDto);
-            return "AddLocation";
+    @PostMapping("location/{email}")
+    public String addingLocationAndTrainType(@PathVariable String email, @Valid LocationDto locationDto, Model model, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        RegisterationDto registrationDto = metroService.findByEmailInService(email);
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("errors", "enter a valid details");
+            return "addLocation";
         }
-
+        locationService.onSaveLocationAndType(locationDto);
+        log.info("this========================" + registrationDto);
+        System.out.println(registrationDto + "+=========================================");
+        redirectAttributes.addFlashAttribute("dto",registrationDto);
+        return "redirect:/addLocations?email=" + registrationDto.getEmail();
     }
 
-    @GetMapping("/trainNumber")
-    public  String findLocationTrainType(@RequestParam String trainNumber,Model model){
-        LocationDto locationDto = locationService.findByTrainNumber(trainNumber);
-        System.out.println(locationDto+"location Dto");
-        model.addAttribute("dto",locationDto);
-        return "Read";
-    }
+
 }

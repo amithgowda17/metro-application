@@ -9,12 +9,8 @@ import javax.persistence.*;
 @Table(name = "price")
 @NamedQuery(name = "findBySourceAndDestination",
         query = "SELECT entities FROM PriceEntity entities WHERE entities.source=:source AND entities.destination=:destination")
-@NamedQuery(name = "readPrice",query="Select entities from PriceEntity entities")
 @NamedQuery(name="priceId",query = "SELECT p FROM PriceEntity p WHERE p.priceId = :priceId")
-@NamedQuery(name="trainType",query = "SELECT s FROM PriceEntity s WHERE s.trainType = :trainType")
-@NamedQuery(name = "findPrice",
-        query = "SELECT entity FROM PriceEntity entity WHERE entity.price=:price")
-@NamedQuery(name = "findPriceBySourceAndDestination",query = "SELECT p.price FROM PriceEntity p WHERE p.source = :source AND p.destination = :destination")
+
 
 public class PriceEntity {
     @Id

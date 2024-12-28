@@ -12,6 +12,6 @@ public interface LocationRepository {
 
     List<LocationEntity> readLocation();
 
-    LocationEntity findByTrainType(String trainType);
+
 
 }

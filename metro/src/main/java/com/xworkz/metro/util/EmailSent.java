@@ -32,11 +32,22 @@ public class EmailSent {
         return generatedOtp;
     }
 
+    public String mailSend(String email){
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("amith.s.xworkz@gmail.com");
+        message.setTo(email);
+        message.setSubject("Login Otp");
+        String generatedOtp=otpGeneretor();
+        message.setText("Your one time password(OTP) is : "+ generatedOtp);
+        emailSender.send(message);
+        return generatedOtp;
+    }
+
     public String mimeMessage(String email) {
 
         MimeMessagePreparator preparator = mimeMessage -> {
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage,"UTF-8");
-            helper.setFrom("rajendra18raj@gmail.com");
+            helper.setFrom("amith.s.xworkz@gmail.com");
             helper.addTo(email);
             helper.setSubject("Metro Registration");
             String content = "<html>" +
@@ -59,12 +70,14 @@ public class EmailSent {
 
         MimeMessagePreparator preparator = mimeMessage -> {
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage,"UTF-8");
-            helper.setFrom("rajendra18raj@gmail.com");
+            helper.setFrom("amith.s.xworkz@gmail.com");
             helper.addTo(email,ticketNumber);
             helper.setSubject("Metro Ticket");
             String content = ("<html>" +
                     "<body>" +
                     "<h2>Ticket Booked Successfully<h2>" +
+                    "<br>" +
+                    "Here is your ticket number for your reference :"+ticketNumber+
                     "</body>" +
                     "</html>");
             helper.setText(content,true);

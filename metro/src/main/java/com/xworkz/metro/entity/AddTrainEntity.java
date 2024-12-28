@@ -13,8 +13,7 @@ import java.util.List;
 @NamedQuery(name = "findByTrainNumberAndTrainType",
         query = "SELECT t FROM AddTrainEntity t WHERE t.trainNumber =:trainNumber AND t.trainType = :trainType")
 @NamedQuery(name = "readTrain", query = "Select entities from AddTrainEntity entities")
-@NamedQuery(name = "getAllDetailsById", query = "SELECT z FROM AddTrainEntity z WHERE z.addTrainId=:trainId")
-@NamedQuery(name="findAddTrainType",query = "SELECT t FROM AddTrainEntity t WHERE  t.trainType = :trainType")
+@NamedQuery(name = "getAllDetailsById", query = "SELECT entity FROM AddTrainEntity entity WHERE entity.addTrainId=:addTrainId")
 @NamedQuery(name="findNumber",query = "SELECT t FROM AddTrainEntity t WHERE  t.trainNumber = :number")
 
 public class AddTrainEntity {

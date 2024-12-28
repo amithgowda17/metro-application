@@ -44,23 +44,25 @@
                   <label for="formGroupExampleInput2" class="form-label">Enter Email</label>
                   <input type="email" class="form-control" placeholder="Enter your email" name="email"
                     value="${dto.email}" readonly>
-                  
+
                 </div>
-             
+
                 <div class="mb-3">
 
                   <label for="inputPassword5" class="form-label">Enter new password</label>
-                  <input type="password" class="form-control" placeholder="Enter new password" name="password" id="password" onblur="passwordEntry()">
+                  <input type="password" class="form-control" placeholder="Enter new password" name="password"
+                    id="password" onblur="passwordEntry()">
                   <span id="pass"></span>
                 </div>
                 <div class="mb-3">
 
                   <label for="inputPassword5" class="form-label">Confirm your password</label>
-                  <input type="password" class="form-control" placeholder="confirm your password" name="confirmPassword" id="confirmPassword" onblur="confirm()">
-               <span id="confirmPass"></span>
+                  <input type="password" class="form-control" placeholder="confirm your password" name="confirmPassword"
+                    id="confirmPassword" onblur="confirm()">
+                  <span id="confirmPass"></span>
                 </div>
 
-                <div class="text-center"> 
+                <div class="text-center">
                   <div class="col-12">
                     <button type="submit" class="btn btn-success" id="button">Submit</button>
                   </div>
@@ -73,39 +75,39 @@
       </div>
 
       <footer class="fixed-bottom">
-              <div  class="footer  bg-dark py-3 mt-auto">
-              <div class="container-fluid">
-                <div class="row justify-content-center">
-                  <div class="col-md-6 text-center">
-                    <p class="text-white mb-0">Copyright &copy; 2024, All Rights Reserved</p>
-                  </div>
-                </div>
+        <div class="footer  bg-dark py-3 mt-auto">
+          <div class="container-fluid">
+            <div class="row justify-content-center">
+              <div class="col-md-6 text-center">
+                <p class="text-white mb-0">Copyright &copy; 2024, All Rights Reserved</p>
+              </div>
+            </div>
 
-              </div>
-              </div>
-            </footer>
+          </div>
+        </div>
+      </footer>
 
 
       <script>
 
-function passwordEntry() {
+        function passwordEntry() {
 
-var names = document.getElementById("password").value;
-console.log(names)
-var button = document.getElementById("button");
+          var names = document.getElementById("password").value;
+          console.log(names)
+          var button = document.getElementById("button");
 
-if (names.trim() !== '' && names.length >= 8 && names.length <= 20) {
-  document.getElementById("pass").innerHTML = "";
-  button.removeAttribute("Disabled");
-} else {
-  document.getElementById("pass").innerHTML = "<span style='color:red;'>Password must be 8 characters long</span>";
-  button.setAttribute("Disabled", "");
-  return;
-}
+          if (names.trim() !== '' && names.length >= 8 && names.length <= 20) {
+            document.getElementById("pass").innerHTML = "";
+            button.removeAttribute("Disabled");
+          } else {
+            document.getElementById("pass").innerHTML = "<span style='color:red;'>Password must be 8 characters long</span>";
+            button.setAttribute("Disabled", "");
+            return;
+          }
 
-}
+        }
 
-function confirm() {
+        function confirm() {
           let password = document.getElementById("password").value;
           let checkPassword = document.getElementById("confirmPassword").value;
           console.log(password, checkPassword);

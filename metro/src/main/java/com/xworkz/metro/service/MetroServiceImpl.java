@@ -76,8 +76,9 @@ public class MetroServiceImpl implements MetroService {
             RegisterationDto registerationDto = new RegisterationDto();
             BeanUtils.copyProperties(registerEntity, registerationDto);
             return registerationDto;
+        }else {
+            return null;
         }
-        return null;
     }
 
     @Override

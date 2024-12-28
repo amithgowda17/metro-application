@@ -14,8 +14,6 @@ public interface AddTrainRepository {
 
     AddTrainEntity findById(Integer addTrainId);
 
-    AddTrainEntity findByTrainType(String trainType);
-
     AddTrainEntity findTrainNumber(String trainNumber);
 
     String savingTheUpdateDetails(AddTrainEntity addTrainEntity);

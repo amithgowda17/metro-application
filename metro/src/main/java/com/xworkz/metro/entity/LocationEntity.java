@@ -11,7 +11,6 @@ import javax.persistence.*;
 @Table(name = "location")
 @NamedQuery(name = "findByTrainNumber", query = "SELECT t FROM  LocationEntity t WHERE t.trainNumber = :trainNumber")
 @NamedQuery(name = "readLocation", query = "Select entities from LocationEntity entities")
-@NamedQuery(name="findTrainType",query = "SELECT t FROM LocationEntity t WHERE  t.trainType = :trainType")
 
 public class LocationEntity {
 

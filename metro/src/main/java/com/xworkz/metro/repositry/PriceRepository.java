@@ -10,14 +10,7 @@ public interface PriceRepository {
 
     PriceEntity findBySourceAndDestination(String source,String destination);
 
-    List<PriceEntity> readPrice();
-
     PriceEntity findById(Integer priceId);
 
-    PriceEntity findByTrainType(String trainType);
-
-    PriceEntity findByPrice(Integer price);
-
-    PriceEntity findPriceBySourceAndDestination(Integer price,String source,String destination);
 
 }

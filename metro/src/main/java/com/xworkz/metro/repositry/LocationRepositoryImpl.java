@@ -68,20 +68,4 @@ public class LocationRepositoryImpl implements LocationRepository{
         return null;
     }
 
-    @Override
-    public LocationEntity findByTrainType(String trainType) {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        try{
-            Query query = entityManager.createNamedQuery("findTrainType");
-            query.setParameter("trainType",trainType);
-            Object object = query.getSingleResult();
-            LocationEntity locationEntity = (LocationEntity) object;
-            return locationEntity;
-        }catch (Exception e){
-            log.error("================findBYTRAINTYPE"+trainType);
-        }finally {
-            entityManager.close();
-        }
-        return null;
-    }
 }

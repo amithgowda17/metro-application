@@ -1,25 +1,20 @@
 package com.xworkz.metro.dto;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserLoginDto {
 
-    @NotEmpty
-    @NotBlank
-    @NotNull
+    private Integer LoginId;
+    private String firstName;
+    private String lastName;
     private String email;
-
-    @NotBlank
-    @NotNull
-    @NotEmpty
-    private String password;
-
-    private String loginDate;
-
-    private String loginTime;
-
-    private String logoutTime;
+    private String mobileNumber;
+    private String loginStart;
+    private String loginEnd;
 
 }

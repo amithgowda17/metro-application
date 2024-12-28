@@ -2,7 +2,6 @@ package com.xworkz.metro.repositry;
 
 import com.xworkz.metro.entity.TimingEntity;
 
-import java.util.List;
 
 public interface TimingRepository {
 
@@ -10,14 +9,8 @@ public interface TimingRepository {
 
     String TheUpdatedTimings(TimingEntity timingEntity);
 
-    TimingEntity findBySourceAndDestination(String source,String destination);
 
-    List<TimingEntity> readTime();
+    TimingEntity findById(Integer addTrainId);
 
-    TimingEntity findByTrainType(String trainType);
-
-    List<TimingEntity> findingSourceAndDestinations(String source,String destination);
-
-    TimingEntity findById(Integer timingId);
-
+    TimingEntity findBySourceAndDestination(String source, String destination);
 }

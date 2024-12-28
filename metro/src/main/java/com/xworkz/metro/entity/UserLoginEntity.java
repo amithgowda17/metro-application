@@ -1,30 +1,26 @@
 package com.xworkz.metro.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 
+@Data
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "userLogin")
 public class UserLoginEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    @Column(name = "email")
+    private Integer LoginId;
+    private String firstName;
+    private String lastName;
     private String email;
-
-    @Column(name = "password")
-    private String password;
-
-    @Column(name="login_Time")
-    private String loginTime;
-
-    @Column(name="login_Date")
-    private String loginDate;
-
-    @Column(name = "logout_Time")
-    private String logoutTime;
+    private String mobileNumber;
+    private String loginStart;
+    private String loginEnd;
 
 }

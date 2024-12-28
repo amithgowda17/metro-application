@@ -77,8 +77,8 @@ public class AddTrainRepositoryImpl implements AddTrainRepository{
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
             Query query = entityManager.createNamedQuery("getAllDetailsById");
-            query.setParameter("trainId",addTrainId);
-            log.info("addTrainId",addTrainId);
+            query.setParameter("addTrainId",addTrainId);
+            log.info("addTrainId=================in repo",addTrainId);
             System.out.println("Trainee Id is"+ addTrainId);
             AddTrainEntity addTrainEntities =(AddTrainEntity) query.getSingleResult();
             System.out.println("addTrainEntities from :"+addTrainEntities);
@@ -89,23 +89,6 @@ public class AddTrainRepositoryImpl implements AddTrainRepository{
         }finally {
             entityManager.close();
         }
-    }
-
-    @Override
-    public AddTrainEntity findByTrainType(String trainType) {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        try{
-            Query query = entityManager.createNamedQuery("findAddTrainType");
-            query.setParameter("trainType",trainType);
-            Object object = query.getSingleResult();
-            AddTrainEntity addTrainEntity = (AddTrainEntity) object;
-            return addTrainEntity;
-        }catch (Exception e){
-            log.error("================findBYTRAINTYPE"+trainType);
-        }finally {
-            entityManager.close();
-        }
-        return null;
     }
 
     @Override

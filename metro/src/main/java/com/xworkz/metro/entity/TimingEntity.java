@@ -6,14 +6,9 @@ import javax.persistence.*;
 
 @Data
 @Entity
+@NamedQuery(name = "getById",query = "Select entity from TimingEntity entity where entity.addTrain=:addTrainId")
+@NamedQuery(name = "getBySourceAndDestination",query = "Select t from TimingEntity t where t.source=:source AND t.destination=:destination ")
 @Table(name = "timings")
-@NamedQuery(name = "findBYSourceAndDestination",
-        query = "SELECT t FROM TimingEntity t WHERE t.source = :source AND t.destination = :destination")
-@NamedQuery(name = "readTime",query="Select entities from TimingEntity entities")
-@NamedQuery(name="time",query = "SELECT t FROM TimingEntity t WHERE  t.trainType = :trainType")
-@NamedQuery(name = "findTrainBySourceAndDestination",
-        query = "SELECT t FROM TimingEntity t WHERE t.source =:source AND t.destination = :destination")
-@NamedQuery(name="timingId",query = "SELECT p FROM TimingEntity p WHERE p.timingId = :timingId")
 
 public class TimingEntity {
 
