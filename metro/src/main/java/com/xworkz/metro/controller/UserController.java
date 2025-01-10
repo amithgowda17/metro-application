@@ -109,7 +109,7 @@ public class UserController {
             log.info("user Registration Dto {}", userRegistrationDto);
             if (userRegistrationDto != null) {
                 return ResponseEntity.ok("email already exists");
-            }g
+            }
         }
         return ResponseEntity.ok("email_accepted");
     }
@@ -241,10 +241,12 @@ public class UserController {
         return "userSucessPage";
     }
 
-    @GetMapping("/metroTimings")
-    public String getTimings(Model model){
+    @GetMapping("metroTimings")
+    public String getTimings(@RequestParam("email") String email, Model model){
         List<AddTrainDto> addTrainEntities = addTrainService.readAddTrainData();
         log.info(" addTrainDtos   {}  ",addTrainEntities);
+        UserRegisterDto userRegisterDto =userService.lookingForEmail(email);
+        model.addAttribute("details",userRegisterDto);
         model.addAttribute("addTrainEntities", addTrainEntities);
         return "metroTimings";
     }

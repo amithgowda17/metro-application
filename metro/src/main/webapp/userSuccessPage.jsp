@@ -17,29 +17,32 @@
 </head>
 
 <body>
-    <header class="bg-dark text-white py-3" style="display: flex; justify-content: space-between; align-items: center;">
-        <div>
-            <img src="https://www.x-workz.in/Logo.png" alt="Coders World Logo" style="max-height: 50px;">
-        </div>
-        <div class="dropdown mb-1" style="margin-left: auto;">
-            <a class="mx-2" href="#" style="color: white; text-decoration: none;" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Travel Info
-            </a>
-            <div class="dropdown-menu" aria-labelledby"${details.firstName}">
-                <a class="dropdown-item" href="fareRules">Tickets</a>
-                <a class="dropdown-item" href="smartCards">SmartCards</a>
-                <a class="dropdown-item" href="metroTimings">Metro Timings</a>
-                <a class="dropdown-item" href="userProfileUpdate?email=${details.email}">Profile</a>
-                 <a class="dropdown-item" href="userLogin">Log out</a>
+
+    <header class="bg-dark text-white text-center py-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <!-- Logo -->
+            <img src="https://www.x-workz.in/Logo.png" alt="Logo" style="max-height: 50px;">
+
+
+
+            <!-- Dropdown with Profile -->
+            <div class="dropdown mb-1">
+                <img src="readImage/${details.imageName}"class="rounded-circle mx-2" alt="img" width="90"
+                     data-bs-toggle="modal" data-bs-target="#imageModal"/>
+                <a class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split mx-2" href=""
+                   role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    ${details.firstName}
+                </a>
+                <button><a class="dropdown-item" href="metroTimings?email=${details.email}">Metro Timings</a></button>
+                <div class="dropdown-menu" aria-labelledby="${details.firstName}">
+                    <a class="dropdown-item" href="userProfileUpdate?email=${details.email}">Profile</a>
+                    <a class="dropdown-item" href="userCanLoginHere">Log out</a>
+                </div>
+                <button>
+                            <a href="abc?userId=${details.id}&&email=${details.email}" style="color: black; text-decoration: none">View Ticket History</a>
+                        </button>
             </div>
         </div>
-        <nav class="mx-3">
-            <a href="info" style="color: white; text-decoration: none">Information</a>
-        </nav>
-        <nav>
-            <a href="abc?userId=${details.id}" style="color: white; text-decoration: none">View Ticket History</a>
-        </nav>
-
     </header>
 
     <br>
@@ -104,26 +107,29 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-4 d-flex flex-column align-items-start">
-                    <h8 style="font-family: Arial, sans-serif; color: green;">->Smart cards will be used to carry multiple trips</h8>
+
                     <img src="https://english.bmrc.co.in/images/metro/tickets/tickets-logo.jpg" alt="Descriptive Alt Text" class="img-fluid" style="height: 200px;">
                 </div>
                 <div class="col-md-4 d-flex flex-column align-items-center">
-                    <h8 style="font-family: Arial, sans-serif; color: green;">->Tokens</h8>
+
                     <img src="https://english.bmrc.co.in/images/metro/tickets/coin.jpg" alt="Descriptive Alt Text" class="img-fluid" style="max-height: 200px;">
                 </div>
                 <div class="col-md-4 d-flex flex-column align-items-end">
-                    <a href="smartCards" style="font-family: Arial, sans-serif; color: green;">->Smart cards</a>
+
                     <img src="https://english.bmrc.co.in/images/metro/tickets/smartcard.jpg" alt="Descriptive Alt Text" class="img-fluid" style="max-height: 200px;">
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="bg-dark text-white text-center py-3 mt-4">
-        <div class="container text-center">
-            <p class="mb-0">
-                <a href="userCanLoginHere" style="text-decoration: none; color: white;">Back</a>
-            </p>
+ <!-- Footer positioned at the bottom -->
+    <footer class="bg-dark py-3 mt-auto">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center">
+                    <p class="text-white mb-0">Copyright &copy; 2024, All Rights Reserved</p>
+                </div>
+            </div>
         </div>
     </footer>
 

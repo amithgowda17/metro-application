@@ -23,51 +23,66 @@
 
 <body>
     <!-- Header Section -->
-    <header class="bg-dark text-white text-center py-3">
-        <div class="d-flex justify-content-between align-items-center">
-            <!-- Logo -->
-            <img src="https://www.x-workz.in/Logo.png" alt="Logo" style="max-height: 50px;">
+     <header class="bg-dark text-white text-center py-3">
+                       <div class="d-flex justify-content-between align-items-center">
+                           <!-- Logo -->
+                           <img src="https://www.x-workz.in/Logo.png" alt="Logo" style="max-height: 50px;">
 
-            <nav class="d-flex justify-content-center">
-                <a href="addLocations?email=${dto.email}" class="btn btn-dark btn-sm mx-2 ">Locations</a>
-                <a href="addTimings?email=${dto.email}" class="btn btn-dark btn-sm mx-2">Timings</a>
-                <a href="addTrainType?email=${dto.email}" class="btn btn-dark btn-sm mx-2">Add Train</a>
-                <a href="addPriceList?email=${dto.email}" class="btn btn-dark btn-sm mx-2">Price</a>
-                <a href="readTrain?email=${dto.email}" class="btn btn-dark btn-sm mx-2">View Data</a>
+                           <!-- Navigation Links -->
+                           <nav class="d-flex justify-content-center">
+                               <a href="addLocations?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">Locations</a>
+                               <a href="addTimings?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">Timings</a>
+                               <a href="addTrainType?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">Add Train</a>
+                               <a href="addPriceList?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">Price</a>
+                               <a href="readTrain?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">View Data</a>
+                           </nav>
 
-            </nav>
+                           <!-- Dropdown with Profile -->
+                           <div class="dropdown mb-1">
+                               <img src="getImage/${dto.fileName}" class="rounded-circle mx-2" alt="img" width="90"
+                                    data-bs-toggle="modal" data-bs-target="#imageModal"/>
+                               <a class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split mx-2" href=""
+                                  role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   ${dto.fname}
+                               </a>
+                               <div class="dropdown-menu" aria-labelledby="${dto.fname}">
+                                   <a class="dropdown-item" href="profileUpdate?email=${dto.email}">Profile</a>
+                                   <a class="dropdown-item" href="loginOut">Log out</a>
+                               </div>
+                           </div>
+                       </div>
+                   </header>
 
-            <!-- Dropdown Menu -->
-            <div class="dropdown mb-1">
-                <img src="getImage/${dto.fileName}" class="rounded-circle mx-2" alt="img" width=90 />
-                <a class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split mx-2" href="" role="button"
-                    id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    ${dto.fname}
-                </a>
-                <div class="dropdown-menu" aria-labelledby="${dto.fname}">
-                    <a class="dropdown-item" href="profileUpdate?email=${dto.email}">Profile</a>
-                    <a class="dropdown-item" href="loginOut">Log out</a>
-                </div>
-            </div>
-        </div>
-    </header>
-
+                   <!-- Image Modal -->
+                   <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+                       <div class="modal-dialog">
+                           <div class="modal-content">
+                               <div class="modal-header">
+                                   <h5 class="modal-title" id="imageModalLabel">Profile Picture</h5>
+                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                               </div>
+                               <div class="modal-body text-center">
+                                   <img src="getImage/${dto.fileName}" class="img-fluid" alt="Profile Image" />
+                               </div>
+                           </div>
+                       </div>
+                   </div>
     <!-- Main Content Section -->
     <h5 style="text-align:center;">${success}</h5>
     <h5 style="text-align:center;">${Unsaved}</h5>
     <br>
 
 
-    <div style="max-width: 1000px; margin: auto;">
-        <div class="mb-3">
-            <h5 class="mb-0"></h5>
-        </div>
-        <div class="d-flex align-items-center justify-content-center" style="border-radius: 15px; overflow: hidden;">
-            <div class="card-body" style="background-color: black;">
+     <div style="max-width: 1000px; margin: auto;">
+            <div class="mb-3">
+                <h5 class="mb-0"></h5>
+            </div>
+            <div class="card" style="border-radius: 15px; border: 1px solid #ccc; overflow: hidden;">
+                <div class="card-body" style="background-color: white;">
                 <form action="addTrain/${dto.email}" method="post">
                     <div class="col-md-6 mb-1">
                         <div class="mb-3">
-                            <h5 class="text-right" style="color:white">ADD TrainType And Train Number</h5>
+                            <h5 class="text-right" style="color:black">ADD TrainType And Train Number</h5>
                         </div>
                         <label for="email" class="form-label" hidden>email</label>
                         <input type="text" name="email" id="email" class="form-control" placeholder="Enter the email"
@@ -75,12 +90,12 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="trainNumber" class="form-label" style="color:white">Train Number</label>
+                        <label for="trainNumber" class="form-label" style="color:black">Train Number</label>
                         <input type="text" name="trainNumber" id="trainNumber" class="form-control"
                             placeholder="Enter the Train Number" required />
                     </div>
                     <div class="mb-3">
-                        <label for="addTrainType" class="form-label" style="color:white">Add Train Type</label>
+                        <label for="addTrainType" class="form-label" style="color:black">Add Train Type</label>
                         <select name="trainType" id="trainType" class="form-control select2" required>
                             <option value="">Select Train Type</option>
                             <option value="Purple">Purple</option>

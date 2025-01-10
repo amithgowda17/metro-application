@@ -6,25 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="0602b53b-9c99-4c49-979b-8a628a656a51" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/AddTrainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/AddTrainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/entity/AddTrainEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/entity/AddTrainEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/entity/LocationEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/entity/LocationEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/entity/PriceEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/entity/PriceEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/entity/TimingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/entity/TimingEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/AddTrainRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/AddTrainRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/PriceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/PriceRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/PriceRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/PriceRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/TimingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/TimingRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/TimingRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/TimingRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/UserRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/UserRepoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/AddTrainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/AddTrainService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/AddTrainServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/AddTrainServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/updateMetroDetails.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/updateMetroDetails.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/UserTicketHistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/UserTicketHistoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/addLocation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addLocation.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/addPrice.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addPrice.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/addTimings.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addTimings.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/addTrain.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addTrain.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/displayMetroDetails.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/displayMetroDetails.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/emailOtp.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/emailOtp.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/metroTimings.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/metroTimings.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/profileUpdate.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/profileUpdate.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/updatePassword.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/updatePassword.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/userLogin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/userLogin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/userPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/userPage.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/userProfile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/userProfile.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/userRegistration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/userRegistration.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/userSuccessPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/userSuccessPage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/userTicketHistory.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/userTicketHistory.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +55,7 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5

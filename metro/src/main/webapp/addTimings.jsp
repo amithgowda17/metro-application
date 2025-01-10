@@ -12,51 +12,64 @@
 
         <body>
             <header class="bg-dark text-white text-center py-3">
-                <div class="d-flex justify-content-between align-items-center">
-                    <!-- Logo -->
-                    <img src="https://www.x-workz.in/Logo.png" alt="Logo" style="max-height: 50px;">
-                    <nav class="d-flex justify-content-center">
-                        <a href="addLocations?email=${dto.email}" class="btn btn-dark btn-sm mx-2 ">Locations</a>
-                        <a href="addTimings?email=${dto.email}" class="btn btn-dark btn-sm mx-2">Timings</a>
-                        <a href="addTrainType?email=${dto.email}" class="btn btn-dark btn-sm mx-2">Add Train</a>
-                        <a href="addPriceList?email=${dto.email}" class="btn btn-dark btn-sm mx-2">Price</a>
-                        <a href="readTrain?email=${dto.email}" class="btn btn-dark btn-sm mx-2">View Data</a>
+                              <div class="d-flex justify-content-between align-items-center">
+                                  <!-- Logo -->
+                                  <img src="https://www.x-workz.in/Logo.png" alt="Logo" style="max-height: 50px;">
 
-                    </nav>
+                                  <!-- Navigation Links -->
+                                  <nav class="d-flex justify-content-center">
+                                      <a href="addLocations?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">Locations</a>
+                                      <a href="addTimings?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">Timings</a>
+                                      <a href="addTrainType?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">Add Train</a>
+                                      <a href="addPriceList?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">Price</a>
+                                      <a href="readTrain?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">View Data</a>
+                                  </nav>
 
-                    <!-- Heading -->
-                    <h1 class="text-center mb-0 flex-grow-1"></h1>
-                    <!-- Dropdown -->
-                    <div class="dropdown mb-1">
-                        <img src="getImage/${dto.fileName}" class="rounded-circle mx-2" alt="img" width=90 />
-                        <a class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split mx-2" href=""
-                            role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            ${dto.fname}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="${dto.fname}">
-                            <a class="dropdown-item" href="profileUpdate?email=${dto.email}">Profile</a>
-                            <a class="dropdown-item" href="loginOut">Log out</a>
-                        </div>
-                    </div>
-                </div>
-            </header>
+                                  <!-- Dropdown with Profile -->
+                                  <div class="dropdown mb-1">
+                                      <img src="getImage/${dto.fileName}" class="rounded-circle mx-2" alt="img" width="90"
+                                           data-bs-toggle="modal" data-bs-target="#imageModal"/>
+                                      <a class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split mx-2" href=""
+                                         role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          ${dto.fname}
+                                      </a>
+                                      <div class="dropdown-menu" aria-labelledby="${dto.fname}">
+                                          <a class="dropdown-item" href="profileUpdate?email=${dto.email}">Profile</a>
+                                          <a class="dropdown-item" href="loginOut">Log out</a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </header>
 
+                          <!-- Image Modal -->
+                          <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                          <h5 class="modal-title" id="imageModalLabel">Profile Picture</h5>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body text-center">
+                                          <img src="getImage/${dto.fileName}" class="img-fluid" alt="Profile Image" />
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
             <div style="max-width: 500px; margin: auto;">
                 <div class="mb-3">
                     <h5 class="mb-0"></h5>
                 </div>
                 <div class="card" style="border-radius: 15px; overflow: hidden;">
-                    <div class="card-body" style="background-color: black;">
+                    <div class="card-body" style="background-color: white;">
                         <form action="timings/${dto.email}" method="post">
                             <div class="col-md-6 mb-1">
 
                                 <div class="mb-3">
                                     <div>
-                                        <h5 class="text-right" style="color:white">ADD TIMINGS</h5>
+                                        <h5 class="text-right" style="color:black">ADD TIMINGS</h5>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="addTrainType" style="color:white" class="form-label">Add Train
+                                        <label for="addTrainType" style="color:black" class="form-label">Add Train
                                             Type</label>
                                         <select name="trainType" id="trainType" class="form-control" required>
                                             <option value="">Select Train Type</option>
@@ -66,7 +79,7 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="trainNumber" style="color:white" class="form-label">Add
+                                        <label for="trainNumber" style="color:black" class="form-label">Add
                                             trainNumber</label>
                                         <select name="trainNumber" id="trainNumber" class="form-control" required>
                                             <option value="">Select TrainNumber</option>
@@ -98,18 +111,18 @@
                                             placeholder="please enter a email" value="${dto.email}" hidden>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="from" style="color:white">Select From:</label>
+                                        <label for="from" style="color:black">Select From:</label>
                                         <input type="time" name="fromTime" id="from" class="form-control"
                                             placeholder="Please Enter a From" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="to" style="color:white">Select To:</label>
+                                        <label for="to" style="color:black">Select To:</label>
                                         <input type="time" name="toTime" id="to" class="form-control"
                                             placeholder="Please Enter a From" required>
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="source" class="form-label" style="color:white">Select Source
+                                        <label for="source" class="form-label" style="color:black">Select Source
                                             Station</label>
                                         <select name="source" id="sourceId" class="form-control" required>
                                             <option value="">Select Source Station</option>
@@ -169,7 +182,7 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="destination" style="color:white" class="form-label">Select
+                                        <label for="destination" style="color:black" class="form-label">Select
                                             Destination Station</label>
                                         <select name="destination" obBlur="destination()" id="destinationId"
                                             class="form-control" required>
@@ -230,22 +243,22 @@
                                     </div>
 
                                     <div class="mb-2">
-                                        <label class="form-label" style="color:white">Day of the Week</label>
+                                        <label class="form-label" style="color:black">Day of the Week</label>
                                         <div>
                                             <div class="mb-3">
                                                 <input class="form-check-input" type="radio" name="dayOfTheWeek"
                                                     id="regularDayId" value="MondayToFriday">
-                                                <label class="form-check-label" style="color:white"
+                                                <label class="form-check-label" style="color:black"
                                                     for="flexRadioDefault1">Monday To Friday</label>
                                                 <br>
                                                 <input class="form-check-input" type="radio" name="dayOfTheWeek"
                                                     id="sundayId" value="Sunday">
-                                                <label class="form-check-label" style="color:white"
+                                                <label class="form-check-label" style="color:black"
                                                     for="flexRadioDefault1">Sunday</label>
                                                 <br>
                                                 <input class="form-check-input" type="radio" name="dayOfTheWeek"
                                                     id="holidayId" value="Holiday">
-                                                <label class="form-check-label" style="color:white"
+                                                <label class="form-check-label" style="color:black"
                                                     for="flexRadioDefault1">Holiday</label>
 
                                             </div>
