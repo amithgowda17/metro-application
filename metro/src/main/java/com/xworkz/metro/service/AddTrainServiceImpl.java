@@ -92,7 +92,7 @@ public class AddTrainServiceImpl implements AddTrainService{
             return addTrainDto;
         }).collect(Collectors.toList());
 
-        log.info("List in repo {}",addTrainDtoList);
+//        log.info("List in repo {}",addTrainDtoList);
         return  addTrainDtoList;
     }
 
@@ -141,7 +141,6 @@ public class AddTrainServiceImpl implements AddTrainService{
     @Override
     public AddTrainDto findByTrainNumber(String trainNumber) {
         if (trainNumber != null) {
-
             AddTrainDto addTrainDto = new AddTrainDto();
             AddTrainEntity addTrainEntity = addTrainRepository.findTrainNumber(trainNumber);
             BeanUtils.copyProperties(addTrainEntity, addTrainDto);
@@ -151,25 +150,29 @@ public class AddTrainServiceImpl implements AddTrainService{
     }
 
     @Override
-    public boolean updatingMetroDetails(String trainType,String trainNumber,String source,String destination,String fromTime,String toTime,Integer price,String dayOfTheWeek) {
-        AddTrainDto addTrainDto = findByTrainNumber(trainNumber);
-        AddTrainEntity addTrainEntity = addTrainRepository.findById(addTrainDto.getAddTrainId());
-        log.info("This Me addTrainDto {}",addTrainDto);
-        PriceEntity priceEntity = priceRepository.findById(addTrainDto.getAddTrainId());
-        TimingEntity timingEntity = timingRepository.findById(addTrainDto.getAddTrainId());
-        if (addTrainEntity.getAddTrainId().equals(addTrainDto.getAddTrainId())){
+    public boolean updatingMetroDetails(Integer addTrainID,String trainType,String trainNumber,String source,String destination,String fromTime,String toTime,Integer price,String dayOfTheWeek) {
+        AddTrainEntity addTrainEntity = addTrainRepository.findById(addTrainID);
+        log.info("train number=========={}",trainNumber);
+        PriceEntity priceEntity = priceRepository.findById(addTrainEntity.getAddTrainId());
+        TimingEntity timingEntity = timingRepository.findById(addTrainEntity.getAddTrainId());
+        log.info("addtrain entity in service ================ {}",addTrainEntity);
+        if (addTrainEntity!=null){
             addTrainEntity.setTrainType(trainType);
             addTrainEntity.setTrainNumber(trainNumber);
+            log.info("addtrainentity after updation==========={}",addTrainEntity);
             addTrainRepository.savingTheUpdateDetails(addTrainEntity);
-            if (addTrainDto.getAddTrainId().equals(priceEntity.getPriceId())){
+            if (addTrainEntity.getAddTrainId().equals(priceEntity.getAddTrain().getAddTrainId())){
                 priceEntity.setPrice(price);
+                log.info("price entity after updation==========={}",priceEntity);
+                log.info("============================{}",priceEntity.getAddTrain().getAddTrainId());
                 priceRepository.savePriceToDataBase(priceEntity);
-                if (addTrainDto.getAddTrainId().equals(timingEntity.getTimingId())){
+                if (addTrainEntity.getAddTrainId().equals(timingEntity.getAddTrain().getAddTrainId())){
                     timingEntity.setSource(source);
                     timingEntity.setDestination(destination);
                     timingEntity.setFromTime(fromTime);
                     timingEntity.setToTime(toTime);
                     timingEntity.setDayOfTheWeek(dayOfTheWeek);
+                    log.info("timing entity after updation==========={}",timingRepository);
                     timingRepository.TheUpdatedTimings(timingEntity);
                     return true;
                 }

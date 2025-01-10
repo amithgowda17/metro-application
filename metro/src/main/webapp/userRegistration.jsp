@@ -226,7 +226,7 @@
 
           let emailId = document.getElementById("email").value
           var button = document.getElementById("button");
-          const response = await axios("http://localhost:8080/metro/FindEmail?email=" + emailId)
+          const response = await axios("http://localhost:8080/metro/findEmail?email=" + emailId)
 
           if (emailId.length < 5) {
             document.getElementById("emailExists").innerHTML = "<span style='color:red;'>invalid email</span>";

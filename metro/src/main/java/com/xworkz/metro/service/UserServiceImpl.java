@@ -59,15 +59,16 @@ public class UserServiceImpl implements UserService{
     public UserRegisterDto lookingForEmail(String email) {
         if (email != null) {
             log.info("email in service {}", email);
-            UserRegisterDto userRegistrationDto = new UserRegisterDto();
             UserRegisterEntity userRegistrationEntity = userRepository.findingEmailFromDataBase(email);
             log.info("userRegistrationEntity {}", userRegistrationEntity);
-            userRegistrationEntity.setPassword(encryptionDecryption.decrypt(userRegistrationEntity.getPassword()));
             if (userRegistrationEntity != null) {
+                UserRegisterDto userRegistrationDto = new UserRegisterDto();
+                userRegistrationEntity.setPassword(encryptionDecryption.decrypt(userRegistrationEntity.getPassword()));
                 BeanUtils.copyProperties(userRegistrationEntity, userRegistrationDto);
-                log.info("userRegistrationDto {}", userRegistrationDto);
+                log.info("userRegistrationDto in service {}", userRegistrationDto);
                 return userRegistrationDto;
             }
+            return null;
         }
         return null;
     }

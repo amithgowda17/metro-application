@@ -9,7 +9,6 @@ public interface TimingRepository {
 
     String TheUpdatedTimings(TimingEntity timingEntity);
 
-
     TimingEntity findById(Integer addTrainId);
 
     TimingEntity findBySourceAndDestination(String source, String destination);

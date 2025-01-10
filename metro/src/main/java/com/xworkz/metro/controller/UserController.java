@@ -58,6 +58,10 @@ public class UserController {
         return "userRegistration";
     }
 
+    @GetMapping("userLogin")
+    public String getUserLoginPage(){
+        return "userLogin";
+    }
 
 
     @GetMapping("userCanLoginHere")
@@ -97,16 +101,15 @@ public class UserController {
     }
 
 
-
-    @GetMapping("/FindEmail")
-    public ResponseEntity<String> findingUserEmail(@RequestParam String email, Model model){
+    @GetMapping("findEmail")
+    public ResponseEntity<String> findingUserEmail(@RequestParam String email){
         log.info("email {}",email);
         if(email != null) {
             UserRegisterDto userRegistrationDto = userService.lookingForEmail(email);
             log.info("user Registration Dto {}", userRegistrationDto);
             if (userRegistrationDto != null) {
                 return ResponseEntity.ok("email already exists");
-            }
+            }g
         }
         return ResponseEntity.ok("email_accepted");
     }
@@ -213,6 +216,8 @@ public class UserController {
         boolean isSaved = userService.saveTicketDetails(id, ticketNumber, source, destination);
         if (isSaved){
             emailSent.ticketMessage(email,ticketNumber);
+            UserRegisterDto userRegisterDto=userService.lookingForEmail(email);
+            model.addAttribute("details",userRegisterDto);
             model.addAttribute("booked","ThankYou Your Ticket Booked Successfully");
             return "userSuccessPage";
         }

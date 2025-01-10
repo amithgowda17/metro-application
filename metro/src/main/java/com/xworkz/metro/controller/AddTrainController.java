@@ -72,30 +72,29 @@ public class AddTrainController {
     }
 
     @GetMapping("UpdateTrain")
-    public String onEdit(@RequestParam Integer addTrainId,Model model){
+    public String onEdit(@RequestParam Integer addTrainId,@RequestParam String email, Model model){
         AddTrainDto addTrainDto = addTrainService.getDetails(addTrainId);
         log.info("addTrainDto {}",addTrainDto);
-
-        model.addAttribute("dto",addTrainDto);
-
+        RegisterationDto registerationDto=metroService.findByEmailInService(email);
+        model.addAttribute("dto",registerationDto);
+        model.addAttribute("addTrainDto",addTrainDto);
         return "updateMetroDetails";
     }
 
     @PostMapping("updateDetails")
-    public String updateDetails(AddTrainDto addTrainDto,@RequestParam String email,@RequestParam String trainType,@RequestParam String trainNumber,@RequestParam String source,@RequestParam String destination,@RequestParam String fromTime,@RequestParam String toTime, @RequestParam Integer price,@RequestParam String dayOfTheWeek ,Model model){
-        log.info("add{}",addTrainDto,price);
-        log.info("email {}",email);
+    public String updateDetails(AddTrainDto addTrainDto,@RequestParam Integer addTrainId,@RequestParam String email,@RequestParam String trainType,@RequestParam String trainNumber,@RequestParam String source,@RequestParam String destination,@RequestParam String fromTime,@RequestParam String toTime, @RequestParam Integer price,@RequestParam String dayOfTheWeek ,Model model){
+        log.info("====this controller  add traindto=================add{}",addTrainDto);
+        log.info("this=============email {}",email);
         RegisterationDto registrationDto = metroService.findByEmailInService(email);
         model.addAttribute("dto",registrationDto);
-        addTrainService.updatingMetroDetails(trainType,trainNumber,source,destination,fromTime,toTime,price,dayOfTheWeek);
+        addTrainService.updatingMetroDetails(addTrainId,trainType,trainNumber,source,destination,fromTime,toTime,price,dayOfTheWeek);
         List<AddTrainDto> addTrainEntities = addTrainService.readAddTrainData();
         model.addAttribute("addTrainEntities", addTrainEntities);
-        log.info("addTrainDtos{}",addTrainEntities);
         return "displayMetroDetails";
     }
 
     @GetMapping("searchById")
-    public String searchById(@RequestParam(required = false) Integer addTrainId,@RequestParam String email, Model model){
+    public String searchById(@RequestParam Integer addTrainId,@RequestParam String email, Model model){
         if (addTrainId==null){
             RegisterationDto registrationDto = metroService.findByEmailInService(email);
             model.addAttribute("dto",registrationDto);

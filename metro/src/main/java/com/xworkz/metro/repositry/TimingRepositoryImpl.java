@@ -42,6 +42,7 @@ public class TimingRepositoryImpl implements TimingRepository{
             transaction.begin();
             entityManager.merge(timingEntity);
             transaction.commit();
+            log.info("this is timing repo========================");
         }catch (Exception e){
             log.info("exception in the updating Time entity {}",e.getMessage());
         }finally {
@@ -56,12 +57,13 @@ public class TimingRepositoryImpl implements TimingRepository{
         try {
             EntityTransaction transaction=entityManager.getTransaction();
             transaction.begin();
-            Query query =entityManager.createNamedQuery("getById");
+            Query query =entityManager.createNamedQuery("getTimings");
             query.setParameter("addTrainId",addTrainId);
             TimingEntity timingEntity= (TimingEntity) query.getSingleResult();
             transaction.commit();
             return timingEntity;
         }catch (Exception e){
+            log.info("err in timing repo======{}",e.getMessage());
             return null;
         }finally {
             entityManager.close();

@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@NamedQuery(name = "getById",query = "Select entity from TimingEntity entity where entity.addTrain=:addTrainId")
+@NamedQuery(name = "getTimings",query = "Select entity from TimingEntity entity where entity.addTrain.addTrainId=:addTrainId")
 @NamedQuery(name = "getBySourceAndDestination",query = "Select t from TimingEntity t where t.source=:source AND t.destination=:destination ")
 @Table(name = "timings")
 
@@ -37,7 +37,7 @@ public class TimingEntity {
                 ", source='" + source + '\'' +
                 ", destination='" + destination + '\'' +
                 ", dayOfTheWeek='" + dayOfTheWeek + '\'' +
-                ", addTrain=" + (addTrain!=null?addTrain.getTrainType():"Train not found") +
+                ", addTrain=" + (addTrain!=null?addTrain.getAddTrainId():"Train not found") +
                 '}';
     }
 }

@@ -39,18 +39,21 @@ public class UserRepoImpl implements UserRepo{
     public UserRegisterEntity findingEmailFromDataBase(String email) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
+            EntityTransaction transaction=entityManager.getTransaction();
+            transaction.begin();
             Query query = entityManager.createNamedQuery("emailFindByMe");
             query.setParameter("email", email);
             Object object = query.getSingleResult();
             UserRegisterEntity userRegisterEntity = (UserRegisterEntity) object;
             log.info("userRegistrationEntity from email {}",userRegisterEntity);
+            transaction.commit();
             return userRegisterEntity;
         } catch (Exception e) {
-            log.info("Some Problem fetching with database");
+            log.info("Some Problem fetching with database ");
+            return null;
         } finally {
             entityManager.close();
         }
-        return null;
     }
 
     @Override

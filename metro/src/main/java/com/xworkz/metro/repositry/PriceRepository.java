@@ -10,7 +10,7 @@ public interface PriceRepository {
 
     PriceEntity findBySourceAndDestination(String source,String destination);
 
-    PriceEntity findById(Integer priceId);
+    PriceEntity findById(Integer addTrainId);
 
 
 }

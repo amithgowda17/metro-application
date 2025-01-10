@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
-import java.util.List;
+
 
 @Repository
 @Slf4j
@@ -21,13 +21,14 @@ public class PriceRepositoryImpl implements PriceRepository{
     @Override
     public String savePriceToDataBase(PriceEntity priceEntity) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        EntityTransaction transaction = entityManager.getTransaction();
         try{
+            EntityTransaction transaction = entityManager.getTransaction();
             transaction.begin();
             entityManager.merge(priceEntity);
             transaction.commit();
+            log.info("this is price repo========================");
         }catch (Exception e){
-            log.info("============================");
+            log.info("err msg in price repo{}",e.getMessage());
         }finally {
             entityManager.close();
         }
@@ -60,16 +61,19 @@ public class PriceRepositoryImpl implements PriceRepository{
 
 
     @Override
-    public PriceEntity findById(Integer priceId) {
+    public PriceEntity findById(Integer addTrainId) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try{
+            EntityTransaction transaction=entityManager.getTransaction();
+            transaction.begin();
             Query query =entityManager.createNamedQuery("priceId");
-            query.setParameter("priceId",priceId);
+            query.setParameter("addTrainId",addTrainId);
             Object object = query.getSingleResult();
             PriceEntity priceEntity = (PriceEntity) object;
+            transaction.commit();
             return priceEntity;
         }catch (Exception e){
-            log.error("================");
+            log.error("err in price repo===={}",e.getMessage());
         }finally {
             entityManager.close();
         }

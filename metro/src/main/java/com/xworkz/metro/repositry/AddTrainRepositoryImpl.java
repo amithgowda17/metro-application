@@ -2,6 +2,7 @@ package com.xworkz.metro.repositry;
 
 import com.xworkz.metro.entity.AddTrainEntity;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -76,15 +77,18 @@ public class AddTrainRepositoryImpl implements AddTrainRepository{
     public AddTrainEntity findById(Integer addTrainId) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
+             EntityTransaction transaction=entityManager.getTransaction();
+             transaction.begin();
             Query query = entityManager.createNamedQuery("getAllDetailsById");
             query.setParameter("addTrainId",addTrainId);
-            log.info("addTrainId=================in repo",addTrainId);
-            System.out.println("Trainee Id is"+ addTrainId);
             AddTrainEntity addTrainEntities =(AddTrainEntity) query.getSingleResult();
-            System.out.println("addTrainEntities from :"+addTrainEntities);
+            Hibernate.initialize(addTrainEntities.getTimingEntity());
+            Hibernate.initialize(addTrainEntities.getPriceEntity());
+            Hibernate.initialize(addTrainEntities.getLocations());
+            transaction.commit();
             return addTrainEntities;
         }catch (Exception e){
-            log.info("============"+addTrainId);
+            log.info("err in addrepo==========={}",e.getMessage());
             return null;
         }finally {
             entityManager.close();
@@ -116,6 +120,7 @@ public class AddTrainRepositoryImpl implements AddTrainRepository{
             transaction.begin();
             entityManager.merge(addTrainEntity);
             transaction.commit();
+            log.info("this is addtrain repo========================");
         }catch (Exception e){
             log.info("print exceptions {}",e.getMessage());
         }

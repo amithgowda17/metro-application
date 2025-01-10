@@ -34,7 +34,7 @@ public class LocationEntity {
                 ", trainNumber='" + trainNumber + '\'' +
                 ", trainType='" + trainType + '\'' +
                 ", locationsName='" + locationsName + '\'' +
-                ", addTrain=" + (addTrain!=null?addTrain.getTrainType():"Train not found") +
+                ", addTrain=" + (addTrain!=null?addTrain.getAddTrainId():"Train not found") +
                 ", timing=" +  +
                 '}';
     }

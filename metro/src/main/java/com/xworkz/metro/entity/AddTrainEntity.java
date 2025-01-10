@@ -38,9 +38,9 @@ public class AddTrainEntity {
                 "addTrainId=" + addTrainId +
                 ", trainNumber='" + trainNumber + '\'' +
                 ", trainType='" + trainType + '\'' +
-                ", locations=" + (locations!=null?locations:"location not found") +
-                ", priceEntity=" + (priceEntity!=null?priceEntity:"price not found")+
-                ", timingEntity=" + (timingEntity!=null?timingEntity:"timing not found") +
+                ", locations=" + (locations != null ? locations: "location not found") +
+                ", priceEntity=" + (priceEntity != null ? priceEntity : "price not found") +
+                ", timingEntity=" + (timingEntity != null ? timingEntity : "timing not found") +
                 '}';
     }
 }

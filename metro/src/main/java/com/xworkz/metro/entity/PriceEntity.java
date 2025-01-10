@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "price")
 @NamedQuery(name = "findBySourceAndDestination",
         query = "SELECT entities FROM PriceEntity entities WHERE entities.source=:source AND entities.destination=:destination")
-@NamedQuery(name="priceId",query = "SELECT p FROM PriceEntity p WHERE p.priceId = :priceId")
+@NamedQuery(name="priceId",query = "SELECT p FROM PriceEntity p WHERE p.addTrain.addTrainId = :addTrainId")
 
 
 public class PriceEntity {
@@ -37,7 +37,7 @@ public class PriceEntity {
                 ", destination='" + destination + '\'' +
                 ", trainType='" + trainType + '\'' +
                 ", price=" + price +
-                ", addTrain=" + (addTrain!=null?addTrain.getTrainType():"Train not found" )+
+                ", addTrain=" + (addTrain!=null?addTrain.getAddTrainId():"Train not found" )+
                 '}';
     }
 }

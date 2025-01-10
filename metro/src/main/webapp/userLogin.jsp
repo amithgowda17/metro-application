@@ -53,12 +53,13 @@
                             <b>Login:</b>
                             <div class="mb-1">
                                 <span for="emailId" id="emailLabelId" class="form-label">User Email*</span>
-                                <input type="email" id="emailId" onblur="checkEmail()" name="email"
+                                <input type="email" id="email" onblur="checkEmail()" name="email"
                                     placeholder="User@gmail.com" id="emailId" class="form-control"
                                     value="${email.email}" required>
+                                    <span id="emailExists"></span>
                             </div>
                             <div class="col-auto">
-                                <button type="submit" name="button"
+                                <button type="submit" name="button" id="button1"
                                     class="btn btn-primary btn-sm rounded-sm border border-light rounded-pill">Get
                                     OTP</button>
                             </div>
@@ -103,19 +104,24 @@
             });
 
             const checkEmail = async () => {
-                const email = document.getElementById("emailId").value;
-                const label = document.getElementById("emailLabelId");
-                var button = document.getElementById("button");
-                const response = await axios.get("http://localhost:8080/metro-application/FindEmail", { params: { email: email } });
-                console.log(response.data);
-                if (response.data === "email user already existed") {
-                    label.innerText = response.data;
-                    label.style.color = "red";
-                } else {
-                    label.innerText = "Please enter valid email";
-                    label.style.color = "red";
-                }
-            }
+
+                     let emailId = document.getElementById("email").value
+                     var button = document.getElementById("button1");
+                     const response = await axios("http://localhost:8080/metro/findEmail?email=" + emailId)
+
+                     if (emailId.length < 5) {
+                       document.getElementById("emailExists").innerHTML = "<span style='color:red;'>invalid email</span>";
+                       button.setAttribute("disabled", "");
+                     } else if (response.data == "email already exists") {
+                       document.getElementById("emailExists").innerHTML = "<span style='color:green;'>email_accepted</span>";
+                       button.removeAttribute("disabled");
+                     } else {
+                       document.getElementById("emailExists").innerHTML = "<span style='color:red;'>email doesn't exists</span>";
+                       button.setAttribute("disabled", "");
+                     }
+                     console.log(response.data)
+
+                 }
 
 
         </script>

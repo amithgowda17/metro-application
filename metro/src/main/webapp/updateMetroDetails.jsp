@@ -26,52 +26,52 @@
                 <form action="updateDetails" method="Post">
                     <div class="mb-3">
                         <label for="addTrainId" class="form-label" hidden>addTrainId</label>
-                        <input type="number" class="form-control" id="addTrainId" name="addTrainId" value="${dto.addTrainId}" hidden>
+                        <input type="number" class="form-control" id="addTrainId" name="addTrainId" value="${addTrainDto.addTrainId}" hidden>
                     </div>
-                     <input type="email" id="email" name="email" placeholder="user@gmail.com" id="emailId" value="${email.email}" hidden>
+                     <input type="email" id="email" name="email" placeholder="user@gmail.com" id="emailId" value="${dto.email}" hidden>
                     <div class="mb-3">
                         <label for="trainNumber" class="form-label"   style="color:white">trainNumber</label>
-                        <input type="text" class="form-control" id="trainNumber" name="trainNumber" value="${dto.trainNumber}">
+                        <input type="text" class="form-control" id="trainNumber" name="trainNumber" value="${addTrainDto.trainNumber}">
                     </div>
                     <div class="mb-3">
                    <label for="trainType" class="form-label"   style="color:white">trainType</label>
-                  <input type="text" class="form-control" id="trainType" name="trainType" value="${dto.trainType}">
+                  <input type="text" class="form-control" id="trainType" name="trainType" value="${addTrainDto.trainType}">
                   </div>
           <div class="mb-3">
-             <c:forEach items="${dto.timingEntity}" var="timing">
+             <c:forEach items="${addTrainDto.timingEntity}" var="timing">
         <label for="source" class="form-label"   style="color:white">Source</label>
         <input type="text" class="form-control" id="source" name="source" value="${timing.source}">
           </c:forEach>
         </div>
 
           <div class="mb-3">
-             <c:forEach items="${dto.timingEntity}" var="timing">
+             <c:forEach items="${addTrainDto.timingEntity}" var="timing">
         <label for="destination"   style="color:white" class="form-label">destination</label>
         <input type="text" class="form-control" id="destination" name="destination" value="${timing.destination}">
           </c:forEach>
         </div>
                   <div class="mb-3">
-                     <c:forEach items="${dto.timingEntity}" var="timing">
+                     <c:forEach items="${addTrainDto.timingEntity}" var="timing">
                 <label for="fromTime"  style="color:white" class="form-label">fromTime</label>
                 <input type="text" class="form-control" id="fromTime" name="fromTime" value="${timing.fromTime}">
                   </c:forEach>
                 </div>
 
                   <div class="mb-3">
-                     <c:forEach items="${dto.timingEntity}" var="timing">
+                     <c:forEach items="${addTrainDto.timingEntity}" var="timing">
                 <label for="toTime"   style="color:white"class="form-label">toTime</label>
                 <input type="text" class="form-control" id="toTime" name="toTime" value="${timing.toTime}">
                   </c:forEach>
                 </div>
 
           <div class="mb-3">
-             <c:forEach items="${dto.priceEntity}" var="price">
+             <c:forEach items="${addTrainDto.priceEntity}" var="price">
         <label for="price"  style="color:white" class="form-label">price</label>
         <input type="number" class="form-control" id="price" name="price" value="${price.price}">
           </c:forEach>
         </div>
                           <div class="mb-3">
-                             <c:forEach items="${dto.timingEntity}" var="timing">
+                             <c:forEach items="${addTrainDto.timingEntity}" var="timing">
                         <label for="dayOfTheWeek"   style="color:white" class="form-label">dayOfTheWeek</label>
                         <input type="text" class="form-control" id="dayOfTheWeek" name="dayOfTheWeek" value="${timing.dayOfTheWeek}">
                           </c:forEach>
