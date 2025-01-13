@@ -77,18 +77,13 @@
                 <div class="col-12 text-center">
                     <p class="mb-0">Copyright &copy; 2024, All Rights Reserved</p>
                 </div>
-                <div class="col-12 text-end">
-                    <span id="date"></span>
-                </div>
+
             </div>
         </div>
     </footer>
 
 
-    <script>
-        let time = new Date();
-        document.getElementById("date").innerText = time.toLocaleDateString() + " " + time.toLocaleTimeString();
-    </script>
+
 
 </body>
 

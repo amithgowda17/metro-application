@@ -76,7 +76,7 @@ public class MetroRepoImpl implements MetroRepo {
 
             EntityTransaction entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            entityManager.persist(loginEntity);
+            entityManager.merge(loginEntity);
             entityTransaction.commit();
             return true;
         } catch (Exception e) {

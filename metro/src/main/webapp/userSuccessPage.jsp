@@ -155,7 +155,7 @@
                      destination: destination
                  },
                  headers: {
-                     'Accept': 'text/plain'  // Expect plain text response
+                     'Accept': 'text/plain'
                  }
              });
 
