@@ -12,7 +12,7 @@
 
 <body>
 
-    <!-- Header with logo, title, and buttons -->
+
     <header class="bg-dark text-white">
         <div class="container-fluid">
             <div class="row align-items-center">
@@ -34,25 +34,24 @@
         </div>
     </header>
 
-    <!-- Scrolling text from right to left -->
+
     <div class="container text-center my-4">
         <marquee behavior="scroll" direction="left" scrollamount="10">
             Experience the fastest way to travel in the city. Save time and reduce traffic with metro service.
         </marquee>
     </div>
 
-    <!-- Container for "Want to book ticket?" and "Book Now" Button -->
+
     <div class="container text-center my-4">
         <p class="lead">Want to book ticket?</p>
         <a href="userCanLoginHere" class="btn btn-lg btn-success">Book Now</a>
     </div>
 
-    <!-- Metro Footer Image -->
+
     <div class="text-center my-4">
         <img src="https://english.bmrc.co.in/images/metro/footer-img.png" alt="Metro Footer Image">
     </div>
 
-    <!-- About the Metro Section -->
     <div class="container my-4">
         <h2 class="text-center">About the Metro</h2>
         <p class="text-center">
@@ -85,7 +84,7 @@
         </div>
     </footer>
 
-    <!-- Script to display current date and time -->
+
     <script>
         let time = new Date();
         document.getElementById("date").innerText = time.toLocaleDateString() + " " + time.toLocaleTimeString();

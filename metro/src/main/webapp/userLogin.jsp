@@ -1,21 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-<%@ page isELIgnored="false" %>
-
 <html>
 
 <head>
   <title>Login</title>
-  <!-- Bootstrap 5 CSS -->
+
+  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-  <!-- Axios for API requests -->
+
+  <!-- Axios JS -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-  <!-- jQuery for using $ -->
+  <!-- jQuery JS -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-  <!-- Header with Black Background -->
+
   <header class="bg-dark">
     <div class="container-fluid">
       <div class="row align-items-center">
@@ -34,65 +33,78 @@
     </div>
   </header>
 
-  <!-- Main Content Section -->
   <div class="container mt-5 flex-grow-1">
-    <div class="row">
+    <div class="row justify-content-center">
       <!-- Image Column on the Left -->
       <div class="col-md-6 d-flex justify-content-center align-items-center">
-        <!-- Carousel for Slideshow -->
-        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
+        <!-- Carousel for Slideshow with fixed size -->
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" style="width: 100%; height: 100%;">
+          <div class="carousel-inner" style="height: 100%;">
+            <div class="carousel-item active" style="height: 100%;">
               <img src="https://www.tripsavvy.com/thmb/n2oAmjOEl-P3r8VXiuv2hu9bqZc=/960x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1081803176-fd11b444454a416ca43a88be77eaeed6.jpg"
-                class="d-block w-100" style="max-height: 300px;">
+                class="d-block w-100" style="height: 100%; object-fit: cover;">
             </div>
-            <div class="carousel-item">
-              <img src="https://english.bmrc.co.in/images/metro/banner1.jpg" class="d-block w-100" style="max-height: 300px;">
+            <div class="carousel-item" style="height: 100%;">
+              <img src="https://planodemetro.com/wp-content/uploads/2020/05/metro-bangalore-fotos.jpg" class="d-block w-100" style="height: 100%; object-fit: cover;">
             </div>
-            <div class="carousel-item">
-              <img src="https://english.bmrc.co.in/images/metro/homepage/about-us.jpg" class="d-block w-100" style="max-height: 300px;">
+            <div class="carousel-item" style="height: 100%;">
+              <img src="https://english.bmrc.co.in/images/metro/homepage/about-us.jpg" class="d-block w-100" style="height: 100%; object-fit: cover;">
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Login Form Column -->
-      <div class="col-md-6">
-        <div class="card mx-5" style="max-width: 500px;">
-          <div class="card-body bg-light">
+      <!-- Form Column on the Right -->
+      <div class="col-md-6 d-flex justify-content-center align-items-center">
+        <div class="card" id="loginCard" style="width: 100%; max-width: 400px;">
+          <div class="card-body">
+            <h5 class="card-title text-center text-primary mb-4">User Login</h5>
+
+            <!-- Login Form -->
             <form action="User" class="row g-3">
-              <b>Login:</b>
-              <div class="mb-1">
-                <span for="emailId" id="emailLabelId" class="form-label">User Email*</span>
+              <div class="mb-3">
+                <label for="email" class="form-label">User Email*</label>
                 <input type="email" id="email" onblur="checkEmail()" name="email" placeholder="User@gmail.com"
-                  id="emailId" class="form-control" value="${email.email}" required>
+                  class="form-control" required value="${email.email}">
                 <span id="emailExists"></span>
               </div>
-              <div class="col-auto">
-                <button type="submit" name="button" id="button1"
-                  class="btn btn-primary btn-sm rounded-sm border border-light rounded-pill">Get OTP</button>
+
+              <!-- Get OTP Button (Center-Aligned just below the email input) -->
+              <div class="d-flex justify-content-center mb-3">
+                <button type="submit" name="button" id="button1" class="btn btn-primary btn-sm rounded-sm">
+                  Get OTP
+                </button>
               </div>
             </form>
 
-            <!-- OTP Submission Form -->
+            <!-- Message -->
+            <h6 style="color: green;text-align: center;">${message}</h6>
+
+            <!-- OTP Form -->
             <form action="loginHere">
               <input type="email" id="email" name="email" placeholder="User@gmail.com" value="${email.email}" hidden>
               <input type="number" id="id" name="id" value="${email.id}" hidden>
               <div class="mb-3">
                 <input type="text" placeholder="Enter OTP" name="otp" class="form-control">
-                <h7 class="text-center" style="color:red">${emailError}</h7>
               </div>
-              <div class="mb-3">
-                <button type="submit" id="button" class="btn btn-dark btn-sm rounded-pill">Submit</button>
+              <div class="d-flex justify-content-center">
+                <button type="submit" id="button" class="btn btn-dark btn-sm rounded-pill">
+                  Submit
+                </button>
               </div>
             </form>
+
+            <!-- Register Link -->
+            <div class="text-center mt-3">
+              <span>Don't have an account? <a href="userRegister" class="text-decoration-none">Register</a></span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div> <!-- End of Main Content Section -->
+  </div>
 
-  <!-- Footer at the Bottom -->
+  <!-- Footer -->
   <footer class="footer bg-dark py-3 mt-auto">
     <div class="container-fluid">
       <div class="row justify-content-center">
@@ -103,13 +115,30 @@
     </div>
   </footer>
 
-  <!-- JavaScript -->
   <script type="text/javascript">
     // Automatically change images in carousel every 3 seconds
     $(document).ready(function () {
       setInterval(() => {
         $(".carousel").carousel('next');
       }, 3000); // Set carousel interval to 3 seconds
+
+      // Dynamically adjust carousel height to match card height
+      const adjustCarouselHeight = () => {
+        const cardHeight = document.getElementById('loginCard').offsetHeight;
+        const carousel = document.getElementById('carouselExampleSlidesOnly');
+        carousel.style.height = cardHeight + 'px';
+
+        const carouselItems = carousel.querySelectorAll('.carousel-item');
+        carouselItems.forEach(item => {
+          item.style.height = cardHeight + 'px';
+        });
+      };
+
+      // Call adjustCarouselHeight on page load
+      adjustCarouselHeight();
+
+      // Adjust carousel height on window resize to maintain consistency
+      window.addEventListener('resize', adjustCarouselHeight);
     });
 
     // Function to check the email using Axios
@@ -132,7 +161,7 @@
     }
   </script>
 
-  <!-- Bootstrap JS and required dependencies -->
+  <!-- Bootstrap JS and Popper.js -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

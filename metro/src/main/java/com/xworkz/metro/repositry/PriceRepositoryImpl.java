@@ -26,7 +26,6 @@ public class PriceRepositoryImpl implements PriceRepository{
             transaction.begin();
             entityManager.merge(priceEntity);
             transaction.commit();
-            log.info("this is price repo========================");
         }catch (Exception e){
             log.info("err msg in price repo{}",e.getMessage());
         }finally {

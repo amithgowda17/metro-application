@@ -25,8 +25,6 @@ public class UserLoginRepositoryImpl implements UserLoginRepository{
             entityManager.merge(userLoginEntity);
             entityTransaction.commit();
         }catch (Exception e){
-            System.out.println("print if theres an exception"+e);
-
         }finally {
             entityManager.close();
         }

@@ -16,9 +16,9 @@
 <body class="d-flex flex-column" style="min-height: 100vh;">
     <header class="bg-dark text-white text-center py-3">
         <div class="d-flex justify-content-between align-items-center">
-            <!-- Logo -->
+
             <img src="https://www.x-workz.in/Logo.png" alt="Logo" style="max-height: 50px;">
-            <!-- Navigation Links -->
+
             <nav class="d-flex justify-content-center">
                 <a href="addLocations?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">Locations</a>
                 <a href="addTimings?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">Timings</a>
@@ -26,7 +26,7 @@
                 <a href="addPriceList?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">Price</a>
                 <a href="readTrain?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">View Data</a>
             </nav>
-            <!-- Dropdown with Profile -->
+
             <div class="dropdown mb-1">
                 <img src="getImage/${dto.fileName}" class="rounded-circle mx-2" alt="img" width="90"
                     data-bs-toggle="modal" data-bs-target="#imageModal" />
@@ -42,7 +42,7 @@
         </div>
     </header>
 
-    <!-- Image Modal -->
+
     <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -159,7 +159,7 @@
     </table>
 
     <footer class="bg-dark text-white text-center py-3 mt-auto border-top">
-        <!-- Added border-top to the footer -->
+
         <p class="mb-0">Copyright &copy; 2024, All Rights Reserved</p>
     </footer>
 

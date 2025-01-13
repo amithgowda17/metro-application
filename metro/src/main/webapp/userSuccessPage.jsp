@@ -20,7 +20,7 @@
 
     <header class="bg-dark text-white text-center py-3">
         <div class="d-flex justify-content-between align-items-center">
-            <!-- Logo -->
+
             <img src="https://www.x-workz.in/Logo.png" alt="Logo" style="max-height: 50px;">
 
 
@@ -36,6 +36,8 @@
                 <button><a class="dropdown-item" href="metroTimings?email=${details.email}">Metro Timings</a></button>
                 <div class="dropdown-menu" aria-labelledby="${details.firstName}">
                     <a class="dropdown-item" href="userProfileUpdate?email=${details.email}">Profile</a>
+                    <a class="dropdown-item" href="info?email=${details.email}">Information</a>
+                    <a class="dropdown-item" href="smartCards?email=${details.email}">Smart Cards</a>
                     <a class="dropdown-item" href="userCanLoginHere">Log out</a>
                 </div>
                 <button>
@@ -122,7 +124,7 @@
         </div>
     </div>
 
- <!-- Footer positioned at the bottom -->
+
     <footer class="bg-dark py-3 mt-auto">
         <div class="container-fluid">
             <div class="row justify-content-center">
@@ -161,7 +163,7 @@
 
              if (price && price !== "Not Found") {
                  document.getElementById("priceId").value = price;
-                 document.getElementById("priceText").innerText = `₹${price}`;
+                 document.getElementById("priceText").innerText = `${price}`;
              } else {
                  document.getElementById("priceId").value = "";
                  document.getElementById("priceText").innerText = "Price not found.";
@@ -169,7 +171,7 @@
          } catch (error) {
              console.error("Error fetching price:", error);
              document.getElementById("priceId").value = "";
-             document.getElementById("priceText").innerText = "Error fetching price.";
+             document.getElementById("priceText").innerText = "Please select valid source and destination";
          }
      };
 

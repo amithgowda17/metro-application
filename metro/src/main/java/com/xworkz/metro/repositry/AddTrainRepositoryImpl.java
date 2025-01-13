@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -61,7 +60,6 @@ public class AddTrainRepositoryImpl implements AddTrainRepository{
         try {
             Query query = entityManager.createNamedQuery("readTrain");
             List<AddTrainEntity> resultList = (List<AddTrainEntity>) query.getResultList();
-            //Optional<List<AddTrainEntity>> resultList1 = Optional.of(resultList);
             log.info("resultlist {}",resultList);
             return resultList;
         } catch (Exception e) {

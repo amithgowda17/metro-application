@@ -2,7 +2,6 @@
 <%@ page isELIgnored="false" %>
 
 <html>
-
 <head>
   <title>Register</title>
   <link rel="icon" href="https://www.x-workz.in/Logo.png">
@@ -10,7 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
-<body class="d-flex flex-column min-vh-100"> <!-- Ensure the body takes full viewport height -->
+<body class="d-flex flex-column min-vh-100">
 
   <!-- Header -->
   <header class="header bg-dark text-white">
@@ -38,12 +37,11 @@
   <div class="container my-4" style="width: 35%;">
     <div class="card form-card mb-3">
       <div class="p-3 bg-secondary-subtle text-secondary-emphasis">
-        <form action="userRegistration" method="post" onclick="form()">
+        <form action="userRegistration" method="post" onsubmit="return form(event)">
           <h3 class="row justify-content-center">Register User</h3>
 
           <div style="margin-top: 8%;">
             <div class="row">
-
               <span id="formMessage"></span>
 
               <div class="col-md-6 mb-3">
@@ -70,7 +68,7 @@
               </div>
 
               <div class="col-md-6 mb-3">
-                <label class="form-label ">Contact Number</label>
+                <label class="form-label">Contact Number</label>
                 <input type="number" class="form-control" id="phNo" placeholder="Enter your contact number"
                   name="mobileNumber" onblur="phone()" required>
                 <span id="ph"></span>
@@ -113,7 +111,7 @@
 
             <div class="row">
               <div class="text-center">
-                <button id="button" type="submit" class="btn btn-primary">Register</button>
+                <button id="button" type="submit" class="btn btn-primary" disabled>Register</button>
                 <button type="reset" class="btn btn-primary">Reset</button>
                 <div class="mt-2">
                   Already have an account? <a href="userCanLoginHere" style="text-decoration: none;">Login</a>
@@ -126,7 +124,7 @@
     </div>
   </div>
 
-  <!-- Fixed Footer -->
+  <!-- Footer -->
   <footer class="bg-dark text-white py-3 mt-auto">
     <div class="container-fluid">
       <div class="row justify-content-center">
@@ -137,163 +135,135 @@
     </div>
   </footer>
 
-      <script>
+  <!-- JavaScript -->
+  <script>
+    function fNameValidation() {
+      var names = document.getElementById("fName").value;
+      var button = document.getElementById("button");
 
-        function fNameValidation() {
-          var names = document.getElementById("fName").value;
-          console.log(names)
-          var button = document.getElementById("button");
-
-          if (names.trim() !== '' && names.length > 3 && names.length <= 25) {
-            document.getElementById("fName").innerHTML = "";
-            button.removeAttribute("Disabled");
-          } else {
-            document.getElementById("fName").innerHTML = "<span style='color:red;'>must be 4 & 25</span>";
-            button.setAttribute("Disabled", "");
-            return;
-          }
-
-        }
-
-        function lNameValidation() {
-          var names = document.getElementById("lName").value;
-          console.log(names)
-          var button = document.getElementById("button");
-          if (names.trim() !== '' && names.length > 0 && names.length <= 25) {
-            document.getElementById("lName").innerHTML = "";
-            button.removeAttribute("Disabled");
-          } else {
-            document.getElementById("lName").innerHTML = "<span style='color:red;'>must be 1 & 25</span>";
-            button.setAttribute("Disabled", "");
-            return;
-          }
-
-        }
-
-
-
-        function passwordEntry() {
-
-          var names = document.getElementById("password").value;
-          console.log(names)
-          var button = document.getElementById("button");
-
-          if (names.trim() !== '' && names.length >= 8 && names.length <= 20) {
-            document.getElementById("pass").innerHTML = "";
-            button.removeAttribute("Disabled");
-          } else {
-            document.getElementById("pass").innerHTML = "<span style='color:red;'>Password must be 8 characters long</span>";
-            button.setAttribute("Disabled", "");
-            return;
-          }
-
-        }
-
-
-        function confirm() {
-          let password = document.getElementById("password").value;
-          let checkPassword = document.getElementById("confirmPassword").value;
-          console.log(password, checkPassword);
-          var button = document.getElementById("button");
-
-          if (password === checkPassword) {
-            document.getElementById("confirmPass").innerHTML = "";
-            button.removeAttribute("disabled");
-          } else {
-            document.getElementById("confirmPass").innerHTML = "<span style='color:red;'>Password doesn't match</span>";
-            button.setAttribute("disabled", "");
-          }
-        }
-
-        const checkEmail = async () => {
-
-          let emailId = document.getElementById("email").value
-          var button = document.getElementById("button");
-          const response = await axios("http://localhost:8080/metro/findEmail?email=" + emailId)
-
-          if (emailId.length < 5) {
-            document.getElementById("emailExists").innerHTML = "<span style='color:red;'>invalid email</span>";
-            button.setAttribute("disabled", "");
-          } else if (response.data == "email already exists") {
-            document.getElementById("emailExists").innerHTML = "<span style='color:red;'>email already exists</span>";
-            button.setAttribute("disabled", "");
-          } else {
-            document.getElementById("emailExists").innerHTML = "<span style='color:green;'>email_accepted</span>";
-            button.removeAttribute("disabled");
-          }
-          console.log(response.data)
-
+      if (names.trim() !== '' && names.length >= 4 && names.length <= 25) {
+        document.getElementById("firstName").innerHTML = "";
+        enableSubmitButton();
+      } else {
+        document.getElementById("firstName").innerHTML = "<span style='color:red;'>First name must be between 4 and 25 characters</span>";
+        disableSubmitButton();
       }
+    }
 
+    function lNameValidation() {
+      var names = document.getElementById("lName").value;
+      var button = document.getElementById("button");
 
-        const phone = async () => {
+      if (names.trim() !== '' && names.length >= 1 && names.length <= 25) {
+        document.getElementById("lastName").innerHTML = "";
+        enableSubmitButton();
+      } else {
+        document.getElementById("lastName").innerHTML = "<span style='color:red;'>Last name must be between 1 and 25 characters</span>";
+        disableSubmitButton();
+      }
+    }
 
-          let phoneNumber = document.getElementById("phNo").value
-          var button = document.getElementById("button");
-          const response = await axios("http://localhost:8080/metro/phoneNumberExists?mobileNumber=" + phoneNumber)
+    function passwordEntry() {
+      var password = document.getElementById("password").value;
+      var button = document.getElementById("button");
 
-          if (phoneNumber.length < 10 || phoneNumber.length > 10) {
-            document.getElementById("ph").innerHTML = "<span style='color:red;'>invalid phone number</span>";
-            button.setAttribute("disabled", "");
-          } else if (response.data == "phone number already exists") {
-            document.getElementById("ph").innerHTML = "<span style='color:red;'>phone number already exists</span>";
-            button.setAttribute("disabled", "");
-          } else {
-            document.getElementById("ph").innerHTML = "<span style='color:green;'>valid</span>";
-            button.removeAttribute("disabled");
-          }
+      if (password.length >= 8 && password.length <= 20) {
+        document.getElementById("pass").innerHTML = "";
+        enableSubmitButton();
+      } else {
+        document.getElementById("pass").innerHTML = "<span style='color:red;'>Password must be between 8 and 20 characters</span>";
+        disableSubmitButton();
+      }
+    }
 
-          console.log(response.data)
+    function confirm() {
+      var password = document.getElementById("password").value;
+      var confirmPassword = document.getElementById("confirmPassword").value;
+      var button = document.getElementById("button");
 
+      if (password === confirmPassword) {
+        document.getElementById("confirmPass").innerHTML = "";
+        enableSubmitButton();
+      } else {
+        document.getElementById("confirmPass").innerHTML = "<span style='color:red;'>Passwords don't match</span>";
+        disableSubmitButton();
+      }
+    }
 
+    const checkEmail = async () => {
+      let emailId = document.getElementById("email").value;
+      var button = document.getElementById("button");
+
+      if (emailId.length < 5) {
+        document.getElementById("emailExists").innerHTML = "<span style='color:red;'>Invalid email</span>";
+        disableSubmitButton();
+      } else {
+        const response = await axios("http://localhost:8080/metro/findEmail?email=" + emailId);
+        if (response.data == "email already exists") {
+          document.getElementById("emailExists").innerHTML = "<span style='color:red;'>Email already exists</span>";
+          disableSubmitButton();
+        } else {
+          document.getElementById("emailExists").innerHTML = "<span style='color:green;'>Email is available</span>";
+          enableSubmitButton();
         }
+      }
+    }
 
+    const phone = async () => {
+      let phoneNumber = document.getElementById("phNo").value;
+      var button = document.getElementById("button");
 
-
-
-        function form(event) {
-
-          var fName = document.getElementById("fName").value;
-          var lName = document.getElementById("lName").value;
-          var email = document.getElementById("email").value;
-          var phNo = document.getElementById("phNo").value;
-          var password = document.getElementById("password").value;
-          var confirmPassword = document.getElementById("confirmPassword").value;
-          var maleChecked = document.getElementById("male").checked;
-          var femaleChecked = document.getElementById("female").checked;
-          var button = document.getElementById("button");
-
-
-          if (
-            fName.trim() !== "" && fName.length > 3 && fName.length <= 25 &&
-            lName.trim() !== "" && lName.length > 0 &&
-            lName.length <= 25 && city.trim() !== "" &&
-            email.trim() !== "" && phNo.trim() !== "" &&
-            phNo.length == 10 && password.trim() !== "" &&
-            password.length >= 8 && password === confirmPassword
-          ) {
-            if (maleChecked || femaleChecked) {
-              document.getElementById("formMessage").innerHTML = "";
-              button.removeAttribute("disabled");
-            } else {
-              document.getElementById("formMessage").innerHTML = "<span style='color:red;'>Please fill the form correctly</span>";
-              button.setAttribute("disabled", "");
-            }
-
-          } else {
-            document.getElementById("formMessage").innerHTML = "<span style='color:red;'>Please fill the form correctly</span>";
-            button.setAttribute("disabled", "");
-          }
+      if (phoneNumber.length != 10) {
+        document.getElementById("ph").innerHTML = "<span style='color:red;'>Phone number must be 10 digits</span>";
+        disableSubmitButton();
+      } else {
+        const response = await axios("http://localhost:8080/metro/phoneNumberExists?mobileNumber=" + phoneNumber);
+        if (response.data == "phone number already exists") {
+          document.getElementById("ph").innerHTML = "<span style='color:red;'>Phone number already exists</span>";
+          disableSubmitButton();
+        } else {
+          document.getElementById("ph").innerHTML = "<span style='color:green;'>Phone number is valid</span>";
+          enableSubmitButton();
         }
+      }
+    }
 
+    function enableSubmitButton() {
+      document.getElementById("button").removeAttribute("disabled");
+    }
 
-        const now = new Date().toISOString().split('T')[0];
-        document.getElementById('dob').setAttribute('max', now);
+    function disableSubmitButton() {
+      document.getElementById("button").setAttribute("disabled", "");
+    }
 
+    function form(event) {
+      var fName = document.getElementById("fName").value;
+      var lName = document.getElementById("lName").value;
+      var email = document.getElementById("email").value;
+      var phNo = document.getElementById("phNo").value;
+      var password = document.getElementById("password").value;
+      var confirmPassword = document.getElementById("confirmPassword").value;
+      var maleChecked = document.getElementById("male").checked;
+      var femaleChecked = document.getElementById("female").checked;
+      var button = document.getElementById("button");
 
+      if (
+        fName.trim() !== "" && fName.length >= 4 && fName.length <= 25 &&
+        lName.trim() !== "" && lName.length >= 1 && lName.length <= 25 &&
+        email.trim() !== "" && phNo.trim() !== "" && phNo.length == 10 &&
+        password.length >= 8 && password === confirmPassword && (maleChecked || femaleChecked)
+      ) {
+        return true; // Form is valid
+      } else {
+        document.getElementById("formMessage").innerHTML = "<span style='color:red;'>Please fill the form correctly</span>";
+        return false; // Prevent form submission
+      }
+    }
 
-      </script>
+    // Prevent past dates in the date of birth field
+    const now = new Date().toISOString().split('T')[0];
+    document.getElementById('dob').setAttribute('max', now);
+  </script>
 
-    </body>
-
-    </html>
+</body>
+</html>

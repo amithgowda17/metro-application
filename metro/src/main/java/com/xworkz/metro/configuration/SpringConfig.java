@@ -15,10 +15,6 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 public class SpringConfig {
 
-    public SpringConfig() {
-        System.out.println("SpringConfig object created");
-    }
-
     @Bean
     public ViewResolver resolver() {
         return new InternalResourceViewResolver("/", ".jsp");

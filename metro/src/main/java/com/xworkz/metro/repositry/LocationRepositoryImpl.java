@@ -4,12 +4,10 @@ import com.xworkz.metro.entity.LocationEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
-import java.util.Collections;
 import java.util.List;
 
 @Repository
@@ -22,13 +20,13 @@ public class LocationRepositoryImpl implements LocationRepository{
     @Override
     public String onLocationSave(LocationEntity locationEntity) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        EntityTransaction transaction = entityManager.getTransaction();
         try{
+            EntityTransaction transaction = entityManager.getTransaction();
             transaction.begin();
             entityManager.persist(locationEntity);
             transaction.commit();
         }catch (Exception e){
-            System.out.println("catch exceptions if any errors present");
+
         }finally {
             entityManager.close();
         }
@@ -46,10 +44,11 @@ public class LocationRepositoryImpl implements LocationRepository{
             return locationEntity;
         }catch (Exception e){
             log.info("Print If any exceptions");
+            return null;
         }finally {
             entityManager.close();
         }
-        return null;
+
     }
 
     @Override
@@ -62,10 +61,10 @@ public class LocationRepositoryImpl implements LocationRepository{
             return resultList;
         }catch (Exception e){
             log.info("info about location details");
+            return null;
         }finally {
             entityManager.close();
         }
-        return null;
     }
 
 }

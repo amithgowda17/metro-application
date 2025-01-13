@@ -14,10 +14,10 @@
 
     <header class="bg-dark text-white text-center py-3">
         <div class="d-flex justify-content-between align-items-center">
-            <!-- Logo -->
+
             <img src="https://www.x-workz.in/Logo.png" alt="Logo" style="max-height: 50px;">
 
-            <!-- Dropdown with Profile -->
+
             <div class="dropdown mb-1">
                 <img src="readImage/${details.imageName}" class="rounded-circle mx-2" alt="img" width="90"
                     data-bs-toggle="modal" data-bs-target="#imageModal" />
@@ -26,6 +26,9 @@
                     aria-expanded="false">
                     ${details.firstName}
                 </a>
+                <button>
+                                                    <a href="back?email=${details.email}" style="color: black; text-decoration: none">Home</a>
+                                                </button>
                 <button><a class="dropdown-item" href="metroTimings?email=${details.email}">Metro Timings</a></button>
                 <div class="dropdown-menu" aria-labelledby="${details.firstName}">
                     <a class="dropdown-item" href="userProfileUpdate?email=${details.email}">Profile</a>
@@ -65,7 +68,7 @@
         </tbody>
     </table>
 
-    <!-- Footer positioned at the bottom -->
+
     <footer class="bg-dark py-3 mt-auto">
         <div class="container-fluid">
             <div class="row justify-content-center">

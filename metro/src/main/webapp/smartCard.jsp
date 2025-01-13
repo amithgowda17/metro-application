@@ -9,14 +9,29 @@
 </head>
 <body>
     <header class="bg-dark text-white text-center py-3">
-        <div class="d-flex justify-content-between align-items-center">
-            <!-- Logo -->
-            <img src="https://www.x-workz.in/Logo.png" alt="Coders World Logo" style="max-height: 50px;">
+                      <div class="d-flex justify-content-between align-items-center">
 
-            <!-- Heading -->
-       <h1 class="text-center mb-0 flex-grow-1"></h1>
-        </div>
-    </header>
+                          <img src="https://www.x-workz.in/Logo.png" alt="Logo" style="max-height: 50px;">
+                          <div class="dropdown mb-1">
+                              <img src="readImage/${details.imageName}" class="rounded-circle mx-2" alt="img" width="90"
+                                  data-bs-toggle="modal" data-bs-target="#imageModal" />
+                              <a class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split mx-2" href=""
+                                  role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true"
+                                  aria-expanded="false">
+                                  ${details.firstName}
+                              </a>
+                              <button>
+                                                                  <a href="back?email=${details.email}" style="color: black; text-decoration: none">Home</a>
+                                                              </button>
+                              <button><a class="dropdown-item" href="metroTimings?email=${details.email}">Metro Timings</a></button>
+                              <div class="dropdown-menu" aria-labelledby="${details.firstName}">
+                                  <a class="dropdown-item" href="userProfileUpdate?email=${details.email}">Profile</a>
+
+                                  <a class="dropdown-item" href="userCanLoginHere">Log out</a>
+                              </div>
+                          </div>
+                      </div>
+                  </header>
     <br>
     <div class="card mx-auto" style="max-width: 500;max-height: 700">
         <div class="card-body  bg-light">
@@ -34,11 +49,14 @@
    </div>
 </div>
 
-    <div class="fixed-bottom">
-    <footer class="bg-dark text-white text-center py-3 mt-4" >
-        <div class="container text-center">
-                <p class="mb-0"><a href="MetroLogin" style="text-decoration: none"><h7>Back</h7></a></p>
-                </div>
-    </footer>
+
+
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
 </html>

@@ -12,7 +12,7 @@
 
 <body>
 
-  <!-- Header with Black Background -->
+
   <header class="header bg-dark text-white">
     <div class="container-fluid">
       <div class="row align-items-center">
@@ -26,7 +26,7 @@
     </div>
   </header>
 
-  <!-- Registration Form Card with Silver Background -->
+
   <div class="container my-4" style="width: 35%;">
     <div class="card form-card mb-3" style="background-color: #C0C0C0; color: #333;">
       <div class="p-3 mb-2" style="background-color: #B0B0B0; color: #333;">

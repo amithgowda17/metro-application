@@ -14,7 +14,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -172,29 +171,21 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<TicketDto> findingUserIdInTicket(Integer userId) {
         if (userId != null) {
-            // Fetch the ticket list based on the userId
+
             List<TicketEntity> ticketEntityList = userRepository.findingUserIdInTicketHistory(userId);
 
-            // If the ticket list is not empty
             if (ticketEntityList != null && !ticketEntityList.isEmpty()) {
                 List<TicketDto> ticketDtos = new ArrayList<>();
 
-                // Iterate through each ticket entity and convert to DTO
                 for (TicketEntity ticketEntity : ticketEntityList) {
                     TicketDto ticketDto = new TicketDto();
                     BeanUtils.copyProperties(ticketEntity, ticketDto);
                     ticketDtos.add(ticketDto);
                 }
-
-                // Log the list of TicketDto objects
                 log.info("ticketDtos in service: {}", ticketDtos);
-
-                // Return the full list after processing all ticket entities
                 return ticketDtos;
             }
         }
-
-        // Return an empty list instead of null when no tickets are found
         return new ArrayList<>();
     }
 

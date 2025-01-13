@@ -12,7 +12,6 @@
 
 <body class="d-flex flex-column" style="min-height: 100vh;">
 
-    <!-- Header Section -->
     <header class="header">
         <div class="container-fluid bg-secondary-subtle">
             <div class="row align-items-center">
@@ -26,7 +25,7 @@
         </div>
     </header>
 
-    <!-- Main Content Section -->
+
     <div class="container my-4" style="width: 35%;">
         <div class="card form-card mb-3">
             <div class="p-3 bg-secondary-subtle text-secondary-emphasis">
@@ -107,7 +106,7 @@
         </div>
     </div>
 
-    <!-- Footer Section -->
+
     <footer class="mt-auto bg-dark py-3">
         <div class="container-fluid">
             <div class="row justify-content-center">

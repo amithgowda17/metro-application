@@ -14,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import javax.validation.Valid;
 
 @Controller
@@ -50,8 +49,9 @@ public class PriceController {
                 redirectAttributes.addFlashAttribute("dto",registrationDto);
                 return "redirect:/addPriceList?email=" + registrationDto.getEmail();
             }else
-                model.addAttribute("unsuccess", "Add Price and TrainType successful");
-            return "addPrice";
+                redirectAttributes.addFlashAttribute("unsuccess", "Add Price and TrainType not saved");
+            redirectAttributes.addFlashAttribute("dto",registrationDto);
+            return "redirect:/addPriceList?email=" + registrationDto.getEmail();
         }
     }
 

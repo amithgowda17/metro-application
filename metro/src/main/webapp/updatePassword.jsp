@@ -11,7 +11,7 @@
 
 <body>
 
-  <!-- Header with Black Background -->
+
   <header class="header bg-dark">
     <div class="container-fluid">
       <div class="row align-items-center">
@@ -30,7 +30,7 @@
     </div>
   </header>
 
-  <!-- Centered Card for Reset Password -->
+
   <div class="position-absolute top-50 start-50 translate-middle">
 
     <div class="card mb-3" style="width: 20rem;">
@@ -47,21 +47,21 @@
               <input type="email" class="form-control" placeholder="Enter your email" name="email" value="${dto.email}" readonly>
             </div>
 
-            <!-- New Password input -->
+
             <div class="mb-3">
               <label for="inputPassword5" class="form-label">Enter New Password</label>
               <input type="password" class="form-control" placeholder="Enter new password" name="password" id="password" onblur="passwordEntry()">
               <span id="pass"></span>
             </div>
 
-            <!-- Confirm Password input -->
+
             <div class="mb-3">
               <label for="inputPassword5" class="form-label">Confirm Your Password</label>
               <input type="password" class="form-control" placeholder="Confirm your password" name="confirmPassword" id="confirmPassword" onblur="confirm()">
               <span id="confirmPass"></span>
             </div>
 
-            <!-- Reset Button -->
+
             <div class="text-center">
               <div class="col-12">
                 <button type="submit" class="btn btn-success" id="button" disabled>Reset</button>
@@ -74,7 +74,7 @@
     </div>
   </div>
 
-  <!-- Footer -->
+
   <footer class="fixed-bottom">
     <div class="footer bg-dark py-3 mt-auto">
       <div class="container-fluid">

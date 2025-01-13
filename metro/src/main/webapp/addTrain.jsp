@@ -25,10 +25,10 @@
     <!-- Header Section -->
      <header class="bg-dark text-white text-center py-3">
                        <div class="d-flex justify-content-between align-items-center">
-                           <!-- Logo -->
+
                            <img src="https://www.x-workz.in/Logo.png" alt="Logo" style="max-height: 50px;">
 
-                           <!-- Navigation Links -->
+
                            <nav class="d-flex justify-content-center">
                                <a href="addLocations?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">Locations</a>
                                <a href="addTimings?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">Timings</a>
@@ -37,7 +37,7 @@
                                <a href="readTrain?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">View Data</a>
                            </nav>
 
-                           <!-- Dropdown with Profile -->
+
                            <div class="dropdown mb-1">
                                <img src="getImage/${dto.fileName}" class="rounded-circle mx-2" alt="img" width="90"
                                     data-bs-toggle="modal" data-bs-target="#imageModal"/>
@@ -67,7 +67,7 @@
                            </div>
                        </div>
                    </div>
-    <!-- Main Content Section -->
+
     <h5 style="text-align:center;">${success}</h5>
     <h5 style="text-align:center;">${Unsaved}</h5>
     <br>
@@ -108,7 +108,7 @@
         </div>
     </div>
 
-    <!-- Footer -->
+
     <div class="fixed-bottom">
         <footer class="bg-dark text-white py-3">
             <div class="container text-center">

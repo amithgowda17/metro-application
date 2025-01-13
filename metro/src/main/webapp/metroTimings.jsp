@@ -14,10 +14,9 @@
 
     <header class="bg-dark text-white text-center py-3">
         <div class="d-flex justify-content-between align-items-center">
-            <!-- Logo -->
+
             <img src="https://www.x-workz.in/Logo.png" alt="Logo" style="max-height: 50px;">
 
-            <!-- Dropdown with Profile -->
             <div class="dropdown mb-1">
                 <img src="readImage/${details.imageName}" class="rounded-circle mx-2" alt="img" width="90"
                     data-bs-toggle="modal" data-bs-target="#imageModal" />
@@ -30,10 +29,15 @@
                 <div class="dropdown-menu" aria-labelledby="${details.firstName}">
                     <a class="dropdown-item" href="userProfileUpdate?email=${details.email}">Profile</a>
                     <a class="dropdown-item" href="userCanLoginHere">Log out</a>
+                    <a class="dropdown-item" href="info?email=${details.email}">Information</a>
+                    <a class="dropdown-item" href="smartCards?email=${details.email}">Smart Cards</a>
                 </div>
                 <button>
                     <a href="abc?userId=${details.id}&&email=${details.email}" style="color: black; text-decoration: none">View Ticket History</a>
                 </button>
+                <button>
+                                    <a href="back?email=${details.email}" style="color: black; text-decoration: none">Home</a>
+                                </button>
             </div>
         </div>
     </header>

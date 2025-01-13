@@ -11,7 +11,7 @@
 
 <body>
 
-  <!-- Navbar -->
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
@@ -28,7 +28,7 @@
     </div>
   </nav>
 
-  <!-- Main Content Section -->
+
   <div class="position-absolute top-50 start-50 translate-middle">
 
     <div class="card mb-3" style="width: 20rem;">
@@ -70,7 +70,7 @@
     </div>
   </div>
 
-  <!-- Footer -->
+
   <footer class="fixed-bottom footer bg-dark py-3">
     <div class="container-fluid">
       <div class="row justify-content-center">

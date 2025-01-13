@@ -16,7 +16,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -132,9 +131,9 @@ public class UserController {
         if (userRegistrationDto != null) {
             model.addAttribute("email", userRegistrationDto);
             userService.sendingOtpToRepo(email,otp);
+            model.addAttribute("message","Otp have been sent");
             return "userLogin";
         }
-        model.addAttribute("message", "Your Email has not been Found");
         return "userLogin";
     }
 
@@ -214,25 +213,30 @@ public class UserController {
         String ticketNumber = generatingTicketNumber();
         PriceDto priceDto = priceService.findBySourceAndDestination(source, destination);
         boolean isSaved = userService.saveTicketDetails(id, ticketNumber, source, destination);
+        UserRegisterDto userRegisterDto=userService.lookingForEmail(email);
         if (isSaved){
             emailSent.ticketMessage(email,ticketNumber);
-            UserRegisterDto userRegisterDto=userService.lookingForEmail(email);
             model.addAttribute("details",userRegisterDto);
             model.addAttribute("booked","ThankYou Your Ticket Booked Successfully");
             return "userSuccessPage";
         }
         log.info("by {}",priceDto);
-        return "smartCard";
+        model.addAttribute("details",userRegisterDto);
+        return "userSuccessPage";
     }
 
 
     @GetMapping("/smartCards")
-    public  String getSmartCardDetails(){
+    public  String getSmartCardDetails(@RequestParam String email,Model model){
+        UserRegisterDto registerationDto = userService.lookingForEmail(email);
+        model.addAttribute("details", registerationDto);
         return "smartCard";
     }
 
     @GetMapping("/info")
-    public  String getInfo(){
+    public  String getInfo(@RequestParam String email,Model model){
+        UserRegisterDto registerationDto = userService.lookingForEmail(email);
+        model.addAttribute("details", registerationDto);
         return "information";
     }
 

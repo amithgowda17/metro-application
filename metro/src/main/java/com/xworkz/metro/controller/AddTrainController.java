@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import javax.validation.Valid;
 import java.util.List;
 
@@ -49,13 +48,13 @@ public class AddTrainController {
         } else {
             RegisterationDto registerationDto=metroService.findByEmailInService(email);
             boolean isSaved = addTrainService.saveTrainTypeAndTrainNumber(addTrainDto);
-            log.info(isSaved+"issaved");
             if(isSaved){
                 redirectAttributes.addFlashAttribute("dto",registerationDto);
                 return "redirect:/addTrainType?email=" + registerationDto.getEmail();
             }else{
-                model.addAttribute("Unsaved","Not Saved");
-                return "addTrain";
+                redirectAttributes.addFlashAttribute("Unsaved","Not Saved");
+                redirectAttributes.addFlashAttribute("dto",registerationDto);
+                return "redirect:/addTrainType?email=" + registerationDto.getEmail();
             }
         }
     }
@@ -65,7 +64,6 @@ public class AddTrainController {
         List<AddTrainDto> addTrainEntities = addTrainService.readAddTrainData();
         RegisterationDto registrationDto = metroService.findByEmailInService(email);
         model.addAttribute("dto",registrationDto);
-        log.info("registrationDto==========",registrationDto.getEmail());
         log.info(" addTrainDtos   {}  ",addTrainEntities);
         model.addAttribute("addTrainEntities", addTrainEntities);
         return "displayMetroDetails";
@@ -98,7 +96,6 @@ public class AddTrainController {
         if (addTrainId==null){
             RegisterationDto registrationDto = metroService.findByEmailInService(email);
             model.addAttribute("dto",registrationDto);
-            model.addAttribute("find","Enter the Id Number");
             return "displayMetroDetails";
         }
         AddTrainDto addTrainEntities = addTrainService.getDetails(addTrainId);

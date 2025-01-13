@@ -13,10 +13,10 @@
         <body>
             <header class="bg-dark text-white text-center py-3">
                               <div class="d-flex justify-content-between align-items-center">
-                                  <!-- Logo -->
+
                                   <img src="https://www.x-workz.in/Logo.png" alt="Logo" style="max-height: 50px;">
 
-                                  <!-- Navigation Links -->
+
                                   <nav class="d-flex justify-content-center">
                                       <a href="addLocations?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">Locations</a>
                                       <a href="addTimings?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">Timings</a>
@@ -25,7 +25,7 @@
                                       <a href="readTrain?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">View Data</a>
                                   </nav>
 
-                                  <!-- Dropdown with Profile -->
+
                                   <div class="dropdown mb-1">
                                       <img src="getImage/${dto.fileName}" class="rounded-circle mx-2" alt="img" width="90"
                                            data-bs-toggle="modal" data-bs-target="#imageModal"/>
@@ -41,7 +41,7 @@
                               </div>
                           </header>
 
-                          <!-- Image Modal -->
+
                           <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
                               <div class="modal-dialog">
                                   <div class="modal-content">
@@ -78,33 +78,14 @@
                                         </select>
                                     </div>
 
-                                    <div class="mb-3">
-                                        <label for="trainNumber" style="color:black" class="form-label">Add
-                                            trainNumber</label>
-                                        <select name="trainNumber" id="trainNumber" class="form-control" required>
-                                            <option value="">Select TrainNumber</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                            <option value="13">13</option>
-                                            <option value="14">14</option>
-                                            <option value="15">15</option>
-                                            <option value="16">16</option>
-                                            <option value="17">17</option>
-                                            <option value="18">18</option>
-                                            <option value="199">199</option>
-                                            <option value="200">200</option>
-                                        </select>
-                                    </div>
+
+                                         <div class="mb-3">
+                                                                        <label for="trainNumber" style="color:black" class="form-label">Train
+                                                                            Number*</label>
+                                                                        <input type="text" name="trainNumber" id="trainNumber" class="form-control"
+                                                                            placeholder="Enter the Train Number">
+                                                                    </div>
+
                                     <div>
                                         <label for="email" class="form-label" hidden>email</label>
                                         <input type="email" name="email" class="form-control"

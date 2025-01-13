@@ -46,8 +46,6 @@ public class LocationController {
             return "addLocation";
         }
         locationService.onSaveLocationAndType(locationDto);
-        log.info("this========================" + registrationDto);
-        System.out.println(registrationDto + "+=========================================");
         redirectAttributes.addFlashAttribute("dto",registrationDto);
         return "redirect:/addLocations?email=" + registrationDto.getEmail();
     }

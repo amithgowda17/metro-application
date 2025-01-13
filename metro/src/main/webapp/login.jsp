@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <!-- Header with Black Background -->
+
   <header class="header bg-dark">
     <div class="container-fluid">
       <div class="row align-items-center">
@@ -55,7 +55,7 @@
         </div>
       </div>
 
-      <!-- Right Column: Login Card -->
+
       <div class="col-md-4 offset-md-1">
         <div class="card mb-3" style="width: 20rem;">
           <div class="card-header text-center bg-primary text-white">
@@ -89,7 +89,7 @@
       </div>
     </div>
 
-    <!-- Additional Information with Images -->
+
     <div class="container my-5">
       <div class="row">
         <div class="col-md-4 d-flex align-items-stretch">
@@ -121,7 +121,7 @@
 
   </div>
 
-  <!-- Footer -->
+
   <footer class="footer">
     <div class="footer bg-dark py-3 mt-auto">
       <div class="container-fluid">
@@ -134,7 +134,7 @@
     </div>
   </footer>
 
-  <!-- Script for Email Validation -->
+
   <script>
     const checkEmail = async () => {
       let emailId = document.getElementById("email").value
@@ -154,7 +154,7 @@
     }
   </script>
 
-  <!-- Bootstrap JS -->
+
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
     crossorigin="anonymous"></script>

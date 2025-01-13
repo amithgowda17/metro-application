@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-    <!-- For Modal functionality -->
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
@@ -21,10 +21,9 @@
 
     <header class="bg-dark text-white text-center py-3">
         <div class="d-flex justify-content-between align-items-center">
-            <!-- Logo -->
-            <img src="https://www.x-workz.in/Logo.png" alt="Logo" style="max-height: 50px;">
+        <img src="https://www.x-workz.in/Logo.png" alt="Logo" style="max-height: 50px;">
 
-            <!-- Navigation Links -->
+
             <nav class="d-flex justify-content-center">
                 <a href="addLocations?email=${details.email}" class="btn btn-outline-light btn-sm mx-2">Locations</a>
                 <a href="addTimings?email=${details.email}" class="btn btn-outline-light btn-sm mx-2">Timings</a>
@@ -33,7 +32,6 @@
                 <a href="readTrain?email=${details.email}" class="btn btn-outline-light btn-sm mx-2">View Data</a>
             </nav>
 
-            <!-- Dropdown with Profile -->
             <div class="dropdown mb-1">
                 <img src="getImage/${details.fileName}" class="rounded-circle mx-2" alt="img" width="90"
                      data-bs-toggle="modal" data-bs-target="#imageModal"/>
@@ -49,7 +47,7 @@
         </div>
     </header>
 
-    <!-- Image Modal -->
+
     <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -64,7 +62,7 @@
         </div>
     </div>
 
-    <!-- Metro Information Section -->
+
     <div class="container mt-5">
         <div class="row">
             <!-- Metro Train Image -->
@@ -79,7 +77,7 @@
                 </div>
             </div>
 
-            <!-- Metro Route Map -->
+
             <div class="col-md-6 mb-4">
                 <div class="card h-100">
                     <img src="https://www.metrorailnews.in/wp-content/uploads/2019/06/NAMMA_METRO_MAP-768x501.png"
@@ -93,7 +91,7 @@
         </div>
     </div>
 
-    <!-- Footer -->
+
     <footer class="footer">
         <div class="footer bg-dark py-3 mt-auto">
             <div class="container-fluid">
