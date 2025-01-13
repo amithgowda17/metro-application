@@ -4,59 +4,62 @@
         <html>
 
         <head>
-        <link rel="icon" href="https://www.x-workz.in/Logo.png">
+            <link rel="icon" href="https://www.x-workz.in/Logo.png">
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
                 integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
                 crossorigin="anonymous">
-                 <title>Add Price</title>
+            <title>Add Price</title>
 
         </head>
 
         <body>
             <header class="bg-dark text-white text-center py-3">
-                              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between align-items-center">
 
-                                  <img src="https://www.x-workz.in/Logo.png" alt="Logo" style="max-height: 50px;">
-
-
-                                  <nav class="d-flex justify-content-center">
-                                      <a href="addLocations?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">Locations</a>
-                                      <a href="addTimings?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">Timings</a>
-                                      <a href="addTrainType?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">Add Train</a>
-                                      <a href="addPriceList?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">Price</a>
-                                      <a href="readTrain?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">View Data</a>
-                                  </nav>
+                    <img src="https://www.x-workz.in/Logo.png" alt="Logo" style="max-height: 50px;">
 
 
-                                  <div class="dropdown mb-1">
-                                      <img src="getImage/${dto.fileName}" class="rounded-circle mx-2" alt="img" width="90"
-                                           data-bs-toggle="modal" data-bs-target="#imageModal"/>
-                                      <a class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split mx-2" href=""
-                                         role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                          ${dto.fname}
-                                      </a>
-                                      <div class="dropdown-menu" aria-labelledby="${dto.fname}">
-                                          <a class="dropdown-item" href="profileUpdate?email=${dto.email}">Profile</a>
-                                          <a class="dropdown-item" href="loginOut">Log out</a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </header>
+                    <nav class="d-flex justify-content-center">
+                        <a href="addLocations?email=${dto.email}"
+                            class="btn btn-outline-light btn-sm mx-2">Locations</a>
+                        <a href="addTimings?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">Timings</a>
+                        <a href="addTrainType?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">Add
+                            Train</a>
+                        <a href="addPriceList?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">Price</a>
+                        <a href="readTrain?email=${dto.email}" class="btn btn-outline-light btn-sm mx-2">View Data</a>
+                    </nav>
 
-                          <!-- Image Modal -->
-                          <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-                              <div class="modal-dialog">
-                                  <div class="modal-content">
-                                      <div class="modal-header">
-                                          <h5 class="modal-title" id="imageModalLabel">Profile Picture</h5>
-                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                      </div>
-                                      <div class="modal-body text-center">
-                                          <img src="getImage/${dto.fileName}" class="img-fluid" alt="Profile Image" />
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
+
+                    <div class="dropdown mb-1">
+                        <img src="getImage/${dto.fileName}" class="rounded-circle mx-2" alt="img" width="90"
+                            data-bs-toggle="modal" data-bs-target="#imageModal" />
+                        <a class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split mx-2" href=""
+                            role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            ${dto.fname}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="${dto.fname}">
+                            <a class="dropdown-item" href="profileUpdate?email=${dto.email}">Profile</a>
+                            <a class="dropdown-item" href="loginOut">Log out</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Image Modal -->
+            <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="imageModalLabel">Profile Picture</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <img src="getImage/${dto.fileName}" class="img-fluid" alt="Profile Image" />
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="card mx-auto" style="max-width: 800;border-radius: 15px; overflow: hidden;">
                 <div class="card-body" style="background-color: white;">
@@ -296,41 +299,41 @@
                         <input type="text" name="destination" class="form-control d-inline" style="width: auto;" hidden>
                         <input type="submit" value="search By price" hidden>
                     </form>
-</div>
-</div>
-                   <footer class="bg-dark py-3 mt-auto">
-                       <div class="container-fluid">
-                           <div class="row justify-content-center">
-                               <div class="col-md-6 text-center">
-                                   <p class="text-white mb-0">Copyright &copy; 2024, All Rights Reserved</p>
-                               </div>
-                           </div>
-                       </div>
-                   </footer>
+                </div>
+            </div>
+            <footer class="bg-dark py-3 mt-auto">
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 text-center">
+                            <p class="text-white mb-0">Copyright &copy; 2024, All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
 
-                    <script type="text/javascript">
-                        const destination = () => {
-                            let source = document.getElementById("sourceId").value;
-                            let destination = document.getElementById("destinationId").value;
-                            let button = document.getElementById("button");
-                            console.log("source: " + source);
-                            console.log("destination: " + destination);
-                            if (source === destination) {
-                                button.disabled = true;
-                            } else {
-                                button.disabled = false;
-                            }
-                        }
-                        document.getElementById("sourceId").addEventListener("change", destination);
-                        document.getElementById("destinationId").addEventListener("change", destination);
-                    </script>
+            <script type="text/javascript">
+                const destination = () => {
+                    let source = document.getElementById("sourceId").value;
+                    let destination = document.getElementById("destinationId").value;
+                    let button = document.getElementById("button");
+                    console.log("source: " + source);
+                    console.log("destination: " + destination);
+                    if (source === destination) {
+                        button.disabled = true;
+                    } else {
+                        button.disabled = false;
+                    }
+                }
+                document.getElementById("sourceId").addEventListener("change", destination);
+                document.getElementById("destinationId").addEventListener("change", destination);
+            </script>
 
-                    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-                        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-                        crossorigin="anonymous"></script>
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-                        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-                        crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+                integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+                crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+                integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+                crossorigin="anonymous"></script>
 
         </body>
 

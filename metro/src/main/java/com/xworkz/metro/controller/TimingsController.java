@@ -19,10 +19,10 @@ import javax.validation.Valid;
 @Slf4j
 public class TimingsController {
     @Autowired
-    MetroService metroService;
+    private MetroService metroService;
 
     @Autowired
-    TimingService timingService;
+    private TimingService timingService;
 
     @GetMapping("/addTimings")
     public String addTimings(@RequestParam String email, Model model){
@@ -46,8 +46,5 @@ public class TimingsController {
 
         }
     }
-
-
-
 
 }

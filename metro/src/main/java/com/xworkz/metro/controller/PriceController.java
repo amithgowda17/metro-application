@@ -27,8 +27,6 @@ public class PriceController {
     @Autowired
     private PriceService priceService;
 
-
-
     @GetMapping("addPriceList")
     public String addPrice(@RequestParam String email, Model model){
         RegisterationDto registrationDto = metroService.findByEmailInService(email);
@@ -58,16 +56,12 @@ public class PriceController {
     @GetMapping("sourceAndDestination")
     public ResponseEntity<?> getSourceAndDestination(@RequestParam String source,
                                                      @RequestParam String destination) {
-
         if (source == null || source.isEmpty() || destination == null || destination.isEmpty()) {
             log.warn("Invalid source or destination, Source: {}, Destination: {}", source, destination);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Source or destination is missing");
         }
-
         log.info("Source: {}, Destination: {}", source, destination);
-
         PriceDto priceDto = priceService.findBySourceAndDestination(source, destination);
-
         if (priceDto != null && priceDto.getPrice() != null) {
             log.info("Price fetched: {}", priceDto.getPrice());
             return ResponseEntity.ok()

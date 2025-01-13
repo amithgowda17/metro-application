@@ -1,8 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+  <%@ page isELIgnored="false" %>
 <html>
 
 <head>
   <title>Login</title>
-<link rel="icon" href="https://www.x-workz.in/Logo.png">
+  <link rel="icon" href="https://www.x-workz.in/Logo.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -33,17 +35,21 @@
 
       <div class="col-md-6 d-flex justify-content-center align-items-center">
 
-        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" style="width: 100%; height: 100%;">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel"
+          style="width: 100%; height: 100%;">
           <div class="carousel-inner" style="height: 100%;">
             <div class="carousel-item active" style="height: 100%;">
-              <img src="https://www.tripsavvy.com/thmb/n2oAmjOEl-P3r8VXiuv2hu9bqZc=/960x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1081803176-fd11b444454a416ca43a88be77eaeed6.jpg"
+              <img
+                src="https://www.tripsavvy.com/thmb/n2oAmjOEl-P3r8VXiuv2hu9bqZc=/960x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1081803176-fd11b444454a416ca43a88be77eaeed6.jpg"
                 class="d-block w-100" style="height: 100%; object-fit: cover;">
             </div>
             <div class="carousel-item" style="height: 100%;">
-              <img src="https://planodemetro.com/wp-content/uploads/2020/05/metro-bangalore-fotos.jpg" class="d-block w-100" style="height: 100%; object-fit: cover;">
+              <img src="https://planodemetro.com/wp-content/uploads/2020/05/metro-bangalore-fotos.jpg"
+                class="d-block w-100" style="height: 100%; object-fit: cover;">
             </div>
             <div class="carousel-item" style="height: 100%;">
-              <img src="https://english.bmrc.co.in/images/metro/homepage/about-us.jpg" class="d-block w-100" style="height: 100%; object-fit: cover;">
+              <img src="https://english.bmrc.co.in/images/metro/homepage/about-us.jpg" class="d-block w-100"
+                style="height: 100%; object-fit: cover;">
             </div>
           </div>
         </div>
@@ -74,7 +80,7 @@
 
 
             <h6 style="color: green;text-align: center;">${message}</h6>
-             <h6 style="color: red;text-align: center;">${emailError}</h6>
+            <h6 style="color: red;text-align: center;">${emailError}</h6>
 
             <form action="loginHere">
               <input type="email" id="email" name="email" placeholder="User@gmail.com" value="${email.email}" hidden>
@@ -90,7 +96,7 @@
               </div>
             </form>
 
-            <!-- Register Link -->
+            
             <div class="text-center mt-3">
               <span>Don't have an account? <a href="userRegister" class="text-decoration-none">Register</a></span>
             </div>
@@ -157,7 +163,7 @@
     }
   </script>
 
-  <!-- Bootstrap JS and Popper.js -->
+ 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

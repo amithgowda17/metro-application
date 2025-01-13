@@ -11,13 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-
 import javax.validation.Valid;
-
-
 
 @Controller
 @RequestMapping("/")
@@ -26,10 +21,10 @@ public class LocationController {
 
 
     @Autowired
-    LocationService locationService;
+    private LocationService locationService;
 
     @Autowired
-    MetroService metroService;
+    private MetroService metroService;
 
     @GetMapping("addLocations")
     public String addLocation(@RequestParam String email, Model model) {

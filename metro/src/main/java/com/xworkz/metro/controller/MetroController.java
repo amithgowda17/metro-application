@@ -43,9 +43,7 @@ public class MetroController {
 
     @PostMapping("register")
     public String register(@Valid RegisterationDto registerationDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-
         if (bindingResult.hasErrors()) {
-
             List<ObjectError> bindingResults = bindingResult.getAllErrors();
             return "register";
         }
@@ -63,21 +61,17 @@ public class MetroController {
 
     @GetMapping("isEmailExists")
     public ResponseEntity<String> emailExists(@RequestParam String email) {
-
         if (email != null) {
             RegisterationDto registerationDto = metroService.findByEmailInService(email);
-
             if (registerationDto != null) {
                 return ResponseEntity.ok("email already exists");
             }
         }
-
         return ResponseEntity.ok("email_accepted");
     }
 
     @GetMapping("isPhNoExists")
     public ResponseEntity<String> phoneExists(@RequestParam String phNo) {
-
         if (phNo != null) {
             boolean byPhInService = metroService.findByPhInService(phNo);
             if (byPhInService) {
@@ -90,9 +84,7 @@ public class MetroController {
 
     @PostMapping("login")
     public String login(@Valid LoginDto loginDto, BindingResult bindingResult, Model model,RedirectAttributes redirectAttributes) {
-
         RegisterationDto registerationDto = metroService.findByEmailInService(loginDto.getEmail());
-
         if (bindingResult.hasErrors()) {
             model.addAttribute("loginErrMsg", "Please enter valid data");
             return "login";
@@ -132,9 +124,7 @@ public class MetroController {
 
 
     @GetMapping("forgotPassword")
-
     public String forgotPassword() {
-
         return "emailOtp";
     }
 
@@ -190,10 +180,8 @@ public class MetroController {
     @GetMapping("profileUpdate")
     public String getProfileUpdatePage(@RequestParam String email, Model model) {
         RegisterationDto registerationDto = metroService.findByEmailInService(email);
-
         model.addAttribute("dto", registerationDto);
         log.info("password in controller=======" + registerationDto.getPassword());
-
         return "profileUpdate";
     }
 
@@ -201,7 +189,6 @@ public class MetroController {
     public String editRegisterDetails(@RequestParam("file") MultipartFile file, RegisterationDto registerationDto1, Model model) {
         boolean updateMessage = metroService.saveEditedProfile(registerationDto1, file);
         RegisterationDto registerationDto = metroService.findByEmailInService(registerationDto1.getEmail());
-
         if (updateMessage) {
             model.addAttribute("msg", "data updated successfully");
             model.addAttribute("details", registerationDto);
@@ -215,9 +202,7 @@ public class MetroController {
 
     @GetMapping("getImage/{fileName}")
     public void viewImage(@PathVariable String fileName, Model model, HttpServletResponse httpServletResponse) {
-
         File file = new File(path + fileName);
-
         try {
             FileInputStream fileInputStream = new FileInputStream(file);
             InputStream inputStream = new BufferedInputStream(fileInputStream);
@@ -228,8 +213,6 @@ public class MetroController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
 
     }
 

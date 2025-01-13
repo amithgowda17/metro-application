@@ -14,22 +14,19 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 import java.util.List;
 
-
 @Controller
 @RequestMapping("/")
 @Slf4j
 public class AddTrainController {
 
-
     @Autowired
-    MetroService metroService;
+    private MetroService metroService;
 
     @Autowired
     private UserService userService;
 
     @Autowired
-    AddTrainService addTrainService;
-
+    private AddTrainService addTrainService;
 
 
     @GetMapping("addTrainType")

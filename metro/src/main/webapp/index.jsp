@@ -55,7 +55,8 @@
     <div class="container my-4">
         <h2 class="text-center">About the Metro</h2>
         <p class="text-center">
-            The metro system is a rapid transit network that provides fast and convenient transportation across the city.
+            The metro system is a rapid transit network that provides fast and convenient transportation across the
+            city.
             It aims to reduce traffic congestion and make urban commuting easier for everyone.
         </p>
         <div class="row">

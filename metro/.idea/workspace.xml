@@ -7,31 +7,23 @@
     <list default="true" id="0602b53b-9c99-4c49-979b-8a628a656a51" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/AddTrainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/AddTrainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/LocationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/LocationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/MetroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/MetroController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/PriceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/PriceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/TimingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/TimingsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/AddTrainRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/AddTrainRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/AddTrainRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/AddTrainRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/LocationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/LocationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/LocationRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/LocationRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/PriceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/PriceRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/PriceRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/PriceRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/TimingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/TimingRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/TimingRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/TimingRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/UserLoginRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/UserLoginRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/UserLoginRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/UserLoginRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/UserRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/UserRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/repositry/UserRepoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/AddTrainServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/metro/service/AddTrainServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/addLocation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addLocation.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/addPrice.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addPrice.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/addTimings.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addTimings.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/addTrain.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addTrain.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/displayMetroDetails.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/displayMetroDetails.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/emailOtp.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/emailOtp.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/information.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/information.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/metroTimings.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/metroTimings.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/profileUpdate.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/profileUpdate.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/smartCard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/smartCard.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/success.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/success.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/updateMetroDetails.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/updateMetroDetails.jsp" afterDir="false" />
