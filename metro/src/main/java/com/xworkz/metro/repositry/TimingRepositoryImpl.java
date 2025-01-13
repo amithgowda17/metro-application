@@ -19,7 +19,7 @@ public class TimingRepositoryImpl implements TimingRepository{
     EntityManagerFactory entityManagerFactory;
 
     @Override
-    public String saveTimingsFromRepo(TimingEntity timingEntity) {
+    public void saveTimingsFromRepo(TimingEntity timingEntity) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
@@ -27,28 +27,26 @@ public class TimingRepositoryImpl implements TimingRepository{
             entityManager.persist(timingEntity);
             transaction.commit();
         }catch (Exception e){
-            log.info("=========================");
+            log.info("exception in repo======="+e.getMessage());
         }finally {
             entityManager.close();
         }
-        return "";
+
     }
 
     @Override
-    public String TheUpdatedTimings(TimingEntity timingEntity) {
+    public void TheUpdatedTimings(TimingEntity timingEntity) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
             EntityTransaction transaction = entityManager.getTransaction();
             transaction.begin();
             entityManager.merge(timingEntity);
             transaction.commit();
-            log.info("this is timing repo========================");
         }catch (Exception e){
             log.info("exception in the updating Time entity {}",e.getMessage());
         }finally {
             entityManager.close();
         }
-        return "";
     }
 
     @Override

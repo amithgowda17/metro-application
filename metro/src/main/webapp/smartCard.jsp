@@ -2,7 +2,7 @@
 <%@ page isELIgnored="false"%>
 <html>
 <head>
-    <title>This is Coders World</title>
+    <title>Smart Card</title>
     <link rel="icon" type="image/x-icon" href="https://www.x-workz.in/Logo.png"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-..." crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

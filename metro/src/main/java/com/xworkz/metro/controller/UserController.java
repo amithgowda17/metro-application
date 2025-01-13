@@ -154,6 +154,7 @@ public class UserController {
                 return "userSuccessPage";
             }
             model.addAttribute("emailError","invalid Otp");
+            model.addAttribute("email",userRegistrationDto);
             return "userLogin";
         }
         return "userLogin";

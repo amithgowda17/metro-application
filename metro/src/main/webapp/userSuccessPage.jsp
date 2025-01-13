@@ -14,6 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
 </head>
 
 <body>
@@ -22,10 +23,6 @@
         <div class="d-flex justify-content-between align-items-center">
 
             <img src="https://www.x-workz.in/Logo.png" alt="Logo" style="max-height: 50px;">
-
-
-
-            <!-- Dropdown with Profile -->
             <div class="dropdown mb-1">
                 <img src="readImage/${details.imageName}"class="rounded-circle mx-2" alt="img" width="90"
                      data-bs-toggle="modal" data-bs-target="#imageModal"/>

@@ -17,7 +17,7 @@ public class UserLoginRepositoryImpl implements UserLoginRepository{
     EntityManagerFactory entityManagerFactory;
 
     @Override
-    public String loginByEmail(UserLoginEntity userLoginEntity) {
+    public void loginByEmail(UserLoginEntity userLoginEntity) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = entityManager.getTransaction();
         try {
@@ -25,9 +25,10 @@ public class UserLoginRepositoryImpl implements UserLoginRepository{
             entityManager.merge(userLoginEntity);
             entityTransaction.commit();
         }catch (Exception e){
+            log.info("exception in repo======="+e.getMessage());
         }finally {
+
             entityManager.close();
         }
-        return "data";
     }
 }

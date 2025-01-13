@@ -3,7 +3,7 @@
         <html>
 
         <head>
-            <title>This is Coders World</title>
+            <title>Information</title>
             <link rel="icon" type="image/x-icon" href="https://www.x-workz.in/Logo.png" />
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
                 integrity="sha384-..." crossorigin="anonymous">

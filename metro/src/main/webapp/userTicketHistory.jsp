@@ -8,6 +8,7 @@
     <link rel="icon" type="image/x-icon" href="https://www.x-workz.in/Logo.png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-..." crossorigin="anonymous">
+        <title>Ticket History</title>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -37,7 +38,7 @@
             </div>
         </div>
     </header>
-
+<div>
     <form action="findTicketId">
         <input type="number" name="ticketId" id="ticketId" placeholder="enter a ticket Id" class="form-control" hidden>
     </form>
@@ -68,7 +69,7 @@
         </tbody>
     </table>
 
-
+</div>
     <footer class="bg-dark py-3 mt-auto">
         <div class="container-fluid">
             <div class="row justify-content-center">

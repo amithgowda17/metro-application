@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PriceRepository {
 
-    String savePriceToDataBase(PriceEntity priceEntity);
+    void savePriceToDataBase(PriceEntity priceEntity);
 
     PriceEntity findBySourceAndDestination(String source,String destination);
 

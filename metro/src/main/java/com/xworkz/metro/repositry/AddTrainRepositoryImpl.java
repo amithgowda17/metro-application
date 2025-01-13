@@ -19,7 +19,7 @@ public class AddTrainRepositoryImpl implements AddTrainRepository{
     EntityManagerFactory entityManagerFactory;
 
     @Override
-    public String saveTrainTypeAndNumber(AddTrainEntity addTrainEntity) {
+    public void saveTrainTypeAndNumber(AddTrainEntity addTrainEntity) {
         log.info("add train entity is ====================  " + addTrainEntity);
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
@@ -28,11 +28,10 @@ public class AddTrainRepositoryImpl implements AddTrainRepository{
             entityManager.persist(addTrainEntity);
             transaction.commit();
         } catch (Exception e) {
-            log.info("=========================");
+            log.info("==============={}",e.getMessage());
         } finally {
             entityManager.close();
         }
-        return "";
     }
 
     @Override
@@ -44,10 +43,10 @@ public class AddTrainRepositoryImpl implements AddTrainRepository{
             query.setParameter("trainType", trainType);
             Object object = query.getSingleResult();
             AddTrainEntity addTrainEntity = (AddTrainEntity) object;
-            log.info(addTrainEntity + "addTrainee entity========================");
+            log.info("addTrainee entity in repo======{}",addTrainEntity);
             return addTrainEntity;
         } catch (Exception e) {
-            log.info("=======================================");
+            log.info("exception========"+e.getMessage());
         } finally {
             entityManager.close();
         }
@@ -111,7 +110,7 @@ public class AddTrainRepositoryImpl implements AddTrainRepository{
     }
 
     @Override
-    public String savingTheUpdateDetails(AddTrainEntity addTrainEntity) {
+    public void savingTheUpdateDetails(AddTrainEntity addTrainEntity) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
             EntityTransaction transaction = entityManager.getTransaction();
@@ -125,7 +124,7 @@ public class AddTrainRepositoryImpl implements AddTrainRepository{
         finally {
             entityManager.close();
         }
-        return null;
+
     }
 
 

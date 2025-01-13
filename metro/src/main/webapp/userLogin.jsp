@@ -2,14 +2,9 @@
 
 <head>
   <title>Login</title>
-
-  <!-- Bootstrap CSS -->
+<link rel="icon" href="https://www.x-workz.in/Logo.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-
-  <!-- Axios JS -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-  <!-- jQuery JS -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
@@ -35,9 +30,9 @@
 
   <div class="container mt-5 flex-grow-1">
     <div class="row justify-content-center">
-      <!-- Image Column on the Left -->
+
       <div class="col-md-6 d-flex justify-content-center align-items-center">
-        <!-- Carousel for Slideshow with fixed size -->
+
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" style="width: 100%; height: 100%;">
           <div class="carousel-inner" style="height: 100%;">
             <div class="carousel-item active" style="height: 100%;">
@@ -54,13 +49,13 @@
         </div>
       </div>
 
-      <!-- Form Column on the Right -->
+
       <div class="col-md-6 d-flex justify-content-center align-items-center">
         <div class="card" id="loginCard" style="width: 100%; max-width: 400px;">
           <div class="card-body">
             <h5 class="card-title text-center text-primary mb-4">User Login</h5>
 
-            <!-- Login Form -->
+
             <form action="User" class="row g-3">
               <div class="mb-3">
                 <label for="email" class="form-label">User Email*</label>
@@ -69,7 +64,7 @@
                 <span id="emailExists"></span>
               </div>
 
-              <!-- Get OTP Button (Center-Aligned just below the email input) -->
+
               <div class="d-flex justify-content-center mb-3">
                 <button type="submit" name="button" id="button1" class="btn btn-primary btn-sm rounded-sm">
                   Get OTP
@@ -77,16 +72,17 @@
               </div>
             </form>
 
-            <!-- Message -->
-            <h6 style="color: green;text-align: center;">${message}</h6>
 
-            <!-- OTP Form -->
+            <h6 style="color: green;text-align: center;">${message}</h6>
+             <h6 style="color: red;text-align: center;">${emailError}</h6>
+
             <form action="loginHere">
               <input type="email" id="email" name="email" placeholder="User@gmail.com" value="${email.email}" hidden>
               <input type="number" id="id" name="id" value="${email.id}" hidden>
               <div class="mb-3">
                 <input type="text" placeholder="Enter OTP" name="otp" class="form-control">
               </div>
+
               <div class="d-flex justify-content-center">
                 <button type="submit" id="button" class="btn btn-dark btn-sm rounded-pill">
                   Submit

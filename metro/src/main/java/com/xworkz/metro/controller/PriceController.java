@@ -60,7 +60,7 @@ public class PriceController {
                                                      @RequestParam String destination) {
 
         if (source == null || source.isEmpty() || destination == null || destination.isEmpty()) {
-            log.warn("Invalid source or destination. Source: {}, Destination: {}", source, destination);
+            log.warn("Invalid source or destination, Source: {}, Destination: {}", source, destination);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Source or destination is missing");
         }
 
@@ -70,12 +70,10 @@ public class PriceController {
 
         if (priceDto != null && priceDto.getPrice() != null) {
             log.info("Price fetched: {}", priceDto.getPrice());
-
             return ResponseEntity.ok()
                     .contentType(MediaType.TEXT_PLAIN)
                     .body(priceDto.getPrice().toString());
         }
-
         log.warn("Price not found for source: {} and destination: {}", source, destination);
         return ResponseEntity.ok()
                 .contentType(MediaType.TEXT_PLAIN)

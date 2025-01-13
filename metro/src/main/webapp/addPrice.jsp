@@ -4,9 +4,11 @@
         <html>
 
         <head>
+        <link rel="icon" href="https://www.x-workz.in/Logo.png">
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
                 integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
                 crossorigin="anonymous">
+                 <title>Add Price</title>
 
         </head>
 
@@ -294,15 +296,17 @@
                         <input type="text" name="destination" class="form-control d-inline" style="width: auto;" hidden>
                         <input type="submit" value="search By price" hidden>
                     </form>
-
-
-                    <div class="fixed-bottom">
-                        <footer class="bg-dark text-white py-3">
-                            <div class="container text-center">
-                                <p class="mb-0"></p>
-                            </div>
-                        </footer>
-                    </div>
+</div>
+</div>
+                   <footer class="bg-dark py-3 mt-auto">
+                       <div class="container-fluid">
+                           <div class="row justify-content-center">
+                               <div class="col-md-6 text-center">
+                                   <p class="text-white mb-0">Copyright &copy; 2024, All Rights Reserved</p>
+                               </div>
+                           </div>
+                       </div>
+                   </footer>
 
                     <script type="text/javascript">
                         const destination = () => {

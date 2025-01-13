@@ -19,7 +19,7 @@ public class PriceRepositoryImpl implements PriceRepository{
     EntityManagerFactory entityManagerFactory;
 
     @Override
-    public String savePriceToDataBase(PriceEntity priceEntity) {
+    public void savePriceToDataBase(PriceEntity priceEntity) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try{
             EntityTransaction transaction = entityManager.getTransaction();
@@ -31,7 +31,7 @@ public class PriceRepositoryImpl implements PriceRepository{
         }finally {
             entityManager.close();
         }
-        return "";
+
     }
 
     @Override

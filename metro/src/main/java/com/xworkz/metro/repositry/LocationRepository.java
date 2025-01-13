@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface LocationRepository {
 
-    String onLocationSave(LocationEntity locationEntity);
+    void onLocationSave(LocationEntity locationEntity);
 
     LocationEntity findByTrainNumber(String trainNumber);
 

@@ -81,7 +81,7 @@ public class AddTrainController {
 
     @PostMapping("updateDetails")
     public String updateDetails(AddTrainDto addTrainDto,@RequestParam Integer addTrainId,@RequestParam String email,@RequestParam String trainType,@RequestParam String trainNumber,@RequestParam String source,@RequestParam String destination,@RequestParam String fromTime,@RequestParam String toTime, @RequestParam Integer price,@RequestParam String dayOfTheWeek ,Model model){
-        log.info("====this controller  add traindto=================add{}",addTrainDto);
+        log.info("this controller  add traindto===={}",addTrainDto);
         log.info("this=============email {}",email);
         RegisterationDto registrationDto = metroService.findByEmailInService(email);
         model.addAttribute("dto",registrationDto);
@@ -103,7 +103,6 @@ public class AddTrainController {
         model.addAttribute("dto",registrationDto);
         log.info("addTrainDto========{}",addTrainEntities);
         model.addAttribute("addTrainEntity", addTrainEntities);
-        log.info("addTrainDtos{}",addTrainEntities);
         return "displayMetroDetails";
     }
 

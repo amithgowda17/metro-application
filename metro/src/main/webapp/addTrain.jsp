@@ -4,25 +4,25 @@
 <html>
 
 <head>
-    <!-- Bootstrap CSS -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
         crossorigin="anonymous">
-
-    <!-- jQuery -->
+         <title>Add Price</title>
+         <link rel="icon" href="https://www.x-workz.in/Logo.png">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!-- Select2 CSS -->
+
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 
-    <!-- Select2 JS -->
+
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 
 
 </head>
 
 <body>
-    <!-- Header Section -->
+
      <header class="bg-dark text-white text-center py-3">
                        <div class="d-flex justify-content-between align-items-center">
 
@@ -53,7 +53,7 @@
                        </div>
                    </header>
 
-                   <!-- Image Modal -->
+
                    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
                        <div class="modal-dialog">
                            <div class="modal-content">
@@ -110,16 +110,15 @@
 
 
     <div class="fixed-bottom">
-        <footer class="bg-dark text-white py-3">
-            <div class="container text-center">
-                <p class="mb-0"></p>
-            </div>
-        </footer>
+         <footer class="bg-dark text-white text-center py-3 mt-auto border-top">
+
+                <p class="mb-0">Copyright &copy; 2024, All Rights Reserved</p>
+            </footer>
     </div>
 
-    <!-- Scripts -->
+
     <script type="text/javascript">
-        // Initialize Select2 plugin after document is ready
+
         $(document).ready(function() {
             $('.select2').select2();
         });

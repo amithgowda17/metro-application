@@ -11,7 +11,7 @@
 
 <body class="d-flex flex-column min-vh-100">
 
-  <!-- Header -->
+
   <header class="header bg-dark text-white">
     <div class="container-fluid">
       <div class="row align-items-center">
@@ -33,7 +33,7 @@
     </div>
   </header>
 
-  <!-- Registration Form -->
+
   <div class="container my-4" style="width: 35%;">
     <div class="card form-card mb-3">
       <div class="p-3 bg-secondary-subtle text-secondary-emphasis">
@@ -124,7 +124,6 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <footer class="bg-dark text-white py-3 mt-auto">
     <div class="container-fluid">
       <div class="row justify-content-center">
@@ -135,7 +134,7 @@
     </div>
   </footer>
 
-  <!-- JavaScript -->
+
   <script>
     function fNameValidation() {
       var names = document.getElementById("fName").value;
@@ -253,14 +252,14 @@
         email.trim() !== "" && phNo.trim() !== "" && phNo.length == 10 &&
         password.length >= 8 && password === confirmPassword && (maleChecked || femaleChecked)
       ) {
-        return true; // Form is valid
+        return true;
       } else {
         document.getElementById("formMessage").innerHTML = "<span style='color:red;'>Please fill the form correctly</span>";
-        return false; // Prevent form submission
+        return false;
       }
     }
 
-    // Prevent past dates in the date of birth field
+
     const now = new Date().toISOString().split('T')[0];
     document.getElementById('dob').setAttribute('max', now);
   </script>

@@ -7,13 +7,13 @@ import java.util.List;
 
 public interface UserRepo {
 
-    String save(UserRegisterEntity userRegisterEntity);
+    void save(UserRegisterEntity userRegisterEntity);
 
     UserRegisterEntity findingEmailFromDataBase(String email);
 
     boolean saveOtp (String email,String otp);
 
-    String saveTheDetails(TicketEntity ticketEntity);
+    void saveTheDetails(TicketEntity ticketEntity);
 
     List<TicketEntity> findingUserIdInTicketHistory(Integer userId);
 

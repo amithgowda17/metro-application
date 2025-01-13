@@ -18,7 +18,7 @@ public class LocationRepositoryImpl implements LocationRepository{
     EntityManagerFactory entityManagerFactory;
 
     @Override
-    public String onLocationSave(LocationEntity locationEntity) {
+    public void onLocationSave(LocationEntity locationEntity) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try{
             EntityTransaction transaction = entityManager.getTransaction();
@@ -26,11 +26,11 @@ public class LocationRepositoryImpl implements LocationRepository{
             entityManager.persist(locationEntity);
             transaction.commit();
         }catch (Exception e){
-
+            log.info("exception in repo======="+e.getMessage());
         }finally {
             entityManager.close();
         }
-        return "";
+
     }
 
     @Override

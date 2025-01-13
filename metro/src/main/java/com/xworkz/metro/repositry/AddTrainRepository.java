@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface AddTrainRepository {
 
-    String saveTrainTypeAndNumber(AddTrainEntity addTrainEntity);
+    void saveTrainTypeAndNumber(AddTrainEntity addTrainEntity);
 
     AddTrainEntity findByTrainNumberAndTrainType(String trainNumber, String trainType);
 
@@ -16,6 +16,6 @@ public interface AddTrainRepository {
 
     AddTrainEntity findTrainNumber(String trainNumber);
 
-    String savingTheUpdateDetails(AddTrainEntity addTrainEntity);
+    void savingTheUpdateDetails(AddTrainEntity addTrainEntity);
 
 }

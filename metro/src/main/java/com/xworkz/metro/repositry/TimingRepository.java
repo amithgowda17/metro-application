@@ -5,9 +5,9 @@ import com.xworkz.metro.entity.TimingEntity;
 
 public interface TimingRepository {
 
-    String saveTimingsFromRepo(TimingEntity timingEntity);
+    void saveTimingsFromRepo(TimingEntity timingEntity);
 
-    String TheUpdatedTimings(TimingEntity timingEntity);
+    void TheUpdatedTimings(TimingEntity timingEntity);
 
     TimingEntity findById(Integer addTrainId);
 

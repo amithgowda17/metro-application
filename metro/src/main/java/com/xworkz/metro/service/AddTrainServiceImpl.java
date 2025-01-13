@@ -92,7 +92,6 @@ public class AddTrainServiceImpl implements AddTrainService{
             return addTrainDto;
         }).collect(Collectors.toList());
 
-//        log.info("List in repo {}",addTrainDtoList);
         return  addTrainDtoList;
     }
 

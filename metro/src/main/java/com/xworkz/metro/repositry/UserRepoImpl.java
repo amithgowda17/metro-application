@@ -20,7 +20,7 @@ public class UserRepoImpl implements UserRepo{
     EntityManagerFactory entityManagerFactory;
 
     @Override
-    public String save(UserRegisterEntity userRegisterEntity) {
+    public void save(UserRegisterEntity userRegisterEntity) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
@@ -28,11 +28,10 @@ public class UserRepoImpl implements UserRepo{
             entityManager.persist(userRegisterEntity);
             transaction.commit();
         } catch (Exception e) {
-            log.info("====Print me if theres any exception");
+            log.info("exception in repo======="+e.getMessage());
         } finally {
             entityManager.close();
         }
-        return "data";
     }
 
     @Override
@@ -111,7 +110,7 @@ public class UserRepoImpl implements UserRepo{
     }
 
     @Override
-    public String saveTheDetails(TicketEntity ticketEntity) {
+    public void saveTheDetails(TicketEntity ticketEntity) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
@@ -119,11 +118,10 @@ public class UserRepoImpl implements UserRepo{
             entityManager.persist(ticketEntity);
             transaction.commit();
         } catch (Exception e) {
-            log.info("========");
+            log.info("exception in repo=======" + e.getMessage());
         } finally {
             entityManager.close();
         }
-        return "data";
     }
 
 

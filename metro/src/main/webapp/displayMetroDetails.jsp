@@ -9,9 +9,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-..." crossorigin="anonymous">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <title>Metro Details</title>
 </head>
 
-<title></title>
+
 
 <body class="d-flex flex-column" style="min-height: 100vh;">
     <header class="bg-dark text-white text-center py-3">
