@@ -1,16 +1,13 @@
 package com.xworkz.metro.controller;
 
-import com.xworkz.metro.dto.TicketDto;
-import com.xworkz.metro.dto.UserRegisterDto;
+import com.xworkz.metro.dto.*;
 import com.xworkz.metro.service.UserService;
 import com.xworkz.metro.util.EmailSent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 

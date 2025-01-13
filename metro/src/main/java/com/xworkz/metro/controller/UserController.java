@@ -2,10 +2,7 @@ package com.xworkz.metro.controller;
 
 import com.xworkz.metro.dto.*;
 import com.xworkz.metro.repositry.PriceRepository;
-import com.xworkz.metro.service.AddTrainService;
-import com.xworkz.metro.service.PriceService;
-import com.xworkz.metro.service.TimingService;
-import com.xworkz.metro.service.UserService;
+import com.xworkz.metro.service.*;
 import com.xworkz.metro.util.EmailSent;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
@@ -21,9 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.*;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller

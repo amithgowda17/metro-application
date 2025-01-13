@@ -1,7 +1,6 @@
 package com.xworkz.metro.configuration;
 
-import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletRegistration;
